@@ -18,10 +18,10 @@ require '../../Layout.php';
             <tr>
                 <th>Event No</th>
                 <th>Event Name</th>
-                <th>Status</th>
                 <th>Event Date</th>
+                <th>Status</th>
                 <th>Created By</th>
-                <th>Updated Date</th>
+                <th>Created Date</th>
                 <th>Updated By</th>
                 <th>Updated Date</th>
                 <th>Action</th>
@@ -31,8 +31,8 @@ require '../../Layout.php';
             <tr>
                 <td>EVT/2303/00001</td>
                 <td>Voice Of Rahman</td>
-                <td>Open</td>
                 <td>28/03/2023 09:00</td>
+                <td>Open</td>
                 <td>En Xi</td>
                 <td>19/03/2023 09:00</td>
                 <td></td>
