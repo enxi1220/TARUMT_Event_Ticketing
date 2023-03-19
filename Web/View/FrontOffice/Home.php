@@ -1,5 +1,5 @@
   <?php
-    require '../layout.php';
+    require '../Layout.php';
     
     ?>
 <!DOCTYPE html>

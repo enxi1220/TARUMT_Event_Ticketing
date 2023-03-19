@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<--<!-- author: Lim En Xi -->
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
--->
+<!-- author: Lim En Xi -->
+
 <html>
     <head>
         <meta charset="UTF-8">

@@ -116,8 +116,20 @@ class Ripple {
         this._element = parent;
       } else {
         const shadow = getComputedStyle(this._element).boxShadow;
-
+        const btn = this._element;
         const wrapper = document.createElement('span');
+
+        if (btn.classList.contains('btn-block')) {
+          wrapper.style.display = 'block';
+        }
+
+        EventHandler.one(wrapper, 'mouseup', (e) => {
+          // prevent submit on click other than LMB, ripple still triggered, but submit is blocked
+          if (e.button === 0) {
+            btn.click();
+          }
+        });
+
         wrapper.classList.add(CLASSNAME_RIPPLE, CLASSNAME_RIPPLE_WRAPPER);
 
         Manipulator.addStyle(wrapper, {
@@ -134,7 +146,7 @@ class Ripple {
     }
 
     if (!this._element.style.minWidth) {
-      Manipulator.style(this._element, { 'min-width': `${this._element.offsetWidth}px` });
+      Manipulator.style(this._element, { 'min-width': `${getComputedStyle(this._element).width}` });
       this._isMinWidthSet = true;
     }
 
