@@ -5,10 +5,10 @@ require '../../Layout.php';
 <div class="bg-light p-5 rounded-2">
     <div class="row">
         <div class="col">
-            <h2 class="float-start mb-5">$eventNo Participant Summary</h2>
+            <h2 class="float-start mb-5">$eventNo Ticket Summary</h2>
         </div>
         <div class="col">
-            <a class="btn btn-primary btn-lg btn-floating float-end" data-mdb-toggle="tooltip" title="Back" href="../Event/EventSummary.php" role="button">
+            <a class="btn btn-secondary btn-lg btn-floating float-end" data-mdb-toggle="tooltip" title="Back" href="../Event/EventSummary.php" role="button">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>

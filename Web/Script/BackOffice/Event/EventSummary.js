@@ -6,12 +6,17 @@ $(document).ready(function(){
 
  // todo: based on status to set hide button 
 function StatusButton(){
-    if(true){
+    if(false){
+        // role is staff
+        $(`#btn-activate`).hide();
+        $(`#btn-deactivate`).hide();
+    }else if(true){
+        // status is activate
         $(`#btn-activate`).hide();
     }else{
+        // status is deactivate
         $(`#btn-deactivate`).hide();
     }
-     
 }
 
 function activateEvent(eventId){

@@ -1,6 +1,7 @@
 <?php
 require '../../Layout.php';
 ?>
+<!-- author: Lim En Xi -->
 <div class="bg-light p-5 rounded-2">
     <div class="row">
         <div class="col">
@@ -62,7 +63,7 @@ require '../../Layout.php';
     </table>
 </div>
 
-<!-- Modal -->
+<!----------------------- Modal ----------------------->
 <div class="modal fade" id="activateEventModal" tabindex="-1" aria-labelledby="activateEventModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -94,6 +95,5 @@ require '../../Layout.php';
     </div>
   </div>
 </div>
-
 
 <script src="../../../Script/BackOffice/Event/EventSummary.js"></script>
