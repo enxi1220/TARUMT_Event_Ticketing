@@ -206,7 +206,7 @@ require '../../Layout.php';
                 <i class="fas fa-arrow-left"></i>
             </a>
             <button type="submit" onclick="updateEvent()" class="btn btn-primary btn-floating ms-4" title="Save">
-                <i class="fa-solid fa-floppy-disk"></i>
+                <i class="fas fa-floppy-disk"></i>
             </button>
         </div>
     </form>
