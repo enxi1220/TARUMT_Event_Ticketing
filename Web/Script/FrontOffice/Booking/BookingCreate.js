@@ -1,37 +1,58 @@
 //author: Lim En Xi
 
-function checkQty() {
+function placeOrder() {
+    // check qty
+}
 
+function ticketChange(){
+    calcPrice();
+    toggleOrderButton();
 }
 
 function calcPrice() {
-// todo: solve NaN 
     var vipQty = parseInt($(`#txt-vip-ticket-qty`).val());
     var stdQty = parseInt($(`#txt-std-ticket-qty`).val());
     var bgtQty = parseInt($(`#txt-bgt-ticket-qty`).val());
-    var vipPrice = 0;
-    var stdPrice = 0;
-    var bgtPrice = 0;
+    let vipPrice = 0;
+    let stdPrice = 0;
+    let bgtPrice = 0;
+    var vipUnitPrice = 10;
+    var stdUnitPrice = 5;
+    var bgtUnitPrice = 3;
 
     if (!isNaN(vipQty)) {
-        vipPrice = parseFloat($(`#txt-vip-ticket-price`).val(vipQty)) * 2;
+        vipPrice = vipQty * vipUnitPrice;
+        $(`#txt-vip-ticket-price`).val(vipPrice);
     } else {
-        vipPrice =$(`#txt-vip-ticket-price`).val(0);
+        vipPrice = 0;
+        $(`#txt-vip-ticket-price`).val(0);
     }
 
     if (!isNaN(stdQty)) {
-        stdPrice = parseFloat($(`#txt-std-ticket-price`).val(stdQty * 5));
+        stdPrice = stdQty * stdUnitPrice;
+        $(`#txt-std-ticket-price`).val(stdPrice);
     } else {
-        stdPrice = $(`#txt-std-ticket-price`).val(0);
+        stdPrice = 0;
+        $(`#txt-std-ticket-price`).val(0);
     }
 
     if (!isNaN(bgtQty)) {
-        bgtPrice = parseFloat($(`#txt-bgt-ticket-price`).val(bgtQty * 10));
+        bgtPrice = bgtQty * bgtUnitPrice;
+        $(`#txt-bgt-ticket-price`).val(bgtPrice);
     } else {
-        bgtPrice = $(`#txt-bgt-ticket-price`).val(0);
+        bgtPrice = 0;
+        $(`#txt-bgt-ticket-price`).val(0);
     }
-    console.log(vipQty);
-    console.log(vipPrice);
 
     $(`#txt-total-ticket-price`).val(vipPrice + stdPrice + bgtPrice);
+}
+
+function toggleOrderButton(){
+    // if price != 0 => remove disabled class
+    // else add disabled class
+    if(parseFloat($(`#txt-total-ticket-price`).val()) == 0){
+        $(`#btn-place-order`).addClass('disabled');
+    }else{
+        $(`#btn-place-order`).removeClass('disabled');
+    }
 }

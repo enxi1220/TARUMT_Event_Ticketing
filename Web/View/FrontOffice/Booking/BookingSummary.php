@@ -2,7 +2,7 @@
 require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
-<div class="bg-light p-5 rounded-2">
+<div class="p-5 rounded-2">
     <div class="row">
         <div class="col">
             <h2 class="float-start mb-5">Booking History</h2>
@@ -44,13 +44,13 @@ require '../../Layout.php';
                                         <span class="p-2">28/03/2023 12:00</span>
                                     </p>
                                     <p class="card-text float-end">
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Ticket" href="../Ticket/TicketSummary.php?bookingId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?bookingId=" role="button">
                                             <i class="fas fa-ticket"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Payment" href="../Payment/PaymentView.php?bookingId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Payment" href="../Payment/PaymentView.php?bookingId=" role="button">
                                             <i class="fas fa-dollar-sign"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Event" href="../Event/EventView.php?eventId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Event" href="../Event/EventView.php?eventId=" role="button">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </p>
@@ -104,48 +104,7 @@ require '../../Layout.php';
             <!-- Tab content -->
         </div>
     </div>
-
-
-
-    <!-- <table id="booking-summary" class="table table-striped w-100">
-        <thead>
-            <tr>
-                <th>Booking No</th>
-                <th>Event No</th>
-                <th>Event Name</th>
-                <th>Event Date</th>
-                <th>Venue</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>BKG/2303/00001</td>
-                <td>EVT/2303/00001</td>
-                <td>Voice Of Rahman</td>
-                <td>28/03/2023 09:00</td>
-                <td>Arte S</td>
-                <td>
-                    <a class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="View" href="EventRead.php?eventId=" role="button">
-                        <i class="fas fa-eye"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="Update" href="EventUpdate.php?eventId=" role="button">
-                        <i class="fas fa-pen-to-square"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="View Ticket" href="../Ticket/TicketSummary.php?eventId=" role="button">
-                        <i class="fas fa-ticket"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="View Participant" href="../Participant/ParticipantSummary.php?eventId=" role="button">
-                        <i class="fas fa-users"></i>
-                    </a>
-                    <button id="btn-activate" class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="Activate" onclick="activateEvent(`$eventId`)">
-                        <i class="fas fa-check"></i>
-                    </button>
-                    <button id="btn-deactivate" class="btn btn-secondary btn-floating" data-mdb-toggle="tooltip" title="Deactivate" onclick="deactivateEvent(`$eventId`)">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
 </div>
+<?php
+require '../../Footer.php';
+?>

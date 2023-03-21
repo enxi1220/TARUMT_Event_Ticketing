@@ -2,7 +2,7 @@
 require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
-<div class="bg-light p-5 rounded-2">
+<div class="p-5 rounded-2">
     <div class="row">
         <div class="col">
             <h2 class="float-start mb-5">View Event</h2>
@@ -173,8 +173,12 @@ require '../../Layout.php';
 
         <!-- Action -->
         <div class="col d-flex justify-content-end mb-4">
-            <a class="btn btn-secondary btn-floating float-end" data-mdb-toggle="tooltip" title="Back" href="EventSummary.php" role="button">
+            <a class="btn btn-secondary btn-floating float-end" title="Back" href="EventSummary.php" role="button">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
     </form>
+</div>
+<?php
+require '../../Footer.php';
+?>
