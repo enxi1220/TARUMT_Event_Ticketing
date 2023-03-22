@@ -1,6 +1,5 @@
 <?php
 require '../../Layout.php';
-// 
 ?>
 <!-- author: Lim En Xi -->
 <div class="p-5 rounded-2">
@@ -9,7 +8,7 @@ require '../../Layout.php';
             <h2 class="float-start mb-5">Add Event</h2>
         </div>
     </div>
-    <form class="needs-validation" novalidate method="POST">
+    <form class="needs-validation" novalidate id="form-add-event" method="POST">
         <!-- Event Information -->
         <div class="row mb-4">
             <div class="col-md-6">
@@ -104,7 +103,7 @@ require '../../Layout.php';
                         <label class="form-label" for="txt-vip-ticket-price">VIP Ticket Price*</label>
                         <div class="input-group">
                             <div class="input-group-text">RM</div>
-                            <input type="number" class="form-control" id="txt-vip-ticket-price" step=".01" pattern="^\d*(\.\d{0,2})?$" required />
+                            <input type="number" class="form-control" id="txt-vip-ticket-price" min=0 step=".01" pattern="^\d*(\.\d{0,2})?$" required />
                             <div class="invalid-feedback">Required with optional up to 2 decimal places</div>
                         </div>
                     </div>
@@ -114,7 +113,7 @@ require '../../Layout.php';
                         <label class="form-label" for="txt-std-ticket-price">Standard Ticket Price*</label>
                         <div class="input-group">
                             <div class="input-group-text">RM</div>
-                            <input type="number" name="StandardfTicketPrice" id="txt-std-ticket-price" step=".01" pattern="^\d*(\.\d{0,2})?$" class="form-control" required />
+                            <input type="number" name="StandardfTicketPrice" id="txt-std-ticket-price" min=0 step=".01" pattern="^\d*(\.\d{0,2})?$" class="form-control" required />
                             <div class="invalid-feedback">Required with optional up to 2 decimal places</div>
                         </div>
                     </div>
@@ -124,7 +123,7 @@ require '../../Layout.php';
                         <label class="form-label" for="txt-bgt-ticket-price">Budget Ticket Price*</label>
                         <div class="input-group">
                             <div class="input-group-text">RM</div>
-                            <input type="number" name="BudgetTicketPrice" id="txt-bgt-ticket-price" step=".01" pattern="^\d*(\.\d{0,2})?$" class="form-control" required />
+                            <input type="number" name="BudgetTicketPrice" id="txt-bgt-ticket-price" min=0 step=".01" pattern="^\d*(\.\d{0,2})?$" class="form-control" required />
                             <div class="invalid-feedback">Required with optional up to 2 decimal places</div>
                         </div>
                     </div>

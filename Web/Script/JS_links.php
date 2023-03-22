@@ -11,3 +11,6 @@
 
 <!-- DataTable -->
 <script src="<?php $_SERVER['DOCUMENT_ROOT'] ?>/TARUMT_Event_Ticketing/Web/Library/DataTable/datatables.min.js" type="text/javascript"></script>
+
+<!-- swal fire -->
+<script src="<?php $_SERVER['DOCUMENT_ROOT'] ?>/TARUMT_Event_Ticketing/Web/Library/sweetalert2.all.min.js" type="text/javascript"></script>
