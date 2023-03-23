@@ -40,8 +40,8 @@ require '../../Layout.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="txt-poster">Poster*</label>
-                    <input type="file" id="txt-poster" name="Poster" class="form-control" required />
-                    <div class="invalid-feedback">Required</div>
+                    <input type="file" id="txt-poster" name="Poster" class="form-control" pattern="^$" required />
+                    <div class="invalid-feedback">Required and only allow jpg, jpeg, png, gif file types</div>
                 </div>
             </div>
 
