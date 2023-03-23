@@ -47,10 +47,10 @@ require '../../Layout.php';
                                         <a class="btn btn-primary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?bookingId=" role="button">
                                             <i class="fas fa-ticket"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" title="View Payment" href="../Payment/PaymentView.php?bookingId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Payment" href="../Payment/PaymentRead.php?bookingId=" role="button">
                                             <i class="fas fa-dollar-sign"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" title="View Event" href="../Event/EventView.php?eventId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Event" href="../Event/PaymentRead.php?eventId=" role="button">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </p>
@@ -81,13 +81,13 @@ require '../../Layout.php';
                                         <span class="p-2">28/03/2023 12:00</span>
                                     </p>
                                     <p class="card-text float-end">
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Ticket" href="../Ticket/TicketSummary.php?bookingId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?bookingId=" role="button">
                                             <i class="fas fa-ticket"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Payment" href="../Payment/PaymentView.php?bookingId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Payment" href="../Payment/PaymentView.php?bookingId=" role="button">
                                             <i class="fas fa-dollar-sign"></i>
                                         </a>
-                                        <a class="btn btn-primary btn-floating" data-mdb-toggle="tooltip" title="View Event" href="../Event/EventView.php?eventId=" role="button">
+                                        <a class="btn btn-primary btn-floating" title="View Event" href="../Event/EventView.php?eventId=" role="button">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </p>
