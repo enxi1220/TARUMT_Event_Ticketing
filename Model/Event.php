@@ -14,7 +14,7 @@ class Event
     private $poster;
     private $venue;
     private $registerStartDate;
-    private $registerDuedate;
+    private $registerEndDate;
     private $eventStartDate;
     private $eventEndDate;
     private $descripton;
@@ -36,27 +36,7 @@ class Event
     private $category;
     private $tickets;
     
-    public function __construct($categoryId, $name, $poster, $venue, $registerStartDate, $registerDuedate, $eventStartDate, $eventEndDate, $descripton, $vipTicketQty, $standardTicketQty, $budgetTicketQty, $vipTicketPrice, $standardTicketPrice, $budgetTicketPrice, $organizerName, $organizerPhone, $organizerMail, $createdBy) {
-        $this->categoryId = $categoryId;
-        $this->name = $name;
-        $this->poster = $poster;
-        $this->venue = $venue;
-        $this->registerStartDate = $registerStartDate;
-        $this->registerDuedate = $registerDuedate;
-        $this->eventStartDate = $eventStartDate;
-        $this->eventEndDate = $eventEndDate;
-        $this->descripton = $descripton;
-        $this->vipTicketQty = $vipTicketQty;
-        $this->standardTicketQty = $standardTicketQty;
-        $this->budgetTicketQty = $budgetTicketQty;
-        $this->vipTicketPrice = $vipTicketPrice;
-        $this->standardTicketPrice = $standardTicketPrice;
-        $this->budgetTicketPrice = $budgetTicketPrice;
-        $this->organizerName = $organizerName;
-        $this->organizerPhone = $organizerPhone;
-        $this->organizerMail = $organizerMail;
-        $this->createdBy = $createdBy;
-    }
+    public function __construct(){}
     
     public function getEventId() {
         return $this->eventId;
@@ -82,12 +62,12 @@ class Event
         return $this->venue;
     }
 
-    public function getregisterStartDate() {
+    public function getRegisterStartDate() {
         return $this->registerStartDate;
     }
 
-    public function getRegisterDuedate() {
-        return $this->registerDuedate;
+    public function getRegisterEndDate() {
+        return $this->registerEndDate;
     }
 
     public function getEventStartDate() {
@@ -166,112 +146,139 @@ class Event
         return $this->tickets;
     }
 
-    public function setEventId($eventId): void {
+    public function setEventId($eventId) {
         $this->eventId = $eventId;
+        return $this;
     }
 
-    public function setCategoryId($categoryId): void {
+    public function setCategoryId($categoryId) {
         $this->categoryId = $categoryId;
+        return $this;
     }
 
-    public function setEventNo($eventNo): void {
+    public function setEventNo($eventNo) {
         $this->eventNo = $eventNo;
+        return $this;
     }
 
-    public function setName($name): void {
+    public function setName($name) {
         $this->name = $name;
+        return $this;
     }
 
-    public function setPoster($poster): void {
+    public function setPoster($poster) {
         $this->poster = $poster;
+        return $this;
     }
 
-    public function setVenue($venue): void {
+    public function setVenue($venue) {
         $this->venue = $venue;
+        return $this;
     }
 
-    public function setregisterStartDate($registerStartDate): void {
+    public function setRegisterStartDate($registerStartDate) {
         $this->registerStartDate = $registerStartDate;
+        return $this;
     }
 
-    public function setRegisterDuedate($registerDuedate): void {
-        $this->registerDuedate = $registerDuedate;
+    public function setRegisterEndDate($registerEndDate) {
+        $this->registerEndDate = $registerEndDate;
+        return $this;
     }
 
-    public function setEventStartDate($eventStartDate): void {
+    public function setEventStartDate($eventStartDate) {
         $this->eventStartDate = $eventStartDate;
+        return $this;
     }
 
-    public function setEventEndDate($eventEndDate): void {
+    public function setEventEndDate($eventEndDate) {
         $this->eventEndDate = $eventEndDate;
+        return $this;
     }
 
-    public function setDescripton($descripton): void {
+    public function setDescripton($descripton) {
         $this->descripton = $descripton;
+        return $this;
     }
 
-    public function setVipTicketQty($vipTicketQty): void {
+    public function setVipTicketQty($vipTicketQty) {
         $this->vipTicketQty = $vipTicketQty;
+        return $this;
     }
 
-    public function setStandardTicketQty($standardTicketQty): void {
+    public function setStandardTicketQty($standardTicketQty) {
         $this->standardTicketQty = $standardTicketQty;
+        return $this;
     }
 
-    public function setBudgetTicketQty($budgetTicketQty): void {
+    public function setBudgetTicketQty($budgetTicketQty) {
         $this->budgetTicketQty = $budgetTicketQty;
+        return $this;
     }
 
-    public function setVipTicketPrice($vipTicketPrice): void {
+    public function setVipTicketPrice($vipTicketPrice) {
         $this->vipTicketPrice = $vipTicketPrice;
+        return $this;
     }
 
-    public function setStandardTicketPrice($standardTicketPrice): void {
+    public function setStandardTicketPrice($standardTicketPrice) {
         $this->standardTicketPrice = $standardTicketPrice;
+        return $this;
     }
 
-    public function setBudgetTicketPrice($budgetTicketPrice): void {
+    public function setBudgetTicketPrice($budgetTicketPrice) {
         $this->budgetTicketPrice = $budgetTicketPrice;
+        return $this;
     }
 
-    public function setOrganizerName($organizerName): void {
+    public function setOrganizerName($organizerName) {
         $this->organizerName = $organizerName;
+        return $this;
     }
 
-    public function setOrganizerPhone($organizerPhone): void {
+    public function setOrganizerPhone($organizerPhone) {
         $this->organizerPhone = $organizerPhone;
+        return $this;
     }
 
-    public function setOrganizerMail($organizerMail): void {
+    public function setOrganizerMail($organizerMail) {
         $this->organizerMail = $organizerMail;
+        return $this;
     }
 
-    public function setStatus($status): void {
+    public function setStatus($status) {
         $this->status = $status;
+        return $this;
     }
 
-    public function setCreatedDate($createdDate): void {
+    public function setCreatedDate($createdDate) {
         $this->createdDate = $createdDate;
+        return $this;
     }
 
-    public function setCreatedBy($createdBy): void {
+    public function setCreatedBy($createdBy) {
         $this->createdBy = $createdBy;
+        return $this;
     }
 
-    public function setUpdatedDate($updatedDate): void {
+    public function setUpdatedDate($updatedDate) {
         $this->updatedDate = $updatedDate;
+        return $this;
     }
 
-    public function setUpdatedBy($updatedBy): void {
+    public function setUpdatedBy($updatedBy) {
         $this->updatedBy = $updatedBy;
+        return $this;
     }
 
-    public function setCategory($category): void {
+    public function setCategory($category) {
         $this->category = $category;
+        return $this;
     }
 
-    public function setTickets($tickets): void {
+    public function setTickets($tickets) {
         $this->tickets = $tickets;
+        return $this;
     }
 
 }

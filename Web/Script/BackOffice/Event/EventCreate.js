@@ -5,6 +5,7 @@ $(document).ready(function () {
         event.preventDefault();
         if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
             var event = setJSON();
+            console.log(event);
             post('/TARUMT_Event_Ticketing/Controller/CtrlEvent/Create.php',
                 [
                     submitData('event', event),
@@ -15,8 +16,9 @@ $(document).ready(function () {
                         icon: 'success',
                         title: 'Success',
                         text: success,
-                        showConfirmButton: false,
-                        timer: 1900
+                        // showConfirmButton: false,
+                        // timer: 1900
+                        showConfirmButton: true
                     })
                 },
                 function (error) {
@@ -33,7 +35,7 @@ $(document).ready(function () {
 function setJSON() {
     var event = JSON.stringify({
         name: $('#txt-name').val(),
-        categoryId: $(`drop-down--category`).val(),
+        categoryId: $(`#drop-down-category`).val(),
         description: $('#txt-description').val(),
         venue: $('#txt-venue').val(),
         registerStartDate: $(`#date-reg-start`).val(),
