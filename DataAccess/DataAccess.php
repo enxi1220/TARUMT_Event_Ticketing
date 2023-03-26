@@ -3,7 +3,6 @@
 #  Author: Lim En Xi
 // database transaction
 // using PDO
-// require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
 
 class DataAccess
 {
