@@ -28,37 +28,7 @@ require '../../Layout.php';
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>EVT/2303/00001</td>
-                <td>Voice Of Rahman</td>
-                <td>28/03/2023 09:00</td>
-                <td>Open</td>
-                <td>En Xi</td>
-                <td>19/03/2023 09:00</td>
-                <td></td>
-                <td>19/03/2023 09:00</td>
-                <td>
-                    <a class="btn btn-secondary btn-floating" title="View" href="EventRead.php?eventId=" role="button">
-                        <i class="fas fa-eye"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" title="Update" href="EventUpdate.php?eventId=" role="button">
-                        <i class="fas fa-pen-to-square"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?eventId=" role="button">
-                        <i class="fas fa-ticket"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" title="View Participant" href="../Participant/ParticipantSummary.php?eventId=" role="button">
-                        <i class="fas fa-users"></i>
-                    </a>
-                    <button id="btn-activate" class="btn btn-secondary btn-floating" title="Activate" onclick="activateEvent(`$eventId`)">
-                        <i class="fas fa-check"></i>
-                    </button>
-                    <button id="btn-deactivate" class="btn btn-secondary btn-floating" title="Deactivate" onclick="deactivateEvent(`$eventId`)">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </td>
-            </tr>
+        <tbody id="table-content">
         </tbody>
     </table>
 </div>

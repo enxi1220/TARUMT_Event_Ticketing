@@ -1,13 +1,16 @@
 <?php
+
 /**
  * Description of TicketVIP
  *
  * @author enxil
  */
-class TicketVIP extends Ticket{
-    
-    public function ticketPrefix() {
-        return "VIP";
-    }
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
+class TicketVIP extends Ticket
+{
 
+    public function prefix()
+    {
+        return PrefixConstant::TICKETVIP;
+    }
 }

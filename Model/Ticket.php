@@ -5,7 +5,8 @@
  *
  * @author enxil
  */
-abstract class Ticket {
+abstract class Ticket
+{
     private $ticketId;
     private $eventId;
     private $ticketNo;
@@ -13,67 +14,87 @@ abstract class Ticket {
     private $status;
     private $updatedDate;
     private $updatedBy;
-    
-    public function __construct($eventId) {
-        $this->eventId = $eventId;
+
+    public function __construct()
+    {
     }
-    
-    public function getTicketId() {
+
+    public function getTicketId()
+    {
         return $this->ticketId;
     }
 
-    public function getEventId() {
+    public function getEventId()
+    {
         return $this->eventId;
     }
 
-    public function getTicketNo() {
+    public function getTicketNo()
+    {
         return $this->ticketNo;
     }
 
-    public function getOwner() {
+    public function getOwner()
+    {
         return $this->owner;
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getUpdatedDate() {
+    public function getUpdatedDate()
+    {
         return $this->updatedDate;
     }
 
-    public function getUpdatedBy() {
+    public function getUpdatedBy()
+    {
         return $this->updatedBy;
     }
 
-    public function setTicketId($ticketId): void {
+    public function setTicketId($ticketId)
+    {
         $this->ticketId = $ticketId;
+        return $this;
     }
 
-    public function setEventId($eventId): void {
+    public function setEventId($eventId)
+    {
         $this->eventId = $eventId;
+        return $this;
     }
 
-    public function setTicketNo($ticketNo): void {
+    public function setTicketNo($ticketNo)
+    {
         $this->ticketNo = $ticketNo;
+        return $this;
     }
 
-    public function setOwner($owner): void {
+    public function setOwner($owner)
+    {
         $this->owner = $owner;
+        return $this;
     }
 
-    public function setStatus($status): void {
+    public function setStatus($status)
+    {
         $this->status = $status;
+        return $this;
     }
 
-    public function setUpdatedDate($updatedDate): void {
+    public function setUpdatedDate($updatedDate)
+    {
         $this->updatedDate = $updatedDate;
+        return $this;
     }
 
-    public function setUpdatedBy($updatedBy): void {
+    public function setUpdatedBy($updatedBy)
+    {
         $this->updatedBy = $updatedBy;
+        return $this;
     }
 
-    abstract function ticketPrefix();
+    abstract function prefix();
 }
-

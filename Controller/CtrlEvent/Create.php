@@ -4,8 +4,8 @@
 // collect value from front end
 // validation without database
 
-include $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Create.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Create.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
@@ -32,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data->createdBy = "Kuma";
 
         $event = new Event();
-        $event->setName($data->name)
+        $event
+            ->setName($data->name)
             ->setPoster($data->posterPath)
             ->setCategoryId($data->categoryId)
             ->setVenue($data->venue)
@@ -40,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setRegisterEndDate($data->registerEndDate)
             ->setEventStartDate($data->eventStartDate)
             ->setEventEndDate($data->eventEndDate)
-            ->setDescripton($data->description)
+            ->setDescription($data->description)
             ->setVipTicketQty($data->vipTicketQty)
             ->setStandardTicketQty($data->stdTicketQty)
             ->setBudgetTicketQty($data->bgtTicketQty)
@@ -52,10 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setOrganizerPhone($data->organizerMail)
             ->setCreatedBy($data->createdBy);
 
-        Create::Create($event);
-        echo "Event is added";
+        $eventNo = Create::Create($event);
+        echo "Event $eventNo is added";
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         echo $e->getMessage();
+        // echo $e;
     }
 }

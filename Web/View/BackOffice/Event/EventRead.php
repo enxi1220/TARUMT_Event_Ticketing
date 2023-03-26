@@ -31,7 +31,7 @@ require '../../Layout.php';
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="txt-category">Event Category</label>
-                <input type="text" name="Name" id="txt-category" minlength="150" class="form-control" readonly />
+                <input type="text" name="CategoryName" id="txt-category" minlength="150" class="form-control" readonly />
             </div>
         </div>
         <div class="row mb-4">
@@ -182,3 +182,4 @@ require '../../Layout.php';
 <?php
 require '../../Footer.php';
 ?>
+<script src="../../../Script/BackOffice/Event/EventRead.js"></script>

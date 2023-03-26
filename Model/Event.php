@@ -5,6 +5,13 @@
  *
  * @author enxil
  */
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Ticket.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVIP.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketStatusConstant.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
+
 class Event
 {
     private $eventId;
@@ -17,7 +24,7 @@ class Event
     private $registerEndDate;
     private $eventStartDate;
     private $eventEndDate;
-    private $descripton;
+    private $description;
     private $vipTicketQty;
     private $standardTicketQty;
     private $budgetTicketQty;
@@ -34,251 +41,340 @@ class Event
     private $updatedBy;
 
     private $category;
-    private $tickets;
-    
-    public function __construct(){}
-    
-    public function getEventId() {
+    private $tickets = array();
+
+    public function __construct()
+    {
+    }
+
+    public function getEventId()
+    {
         return $this->eventId;
     }
 
-    public function getCategoryId() {
+    public function getCategoryId()
+    {
         return $this->categoryId;
     }
 
-    public function getEventNo() {
+    public function getEventNo()
+    {
         return $this->eventNo;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getPoster() {
+    public function getPoster()
+    {
         return $this->poster;
     }
 
-    public function getVenue() {
+    public function getVenue()
+    {
         return $this->venue;
     }
 
-    public function getRegisterStartDate() {
+    public function getRegisterStartDate()
+    {
         return $this->registerStartDate;
     }
 
-    public function getRegisterEndDate() {
+    public function getRegisterEndDate()
+    {
         return $this->registerEndDate;
     }
 
-    public function getEventStartDate() {
+    public function getEventStartDate()
+    {
         return $this->eventStartDate;
     }
 
-    public function getEventEndDate() {
+    public function getEventEndDate()
+    {
         return $this->eventEndDate;
     }
 
-    public function getDescripton() {
-        return $this->descripton;
+    public function getDescription()
+    {
+        return $this->description;
     }
 
-    public function getVipTicketQty() {
+    public function getVipTicketQty()
+    {
         return $this->vipTicketQty;
     }
 
-    public function getStandardTicketQty() {
+    public function getStandardTicketQty()
+    {
         return $this->standardTicketQty;
     }
 
-    public function getBudgetTicketQty() {
+    public function getBudgetTicketQty()
+    {
         return $this->budgetTicketQty;
     }
 
-    public function getVipTicketPrice() {
+    public function getVipTicketPrice()
+    {
         return $this->vipTicketPrice;
     }
 
-    public function getStandardTicketPrice() {
+    public function getStandardTicketPrice()
+    {
         return $this->standardTicketPrice;
     }
 
-    public function getBudgetTicketPrice() {
+    public function getBudgetTicketPrice()
+    {
         return $this->budgetTicketPrice;
     }
 
-    public function getOrganizerName() {
+    public function getOrganizerName()
+    {
         return $this->organizerName;
     }
 
-    public function getOrganizerPhone() {
+    public function getOrganizerPhone()
+    {
         return $this->organizerPhone;
     }
 
-    public function getOrganizerMail() {
+    public function getOrganizerMail()
+    {
         return $this->organizerMail;
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getCreatedDate() {
+    public function getCreatedDate()
+    {
         return $this->createdDate;
     }
 
-    public function getCreatedBy() {
+    public function getCreatedBy()
+    {
         return $this->createdBy;
     }
 
-    public function getUpdatedDate() {
+    public function getUpdatedDate()
+    {
         return $this->updatedDate;
     }
 
-    public function getUpdatedBy() {
+    public function getUpdatedBy()
+    {
         return $this->updatedBy;
     }
 
-    public function getCategory() {
+    public function getCategory()
+    {
         return $this->category;
     }
 
-    public function getTickets() {
+    public function getTickets()
+    {
         return $this->tickets;
     }
 
-    public function setEventId($eventId) {
+    public function setEventId($eventId)
+    {
         $this->eventId = $eventId;
         return $this;
     }
 
-    public function setCategoryId($categoryId) {
+    public function setCategoryId($categoryId)
+    {
         $this->categoryId = $categoryId;
         return $this;
     }
 
-    public function setEventNo($eventNo) {
+    public function setEventNo($eventNo)
+    {
         $this->eventNo = $eventNo;
         return $this;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
         return $this;
     }
 
-    public function setPoster($poster) {
+    public function setPoster($poster)
+    {
         $this->poster = $poster;
         return $this;
     }
 
-    public function setVenue($venue) {
+    public function setVenue($venue)
+    {
         $this->venue = $venue;
         return $this;
     }
 
-    public function setRegisterStartDate($registerStartDate) {
+    public function setRegisterStartDate($registerStartDate)
+    {
         $this->registerStartDate = $registerStartDate;
         return $this;
     }
 
-    public function setRegisterEndDate($registerEndDate) {
+    public function setRegisterEndDate($registerEndDate)
+    {
         $this->registerEndDate = $registerEndDate;
         return $this;
     }
 
-    public function setEventStartDate($eventStartDate) {
+    public function setEventStartDate($eventStartDate)
+    {
         $this->eventStartDate = $eventStartDate;
         return $this;
     }
 
-    public function setEventEndDate($eventEndDate) {
+    public function setEventEndDate($eventEndDate)
+    {
         $this->eventEndDate = $eventEndDate;
         return $this;
     }
 
-    public function setDescripton($descripton) {
-        $this->descripton = $descripton;
+    public function setDescription($description)
+    {
+        $this->description = $description;
         return $this;
     }
 
-    public function setVipTicketQty($vipTicketQty) {
+    public function setVipTicketQty($vipTicketQty)
+    {
         $this->vipTicketQty = $vipTicketQty;
         return $this;
     }
 
-    public function setStandardTicketQty($standardTicketQty) {
+    public function setStandardTicketQty($standardTicketQty)
+    {
         $this->standardTicketQty = $standardTicketQty;
         return $this;
     }
 
-    public function setBudgetTicketQty($budgetTicketQty) {
+    public function setBudgetTicketQty($budgetTicketQty)
+    {
         $this->budgetTicketQty = $budgetTicketQty;
         return $this;
     }
 
-    public function setVipTicketPrice($vipTicketPrice) {
+    public function setVipTicketPrice($vipTicketPrice)
+    {
         $this->vipTicketPrice = $vipTicketPrice;
         return $this;
     }
 
-    public function setStandardTicketPrice($standardTicketPrice) {
+    public function setStandardTicketPrice($standardTicketPrice)
+    {
         $this->standardTicketPrice = $standardTicketPrice;
         return $this;
     }
 
-    public function setBudgetTicketPrice($budgetTicketPrice) {
+    public function setBudgetTicketPrice($budgetTicketPrice)
+    {
         $this->budgetTicketPrice = $budgetTicketPrice;
         return $this;
     }
 
-    public function setOrganizerName($organizerName) {
+    public function setOrganizerName($organizerName)
+    {
         $this->organizerName = $organizerName;
         return $this;
     }
 
-    public function setOrganizerPhone($organizerPhone) {
+    public function setOrganizerPhone($organizerPhone)
+    {
         $this->organizerPhone = $organizerPhone;
         return $this;
     }
 
-    public function setOrganizerMail($organizerMail) {
+    public function setOrganizerMail($organizerMail)
+    {
         $this->organizerMail = $organizerMail;
         return $this;
     }
 
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->status = $status;
         return $this;
     }
 
-    public function setCreatedDate($createdDate) {
+    public function setCreatedDate($createdDate)
+    {
         $this->createdDate = $createdDate;
         return $this;
     }
 
-    public function setCreatedBy($createdBy) {
+    public function setCreatedBy($createdBy)
+    {
         $this->createdBy = $createdBy;
         return $this;
     }
 
-    public function setUpdatedDate($updatedDate) {
+    public function setUpdatedDate($updatedDate)
+    {
         $this->updatedDate = $updatedDate;
         return $this;
     }
 
-    public function setUpdatedBy($updatedBy) {
+    public function setUpdatedBy($updatedBy)
+    {
         $this->updatedBy = $updatedBy;
         return $this;
     }
 
-    public function setCategory($category) {
+    public function setCategory($category)
+    {
         $this->category = $category;
         return $this;
     }
 
-    public function setTickets($tickets) {
+    public function setTickets($tickets)
+    {
         $this->tickets = $tickets;
         return $this;
     }
 
+    public function prefix(){
+        return PrefixConstant::EVENT;
+    }
+
+    public function createTickets()
+    {
+        for ($i = 0; $i < $this->vipTicketQty; $i++) {
+            $ticket = new TicketVIP();
+            $ticket
+                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
+                ->setStatus(TicketStatusConstant::NEW);
+            
+            array_push($this->tickets, $ticket);
+        }
+
+        for ($i = 0; $i < $this->standardTicketQty; $i++) {
+            $ticket = new TicketStandard();
+            $ticket
+                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
+                ->setStatus(TicketStatusConstant::NEW);
+            
+            array_push($this->tickets, $ticket);
+        }
+
+        for ($i = 0; $i < $this->budgetTicketQty; $i++) {
+            $ticket = new TicketBudget();
+            $ticket
+                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
+                ->setStatus(TicketStatusConstant::NEW);
+            
+            array_push($this->tickets, $ticket);
+        }
+    }
 }

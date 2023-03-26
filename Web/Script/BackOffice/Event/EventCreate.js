@@ -6,28 +6,17 @@ $(document).ready(function () {
         if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
             var event = setJSON();
             console.log(event);
-            post('/TARUMT_Event_Ticketing/Controller/CtrlEvent/Create.php',
+            post(
+                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Create.php',
                 [
                     submitData('event', event),
                     submitData('poster', $('#txt-poster')[0].files[0]),
                 ],
-                function (success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: success,
-                        // showConfirmButton: false,
-                        // timer: 1900
-                        showConfirmButton: true
-                    })
-                },
-                function (error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: error.responseText
-                    })
-                });
+                null,
+                function () {
+                    location.href = "EventSummary.php";
+                }
+            );
         }
     });
 });
