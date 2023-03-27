@@ -10,6 +10,6 @@ class DateHelper
     public static function GetMalaysiaDateTime()
     {
         $dt = new DateTime("now", new DateTimeZone('Asia/Kuala_Lumpur'));
-        return $dt->format("d-m-y h:i:s");
+        return $dt->format("d-m-y H:i:s");
     }
 }

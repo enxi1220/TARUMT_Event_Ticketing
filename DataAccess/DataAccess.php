@@ -84,8 +84,6 @@ class DataAccess
                 $data = $domainMapping($row);
                 array_push($output, $data);
             }
-            // print_r($output);// ARRAY(.....) write only
-            // var_dump($output);
             return $output;
         } catch (PDOException $e) {
             if ($exceptionHandler) {

@@ -21,7 +21,7 @@ class Create
 
         // start database
         $dataAccess = new DataAccess();
-        $dataAccess->BeginDatabase(function (DataAccess $dataAccess) use ($event, $tickets) {
+        $dataAccess->BeginDatabase(function ($dataAccess) use ($event, $tickets) {
             // insert event & tickets 
             $eventId = Create::CreateEvent($dataAccess, $event);
             Create::CreateTickets($dataAccess, $tickets, $eventId);

@@ -13,7 +13,15 @@ class Read
         $dataAccess = new DataAccess();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($event) {
-                return $dataAccess->Reader(
+                return Read::ReadEvent($dataAccess, $event);
+            }
+        );
+
+        return $result;
+    }
+
+    private static function ReadEvent(DataAccess $dataAccess, $event){
+        return $dataAccess->Reader(
                     "SELECT 
                         e.event_id, 
                         e.category_id,
@@ -87,9 +95,5 @@ class Read
                             ;
                     }
                 );
-            }
-        );
-
-        return $result;
     }
 }
