@@ -2,13 +2,13 @@
 
 #  Author: Lim En Xi
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/ReadAll.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
         $event = new Event();
-        $result = ReadAll::Read($event);
+        $result = Read::Read($event);
         $output = array_map(function($event) {
             return array(
                 'eventId' => $event->getEventId(),
@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             );
         }, $result);
 
+        // echo $output;
         echo json_encode($output);
         
     } catch (Throwable $e) {

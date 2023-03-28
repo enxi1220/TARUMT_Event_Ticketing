@@ -16,7 +16,7 @@ class Read
                 return Read::ReadEvent($dataAccess, $event);
             }
         );
-
+        
         return $result;
     }
 
@@ -51,11 +51,14 @@ class Read
                         c.name AS category_name
                     FROM event e
                     JOIN category c ON e.category_id = c.category_id
-                    WHERE e.event_id = ?
+                    WHERE   e.event_id = IF(:event_id IS NULL, e.event_id, :event_id)
+                        AND e.event_no = IF(:event_no IS NULL, e.event_no, :event_no)
+                        AND e.status = IF(:status IS NULL, e.status, :status)
                     ORDER BY e.event_id DESC",
                     function (PDOStatement $pstmt) use ($event) {
-                        $pstmt->bindValue(1, $event->getEventId(), PDO::PARAM_INT);
-                        // $pstmt->bindValue(2, $event->getStatus(), PDO::PARAM_STR);
+                        $pstmt->bindValue(":event_id", $event->getEventId(), PDO::PARAM_INT);
+                        $pstmt->bindValue(":event_no", $event->getEventNo(), PDO::PARAM_STR);
+                        $pstmt->bindValue(":status", $event->getStatus(), PDO::PARAM_STR);
                     },
                     function ($row) {
                         $event = new Event();

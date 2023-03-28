@@ -1,4 +1,5 @@
 //author: Lim En Xi
+
 $(document).ready(function () {
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
@@ -38,5 +39,4 @@ function display(event) {
     $('#txt-organizer-name').val(event.organizerName);
     $('#txt-organizer-phone').val(event.organizerPhone);
     $('#txt-organizer-mail').val(event.organizerMail);
-
 }

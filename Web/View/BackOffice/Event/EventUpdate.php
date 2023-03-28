@@ -8,7 +8,7 @@ require '../../Layout.php';
             <h2 class="float-start mb-5">Update Event</h2>
         </div>
     </div>
-    <form class="needs-validation" novalidate method="POST">
+    <form id="form-edit-event" class="needs-validation" novalidate method="POST">
         <!-- Event Information -->
         <div class="row mb-4">
             <div class="col-md-6">
@@ -21,9 +21,6 @@ require '../../Layout.php';
                 <label class="form-label" for="drop-down-status">Status*</label>
                 <select class="form-outline form-control" id="drop-down-status" name="Status" required>
                     <option disable selected hidden></option>
-                    <!-- todo: rm hardcode -->
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
                 </select>
                 <div class="invalid-feedback">Required</div>
             </div>
@@ -205,7 +202,7 @@ require '../../Layout.php';
             <a class="btn btn-secondary btn-floating float-end" title="Back" href="EventSummary.php" role="button">
                 <i class="fas fa-arrow-left"></i>
             </a>
-            <button type="submit" onclick="updateEvent()" class="btn btn-primary btn-floating ms-4" title="Save">
+            <button type="submit" class="btn btn-primary btn-floating ms-4" title="Save">
                 <i class="fas fa-floppy-disk"></i>
             </button>
         </div>
@@ -214,3 +211,4 @@ require '../../Layout.php';
 <?php
 require '../../Footer.php';
 ?>
+<script src="../../../Script/BackOffice/Event/EventUpdate.js"></script>

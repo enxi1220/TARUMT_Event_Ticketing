@@ -62,3 +62,8 @@ function checkQty() {
     }
     return true;
 }
+
+function display(event) {
+    // todo: category 
+    
+}

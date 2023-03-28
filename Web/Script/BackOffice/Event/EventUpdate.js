@@ -1,3 +1,95 @@
 //author: Lim En Xi
 
+$(document).ready(function () {
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Update.php',
+        { eventId: new URLSearchParams(window.location.search).get('eventId') },
+        function (success) {
+            var event = JSON.parse(success);
+            display(event);
+        },
+        function (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.responseText
+            })
+        }
+    )
 
+    $(`#form-edit-event`).submit(function (event) {
+        event.preventDefault();
+        if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
+            var event = setJSON();
+            console.log(event);
+            post(
+                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Update.php',
+                [
+                    submitData('event', event),
+                    submitData('poster', $('#txt-poster')[0].files[0]),
+                ],
+                null,
+                function () {
+                    location.href = "EventSummary.php";
+                }
+            );
+        }
+    });
+});
+
+function setJSON() {
+    var event = JSON.stringify({
+        eventId: new URLSearchParams(window.location.search).get('eventId'),
+        eventNo: $('#txt-event-no').val(),
+        name: $('#txt-name').val(),
+        categoryId: $(`#drop-down-category`).val(),
+        description: $('#txt-description').val(),
+        venue: $('#txt-venue').val(),
+        registerStartDate: $(`#date-reg-start`).val(),
+        registerEndDate: $(`#date-reg-end`).val(),
+        eventStartDate: $(`#date-event-start`).val(),
+        eventEndDate: $(`#date-event-end`).val(),
+        vipTicketPrice: $('#txt-vip-ticket-price').val(),
+        stdTicketPrice: $('#txt-std-ticket-price').val(),
+        bgtTicketPrice: $('#txt-bgt-ticket-price').val(),
+        vipTicketQty: $('#txt-vip-ticket-qty').val(),
+        stdTicketQty: $('#txt-std-ticket-qty').val(),
+        bgtTicketQty: $('#txt-bgt-ticket-qty').val(),
+        organizerName: $('#txt-organizer-name').val(),
+        organizerPhone: $('#txt-organizer-phone').val(),
+        organizerMail: $('#txt-organizer-mail').val()
+    });
+
+    return event;
+}
+
+function display(event) {
+    for (var key in EventStatus) {
+        var status = EventStatus[key];
+        $(`#drop-down-status`).append($("<option>", {
+            value: status,
+            text: status
+        }));
+    }
+    
+    $(`#txt-event-no`).val(event.eventNo);
+    $('#drop-down-status').val(event.status);
+    $('#txt-name').val(event.name);
+    $(`#drop-down-category`).val(event.categoryId);
+    $('#txt-description').val(event.description);
+    $('#txt-venue').val(event.venue);
+    $(`#date-reg-start`).val(event.registerStartDate);
+    $(`#date-reg-end`).val(event.registerEndDate);
+    $(`#date-event-start`).val(event.eventStartDate);
+    $(`#date-event-end`).val(event.eventEndDate);
+    $('#txt-vip-ticket-price').val(event.vipTicketPrice);
+    $('#txt-std-ticket-price').val(event.standardTicketPrice);
+    $('#txt-bgt-ticket-price').val(event.budgetTicketPrice);
+    $('#txt-vip-ticket-qty').val(event.vipTicketQty);
+    $('#txt-std-ticket-qty').val(event.standardTicketQty);
+    $('#txt-bgt-ticket-qty').val(event.budgetTicketQty);
+    $('#txt-organizer-name').val(event.organizerName);
+    $('#txt-organizer-phone').val(event.organizerPhone);
+    $('#txt-organizer-mail').val(event.organizerMail);
+    // $('#txt-poster').val(event.poster);
+}

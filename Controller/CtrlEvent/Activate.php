@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $event
             ->setEventId($data->eventId)
             ->setEventNo($data->eventNo)
-            ->setUpdatedBy($data->updatedBy);
+            ->setUpdatedBy($data->updatedBy);   
 
         Activate::Activate($event);
         

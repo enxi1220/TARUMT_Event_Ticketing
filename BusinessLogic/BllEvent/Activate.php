@@ -17,7 +17,6 @@ class Activate
         });
     }
 
-    // database
     private static function ActivateEvent(DataAccess $dataAccess, $event)
     {
         $dataAccess->NonQuery(

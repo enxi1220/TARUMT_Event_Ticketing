@@ -33,6 +33,7 @@ class Create
         return $event->getEventNo();
     }
 
+    //private func for database
     private static function CreateEvent(DataAccess $dataAccess, $event)
     {
         $eventId = $dataAccess->NonQuery(
