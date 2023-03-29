@@ -15,6 +15,9 @@ abstract class Ticket
     private $updatedDate;
     private $updatedBy;
 
+    private $event;
+    private $eventNo;
+
     public function __construct()
     {
     }
@@ -52,6 +55,16 @@ abstract class Ticket
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    public function getEventNo()
+    {
+        return $this->eventNo;
     }
 
     public function setTicketId($ticketId)
@@ -96,5 +109,18 @@ abstract class Ticket
         return $this;
     }
 
+    public function setEvent($event)
+    {
+        $this->event = $event;
+        return $this;
+    }
+
+    public function setEventNo($eventNo)
+    {
+        $this->eventNo = $eventNo;
+        return $this;
+    }
+
     abstract function prefix();
+    abstract function description();
 }

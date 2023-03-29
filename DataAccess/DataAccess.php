@@ -3,16 +3,26 @@
 #  Author: Lim En Xi
 // database transaction
 // using PDO
+// Design pattern: Creational -> singleton
 
 class DataAccess
 {
+    private static $instance;
     private PDO $_conn;
     private $_configuration;
 
-    public function __construct()
+    private function __construct()
     {
         $this->LoadConfiguration();
         $this->OpenConnection();
+    }
+
+    public static function getInstance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
     private function LoadConfiguration()
@@ -36,9 +46,10 @@ class DataAccess
         }
     }
 
+    // todo: solve 
     private function CloseConnection()
     {
-        $this->_conn = null;
+        // $this->_conn = null;
     }
 
     private function BeginTransaction()
@@ -67,7 +78,7 @@ class DataAccess
             $this->RollbackTransaction();
             throw $ex;
         } finally {
-            // $this->CloseConnection();
+            $this->CloseConnection();
         }
     }
 

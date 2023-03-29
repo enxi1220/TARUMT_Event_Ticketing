@@ -4,13 +4,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 
-
 class Read
 {
 
     public static function Read(Event $event)
     {
-        $dataAccess = new DataAccess();
+        $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($event) {
                 return Read::ReadEvent($dataAccess, $event);

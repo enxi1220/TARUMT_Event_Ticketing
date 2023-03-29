@@ -49,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setStandardTicketPrice($data->stdTicketPrice)
             ->setBudgetTicketPrice($data->bgtTicketPrice)
             ->setOrganizerName($data->organizerName)
-            ->setOrganizerMail($data->organizerPhone)
-            ->setOrganizerPhone($data->organizerMail)
+            ->setOrganizerMail($data->organizerMail)
+            ->setOrganizerPhone($data->organizerPhone)
             ->setCreatedBy($data->createdBy);
 
         $eventNo = Create::Create($event);

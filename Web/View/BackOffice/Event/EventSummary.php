@@ -28,7 +28,7 @@ require '../../Layout.php';
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="table-content">
+        <tbody>
         </tbody>
     </table>
 </div>

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Event {$event->getEventNo()} is activated successfully";
     } catch (Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
-        // echo $ex->getMessage();
+        // echo $e->getMessage();
         echo $e;
     }
 }

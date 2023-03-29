@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     $(`#form-edit-event`).submit(function (event) {
         event.preventDefault();
-        if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
+        if ($(`#form-edit-event`)[0].checkValidity()) {
             var event = setJSON();
             console.log(event);
             post(
@@ -52,9 +52,7 @@ function setJSON() {
         vipTicketPrice: $('#txt-vip-ticket-price').val(),
         stdTicketPrice: $('#txt-std-ticket-price').val(),
         bgtTicketPrice: $('#txt-bgt-ticket-price').val(),
-        vipTicketQty: $('#txt-vip-ticket-qty').val(),
-        stdTicketQty: $('#txt-std-ticket-qty').val(),
-        bgtTicketQty: $('#txt-bgt-ticket-qty').val(),
+        status: $(`#drop-down-status`).val(),
         organizerName: $('#txt-organizer-name').val(),
         organizerPhone: $('#txt-organizer-phone').val(),
         organizerMail: $('#txt-organizer-mail').val()

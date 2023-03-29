@@ -11,7 +11,7 @@ class Activate
     {
         $event->setUpdatedDate(DateHelper::GetMalaysiaDateTime());
 
-        $dataAccess = new DataAccess();
+        $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {
             Activate::ActivateEvent($dataAccess, $event);
         });

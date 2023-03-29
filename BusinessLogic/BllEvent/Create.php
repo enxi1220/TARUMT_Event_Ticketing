@@ -20,7 +20,7 @@ class Create
         $tickets = $event->getTickets();
 
         // start database
-        $dataAccess = new DataAccess();
+        $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event, $tickets) {
             // insert event & tickets 
             $eventId = Create::CreateEvent($dataAccess, $event);

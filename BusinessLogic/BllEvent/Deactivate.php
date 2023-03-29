@@ -11,7 +11,7 @@ class Deactivate
     {
         $event->setUpdatedDate(DateHelper::GetMalaysiaDateTime());
 
-        $dataAccess = new DataAccess();
+        $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {
             Deactivate::DeactivateEvent($dataAccess, $event);
         });

@@ -8,7 +8,7 @@ require '../../Layout.php';
             <h2 class="float-start mb-5">Add Event</h2>
         </div>
     </div>
-    <form class="needs-validation" novalidate id="form-add-event" method="POST">
+    <form id="form-add-event" class="needs-validation" novalidate  method="POST">
         <!-- Event Information -->
         <div class="row mb-4">
             <div class="col-md-6">

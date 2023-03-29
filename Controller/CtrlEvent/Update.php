@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setEventId($data->eventId)
             ->setEventNo($data->eventNo)
             ->setName($data->name)
+            ->setStatus($data->status)
             ->setPoster($data->posterPath)
             ->setCategoryId($data->categoryId)
             ->setVenue($data->venue)
@@ -50,11 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setStandardTicketPrice($data->stdTicketPrice)
             ->setBudgetTicketPrice($data->bgtTicketPrice)
             ->setOrganizerName($data->organizerName)
-            ->setOrganizerMail($data->organizerPhone)
-            ->setOrganizerPhone($data->organizerMail)
+            ->setOrganizerMail($data->organizerMail)
+            ->setOrganizerPhone($data->organizerPhone)
             ->setUpdatedBy($data->updatedBy);
 
-        $eventNo = Create::Create($event);
+        $eventNo = Update::Update($event);
         echo "Event $eventNo is updated";
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);

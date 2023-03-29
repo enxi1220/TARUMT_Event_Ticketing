@@ -16,43 +16,44 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $event->setEventId($eventId);
 
         $result = Read::Read($event);
-        $event = $result[0];
+        $result = $result[0];
         $output = array(
-            'eventId' => $event->getEventId(),
-            'categoryId' => $event->getCategoryId(),
-            'eventNo' => $event->getEventNo(),
-            'name' => $event->getName(),
-            'poster' => $event->getPoster(),
-            'venue' => $event->getVenue(),
-            'registerStartDate' => $event->getRegisterStartDate(),
-            'registerEndDate' => $event->getRegisterEndDate(),
-            'eventStartDate' => $event->getEventStartDate(),
-            'eventEndDate' => $event->getEventEndDate(),
-            'description' => $event->getDescription(),
-            'vipTicketQty' => $event->getVipTicketQty(),
-            'standardTicketQty' => $event->getStandardTicketQty(),
-            'budgetTicketQty' => $event->getBudgetTicketQty(),
-            'vipTicketPrice' => $event->getVipTicketPrice(),
-            'standardTicketPrice' => $event->getStandardTicketPrice(),
-            'budgetTicketPrice' => $event->getBudgetTicketPrice(),
-            'organizerName' => $event->getOrganizerName(),
-            'organizerPhone' => $event->getOrganizerPhone(),
-            'organizerMail' => $event->getOrganizerMail(),
-            'status' => $event->getStatus(),
-            'createdDate' => $event->getCreatedDate(),
-            'createdBy' => $event->getCreatedBy(),
-            'updatedDate' => $event->getUpdatedDate(),
-            'updatedBy' => $event->getUpdatedBy(),
-            'category' => $event->getCategory(),
-            'tickets' => $event->getTickets(),
-            'categoryName' => $event->getCategory()
+            'eventId' => $result->getEventId(),
+            'categoryId' => $result->getCategoryId(),
+            'eventNo' => $result->getEventNo(),
+            'name' => $result->getName(),
+            'poster' => $result->getPoster(),
+            'venue' => $result->getVenue(),
+            'registerStartDate' => $result->getRegisterStartDate(),
+            'registerEndDate' => $result->getRegisterEndDate(),
+            'eventStartDate' => $result->getEventStartDate(),
+            'eventEndDate' => $result->getEventEndDate(),
+            'description' => $result->getDescription(),
+            'vipTicketQty' => $result->getVipTicketQty(),
+            'standardTicketQty' => $result->getStandardTicketQty(),
+            'budgetTicketQty' => $result->getBudgetTicketQty(),
+            'vipTicketPrice' => $result->getVipTicketPrice(),
+            'standardTicketPrice' => $result->getStandardTicketPrice(),
+            'budgetTicketPrice' => $result->getBudgetTicketPrice(),
+            'organizerName' => $result->getOrganizerName(),
+            'organizerPhone' => $result->getOrganizerPhone(),
+            'organizerMail' => $result->getOrganizerMail(),
+            'status' => $result->getStatus(),
+            'createdDate' => $result->getCreatedDate(),
+            'createdBy' => $result->getCreatedBy(),
+            'updatedDate' => $result->getUpdatedDate(),
+            'updatedBy' => $result->getUpdatedBy(),
+            'category' => $result->getCategory(),
+            'tickets' => $result->getTickets(),
+            'categoryName' => $result->getCategory()
                                     ->getName()
         );
+        // optimize to nested..xml? support complex..but js
 
         echo json_encode($output);
     } catch (Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
-        // echo $ex->getMessage();
+        // echo $e->getMessage();
         echo $e;
     }
 }

@@ -37,16 +37,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 'updatedDate' => $event->getUpdatedDate(),
                 'updatedBy' => $event->getUpdatedBy(),
                 'category' => $event->getCategory(),
-                'tickets' => $event->getTickets(),
+                'tickets' => $event->getTickets()
             );
         }, $result);
 
-        // echo $output;
         echo json_encode($output);
         
     } catch (Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
-        // echo $ex->getMessage();
+        // echo $e->getMessage();
         echo $e;
     }
 }
