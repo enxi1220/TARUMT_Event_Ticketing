@@ -15,7 +15,7 @@ $(document).ready(function () {
 function activateEvent(eventId, eventNo) {
     $(`#modal-activate-event`).modal('show');
     $(`#btn-activate-event`).click(function () {
-        var event = setJSON(eventId, eventNo);
+        var event = preparePostData(eventId, eventNo);
         post(
             '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Activate.php',
             [submitData('event', event)],
@@ -31,7 +31,7 @@ function activateEvent(eventId, eventNo) {
 function deactivateEvent(eventId, eventNo) {
     $(`#modal-deactivate-event`).modal('show');
     $(`#btn-deactivate-event`).click(function () {
-        var event = setJSON(eventId, eventNo);
+        var event = preparePostData(eventId, eventNo);
         post(
             '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Deactivate.php',
             [submitData('event', event)],
@@ -44,7 +44,7 @@ function deactivateEvent(eventId, eventNo) {
     });
 }
 
-function setJSON(eventId, eventNo) {
+function preparePostData(eventId, eventNo) {
     var event = JSON.stringify({
         eventId: eventId,
         eventNo: eventNo

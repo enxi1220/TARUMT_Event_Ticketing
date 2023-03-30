@@ -10,12 +10,19 @@ class Update
     {
         $event->setUpdatedDate();
 
-        // todo: poster 
+        //todo: optimize?. currently, $event->poster = $_FILES['poster']
+        $fileName = uniqid() . "_" . basename($event->getPoster()['name']); // generate new filename
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . $event->posterPath() . $fileName; // specify store location
+        
+        $posterTemp = $event->getPoster()['tmp_name'];
+        $event->setPoster($fileName); //store filename only
 
         $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {
             Update::UpdateEvent($dataAccess, $event);
         });
+
+        move_uploaded_file($posterTemp, $targetPath);
 
         return $event->getEventNo();
     }

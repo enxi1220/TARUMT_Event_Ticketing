@@ -4,7 +4,7 @@ $(document).ready(function () {
     $(`#form-add-event`).submit(function (event) {
         event.preventDefault();
         if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
-            var event = setJSON();
+            var event = preparePostData();
             console.log(event);
             post(
                 '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Create.php',
@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 });
 
-function setJSON() {
+function preparePostData() {
     var event = JSON.stringify({
         name: $('#txt-name').val(),
         categoryId: $(`#drop-down-category`).val(),

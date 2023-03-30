@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 function display(event) {
     $(`#txt-event-no`).val(event.eventNo);
-    $('#txt-status').val(event.status)
+    $('#txt-status').val(event.status);
     $('#txt-name').val(event.name);
     $(`#txt-category`).val(event.categoryName);
     $('#txt-description').val(event.description);

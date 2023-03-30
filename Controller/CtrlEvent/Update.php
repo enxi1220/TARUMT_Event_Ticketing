@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $poster = $_FILES['poster'];
-        $ext = pathinfo($poster['name'], PATHINFO_EXTENSION);
+        $validExtensions = '/\.(jpg|jpeg|gif|png)$/i';
+        $validMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
 
-        if ($ext != 'jpg' && $ext != 'jpeg' && $ext != 'gif' && $ext != 'png') {
-            throw new Exception("Image with jpg, gif and png format only.");
+        if (!preg_match($validExtensions, $poster['name']) || !in_array($poster['type'], $validMimeTypes)) {
+            throw new Exception("Image with jpg, gif, and png format only.");
         }
 
-        $uniqueName = uniqid() . '.' . strtolower($ext);
         $data = json_decode($_POST['event']);
-        $data->posterPath = '/TARUMT_Event_Ticketing/Web/Poster/' . $uniqueName;
-        $data->poster = $data->posterPath;
+        $data->poster = $poster;
+
         // todo: rm hard code
         $data->updatedBy = "Kuma";
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setEventNo($data->eventNo)
             ->setName($data->name)
             ->setStatus($data->status)
-            ->setPoster($data->posterPath)
+            ->setPoster($data->poster)
             ->setCategoryId($data->categoryId)
             ->setVenue($data->venue)
             ->setRegisterStartDate($data->registerStartDate)
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'category' => $event->getCategory(),
             'tickets' => $event->getTickets(),
             'categoryName' => $event->getCategory()
-                                    ->getName()
+                ->getName()
         );
 
         echo json_encode($output);

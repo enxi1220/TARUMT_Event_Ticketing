@@ -3,25 +3,25 @@ require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
 <!-- Description: backend check quantity only go payment -->
-<form>
+<form id="form-add-booking">
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col">
                 <div class="card my-4 shadow-3">
                     <div class="row g-0">
                         <div class="col-md-5 bg-image">
-                            <img src="../../../Poster/i.jpg" alt="Sample photo" class="img-fluid" />
+                            <img id="img-poster" src="" alt="Event Poster" class="img-fluid" />
                             <div class="mask" style="background-color: rgba(0, 0, 0, 0.7)">
                                 <div class="d-flex justify-content-center align-items-center h-100">
                                     <div class="text-center">
                                         <i class="fas fa-calendar text-white fa-3x mb-3"></i>
-                                        <p class="text-white title-style mb-0">EVT/2303/00001</p>
-                                        <p class="text-white mb-0">28/03/2023 12:00</p>
+                                        <p class="text-white title-style mb-0" id="txt-event-no"></p>
+                                        <p class="text-white mb-0" id="txt-event-start"></p>
                                         <figure class="text-center mb-0">
                                             <blockquote class="blockquote text-white">
                                                 <p class="pb-3">
                                                     <i class="fas fa-quote-left fa-xs text-primary" style="color: hsl(210, 100%, 50%) ;"></i>
-                                                    <span class="lead font-italic">Voice Of Rahman</span>
+                                                    <span class="lead font-italic" id="txt-name"></span>
                                                     <i class="fas fa-quote-right fa-xs text-primary" style="color: hsl(210, 100%, 50%) ;"></i>
                                                 </p>
                                             </blockquote>
@@ -98,7 +98,7 @@ require '../../Layout.php';
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
                                         <div class="d-flex justify-content-end pt-3 mt-3">
-                                            <button type="button" id="btn-place-order" class="btn btn-primary ms-2 disabled" onclick="placeOrder()">Place order</button>
+                                            <button type="submit" id="btn-place-order" class="btn btn-primary ms-2 disabled" onclick="placeOrder()">Place order</button>
                                         </div>
                                     </div>
                                 </div>

@@ -18,8 +18,8 @@ class Create
 
         $tickets = $event->getTickets();
 
-        //todo: optimize?. currently, $event->poster = $_FILES['poster']
-        $fileName = uniqid() . basename($event->getPoster()['name']); // generate new filename
+        // todo: optimize?. currently, $event->poster = $_FILES['poster']
+        $fileName = uniqid() . "_". basename($event->getPoster()['name']); // generate new filename
         $targetPath = $_SERVER['DOCUMENT_ROOT'] . $event->posterPath() . $fileName; // specify store location
         
         $posterTemp = $event->getPoster()['tmp_name'];

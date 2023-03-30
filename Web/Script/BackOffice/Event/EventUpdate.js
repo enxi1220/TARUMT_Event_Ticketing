@@ -20,7 +20,7 @@ $(document).ready(function () {
     $(`#form-edit-event`).submit(function (event) {
         event.preventDefault();
         if ($(`#form-edit-event`)[0].checkValidity()) {
-            var event = setJSON();
+            var event = preparePostData();
             console.log(event);
             post(
                 '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Update.php',
@@ -37,7 +37,7 @@ $(document).ready(function () {
     });
 });
 
-function setJSON() {
+function preparePostData() {
     var event = JSON.stringify({
         eventId: new URLSearchParams(window.location.search).get('eventId'),
         eventNo: $('#txt-event-no').val(),
