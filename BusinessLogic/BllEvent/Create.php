@@ -4,8 +4,6 @@
 // Validation that requried Database & CRUD
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/EventStatusConstant.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 
 class Create
@@ -13,10 +11,11 @@ class Create
     public static function Create(Event $event)
     {
         // complete event object and tickets object 
-        $event->setEventNo(UniqueNoHelper::RandomCode($event->prefix()));
+        $event->setEventNo();
         $event->setStatus(EventStatusConstant::OPEN);
-        $event->setCreatedDate(DateHelper::GetMalaysiaDateTime());
+        $event->setCreatedDate();
         $event->createTickets();
+
         $tickets = $event->getTickets();
 
         //todo: optimize?. currently, $event->poster = $_FILES['poster']

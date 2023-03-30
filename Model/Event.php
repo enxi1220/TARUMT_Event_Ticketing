@@ -10,8 +10,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVI
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketStatusConstant.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PosterPathConstant.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 
 class Event
 {
@@ -202,9 +203,9 @@ class Event
         return $this;
     }
 
-    public function setEventNo($eventNo)
+    public function setEventNo($eventNo = null)
     {
-        $this->eventNo = $eventNo;
+        $this->eventNo = $eventNo == null ? UniqueNoHelper::RandomCode($this->prefix()) : $eventNo;
         return $this;
     }
 
@@ -316,9 +317,9 @@ class Event
         return $this;
     }
 
-    public function setCreatedDate($createdDate)
+    public function setCreatedDate($createdDate = null)
     {
-        $this->createdDate = $createdDate;
+        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
         return $this;
     }
 
@@ -328,9 +329,21 @@ class Event
         return $this;
     }
 
-    public function setUpdatedDate($updatedDate)
+    public function setUpdatedDate($updatedDate = null)
     {
-        $this->updatedDate = $updatedDate;
+        $args = func_get_args();
+
+        switch (count($args)) {
+            case 0:
+                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
+                break;
+            case 1:
+                $this->updatedDate = $updatedDate; 
+                break;
+            default:
+                // Invalid number of arguments
+                break;
+        }
         return $this;
     }
 
@@ -357,7 +370,8 @@ class Event
         return PosterPathConstant::PATH;
     }
 
-    public function prefix(){
+    public function prefix()
+    {
         return PrefixConstant::EVENT;
     }
 
@@ -368,7 +382,7 @@ class Event
             $ticket
                 ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
                 ->setStatus(TicketStatusConstant::NEW);
-            
+
             array_push($this->tickets, $ticket);
         }
 
@@ -377,7 +391,7 @@ class Event
             $ticket
                 ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
                 ->setStatus(TicketStatusConstant::NEW);
-            
+
             array_push($this->tickets, $ticket);
         }
 
@@ -386,7 +400,7 @@ class Event
             $ticket
                 ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
                 ->setStatus(TicketStatusConstant::NEW);
-            
+
             array_push($this->tickets, $ticket);
         }
     }

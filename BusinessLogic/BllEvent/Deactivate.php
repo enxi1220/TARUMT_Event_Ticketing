@@ -1,7 +1,7 @@
 <?php
 
 #  Author: Lim En Xi
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/EventStatusConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 
@@ -9,7 +9,7 @@ class Deactivate
 {
     public static function Deactivate(Event $event)
     {
-        $event->setUpdatedDate(DateHelper::GetMalaysiaDateTime());
+        $event->setUpdatedDate();
 
         $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {

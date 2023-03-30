@@ -2,14 +2,13 @@
 
 #  Author: Lim En Xi
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 
 class Update
 {
     public static function Update($event)
     {
-        $event->setUpdatedDate(DateHelper::GetMalaysiaDateTime());
+        $event->setUpdatedDate();
 
         // todo: poster 
 

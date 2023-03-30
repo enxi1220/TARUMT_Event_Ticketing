@@ -70,8 +70,8 @@ class Category {
         return $this;
     }
 
-    public function setCreatedDate($createdDate) {
-        $this->createdDate = $createdDate;
+    public function setCreatedDate($createdDate = null) {
+        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
         return $this;
     }
 
@@ -80,8 +80,21 @@ class Category {
         return $this;
     }
 
-    public function setUpdatedDate($updatedDate) {
-        $this->updatedDate = $updatedDate;
+    public function setUpdatedDate($updatedDate = null) {
+        $args = func_get_args();
+
+        switch (count($args)) {
+            case 0:
+                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
+                break;
+            case 1:
+                $this->updatedDate = $updatedDate; 
+                break;
+            default:
+                // Invalid number of arguments
+                break;
+        }
+        
         return $this;
     }
 

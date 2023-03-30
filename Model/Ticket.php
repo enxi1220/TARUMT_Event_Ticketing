@@ -97,9 +97,22 @@ abstract class Ticket
         return $this;
     }
 
-    public function setUpdatedDate($updatedDate)
+    public function setUpdatedDate($updatedDate = null)
     {
-        $this->updatedDate = $updatedDate;
+        $args = func_get_args();
+
+        switch (count($args)) {
+            case 0:
+                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
+                break;
+            case 1:
+                $this->updatedDate = $updatedDate; 
+                break;
+            default:
+                // Invalid number of arguments
+                break;
+        }
+        
         return $this;
     }
 
