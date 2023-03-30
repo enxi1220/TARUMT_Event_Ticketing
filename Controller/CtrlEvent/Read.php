@@ -46,12 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'category' => $result->getCategory(),
             'tickets' => $result->getTickets(),
             'categoryName' => $result->getCategory()
-                                    ->getName()
+                                    ->getName(),
+            'posterPath' => $_SERVER['DOCUMENT_ROOT'] . $result->posterPath() . $result->getPoster()
         );
         // optimize to nested..xml? support complex..but js
 
         echo json_encode($output);
-    } catch (Throwable $e) {
+    } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();
         echo $e;

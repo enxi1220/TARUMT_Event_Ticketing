@@ -42,11 +42,11 @@ class DataAccess
             );
             $this->_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            die("Connection failed");
+            throw new Exception("Connection failed");
         }
     }
 
-    // todo: solve 
+    // todo: solve cnt close conn
     private function CloseConnection()
     {
         // $this->_conn = null;
@@ -96,7 +96,7 @@ class DataAccess
                 array_push($output, $data);
             }
             return $output;
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
             if ($exceptionHandler) {
                 $exceptionHandler($e);
             }
@@ -114,7 +114,7 @@ class DataAccess
             $stmt->execute();
             // if nothing, return null
             return $stmt->fetchColumn() ?? null;
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
             if ($exceptionHandler) {
                 $exceptionHandler($e);
             }
@@ -132,7 +132,7 @@ class DataAccess
             $stmt->execute();
             $result = $this->_conn->lastInsertId();
             return $result;
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
             if ($exceptionHandler) {
                 $exceptionHandler($e);
             }
@@ -143,16 +143,16 @@ class DataAccess
     }
 
     // flow
-    // open connection /
-    // begin transaction /
-    // prepare statement /
-    // bind value /
-    // execute /
-    // bind data to object /
+    // open connection 
+    // begin transaction
+    // prepare statement
+    // bind value 
+    // execute 
+    // bind data to object 
     // return object 
-    // #object should accept all classe/
-    // rollback / commit /
-    // throw & handle exception /
-    // close connection /
-    // todo: return as object, let them bind data to object 
+    // #object should accept all classes, php loose type nvm
+    // rollback / commit 
+    // throw & handle exception 
+    // close connection 
+    // return as object, let them bind data to object 
 }

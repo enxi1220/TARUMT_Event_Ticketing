@@ -1,7 +1,7 @@
 <?php
 
 #  Author: Lim En Xi
-// Validation requried Database & CRUD
+// Validation that requried Database & CRUD
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/EventStatusConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
@@ -19,6 +19,13 @@ class Create
         $event->createTickets();
         $tickets = $event->getTickets();
 
+        //todo: optimize?. currently, $event->poster = $_FILES['poster']
+        $fileName = uniqid() . basename($event->getPoster()['name']); // generate new filename
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . $event->posterPath() . $fileName; // specify store location
+        
+        $posterTemp = $event->getPoster()['tmp_name'];
+        $event->setPoster($fileName); //store filename only
+
         // start database
         $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event, $tickets) {
@@ -27,9 +34,8 @@ class Create
             Create::CreateTickets($dataAccess, $tickets, $eventId);
         });
 
-        // todo: add poster to folder
-        // move_uploaded_file($poster['temp'], $_SERVER['DOCUMENT_ROOT'].$event->getPoster());
-        // Undefined array key "temp" in, image from where oh...
+        move_uploaded_file($posterTemp, $targetPath);
+
         return $event->getEventNo();
     }
 
@@ -87,7 +93,7 @@ class Create
             },
             function (Exception $ex) {
                 if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'event_no_UNIQUE')) {
-                    echo "Duplicate event noumber is generated. Please try again.";
+                    echo "Duplicate event no is generated. Please try again.";
                 }
                 echo $ex;
             }

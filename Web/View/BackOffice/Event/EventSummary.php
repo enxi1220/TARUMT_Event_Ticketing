@@ -34,11 +34,11 @@ require '../../Layout.php';
 </div>
 
 <!----------------------- Modal ----------------------->
-<div class="modal fade" id="activateEventModal" tabindex="-1" aria-labelledby="activateEventModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-activate-event" tabindex="-1" aria-labelledby="txt-modal-activate-event" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="activateEventModalLabel">Confirmation</h5>
+        <h5 class="modal-title" id="txt-modal-activate-event">Confirmation</h5>
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">Are you sure to activate the event?</div>
@@ -50,11 +50,11 @@ require '../../Layout.php';
   </div>
 </div>
 
-<div class="modal fade" id="deactivateEventModal" tabindex="-1" aria-labelledby="deactivateEventModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-deactivate-event" tabindex="-1" aria-labelledby="txt-modal-deactivate-event" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deactivateEventModalLabel">Confirmation</h5>
+        <h5 class="modal-title" id="txt-modal-deactivate-event">Confirmation</h5>
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">Are you sure to deactivate the event?</div>

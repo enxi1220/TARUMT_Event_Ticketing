@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = json_decode($_POST['event']);
         $data->posterPath = '/TARUMT_Event_Ticketing/Web/Poster/' . $uniqueName;
         $data->poster = $data->posterPath;
-        // rm hard code
+        // todo: rm hard code
         $data->updatedBy = "Kuma";
 
         $event = new Event();
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         );
 
         echo json_encode($output);
-    } catch (Throwable $e) {
+    } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $ex->getMessage();
         echo $e;

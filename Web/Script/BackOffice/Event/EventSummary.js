@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 
 function activateEvent(eventId, eventNo) {
-    $(`#activateEventModal`).modal('show');
+    $(`#modal-activate-event`).modal('show');
     $(`#btn-activate-event`).click(function () {
         var event = setJSON(eventId, eventNo);
         post(
@@ -24,12 +24,12 @@ function activateEvent(eventId, eventNo) {
                 location.reload();  
             }
         );
-        $(`#activateEventModal`).modal('hide');
+        $(`#modal-activate-event`).modal('hide');
     });
 }
 
 function deactivateEvent(eventId, eventNo) {
-    $(`#deactivateEventModal`).modal('show');
+    $(`#modal-deactivate-event`).modal('show');
     $(`#btn-deactivate-event`).click(function () {
         var event = setJSON(eventId, eventNo);
         post(
@@ -40,7 +40,7 @@ function deactivateEvent(eventId, eventNo) {
                 location.reload();  
             }
         );
-        $(`#deactivateEventModal`).modal('hide');
+        $(`#modal-deactivate-event`).modal('hide');
     });
 }
 

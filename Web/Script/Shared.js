@@ -50,7 +50,7 @@ function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
           icon: 'success',
           title: 'Success',
           text: success,
-          timer: 1900,
+          // timer: 1900,
           showConfirmButton: false
         }).then(function () {
           if (afterSuccess) {
@@ -87,8 +87,8 @@ function get(url, data, successHandler, errorHandler) {
       } else {
         //default success version
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: 'success',
+          title: 'Success...',
           text: success.responseText
         })
       }
@@ -105,6 +105,24 @@ function get(url, data, successHandler, errorHandler) {
           text: error.responseText
         })
       }
+    }
+  });
+}
+
+function checkDate(id, min, max) {
+  // Attach a change event listener to the datetime input field
+  $('#datetime').on('change', function() {
+    // Get the value of the datetime input field
+    var inputDate = new Date($(this).val());
+    
+    // Get the current date and time
+    var currentDate = new Date();
+    
+    // Disable the submit button if the input date is in the past
+    if (inputDate < currentDate) {
+      $('button[type="submit"]').prop('disabled', true);
+    } else {
+      $('button[type="submit"]').prop('disabled', false);
     }
   });
 }

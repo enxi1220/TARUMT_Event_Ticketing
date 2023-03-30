@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $data = json_decode($_POST['event']);
-        // rm hard code
+        // todo: rm hard code
         $data->updatedBy = "Kuma";
         
         $event = new Event();
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Activate::Activate($event);
         
         echo "Event {$event->getEventNo()} is activated successfully";
-    } catch (Throwable $e) {
+    } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();
         echo $e;

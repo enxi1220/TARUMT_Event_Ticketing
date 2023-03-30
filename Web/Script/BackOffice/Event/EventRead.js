@@ -7,13 +7,6 @@ $(document).ready(function () {
         function (success) {
             var event = JSON.parse(success);
             display(event);
-        },
-        function (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: error.responseText
-            })
         }
     )
 });
@@ -39,4 +32,5 @@ function display(event) {
     $('#txt-organizer-name').val(event.organizerName);
     $('#txt-organizer-phone').val(event.organizerPhone);
     $('#txt-organizer-mail').val(event.organizerMail);
+    $('#img-poster').attr('src', event.posterPath);
 }

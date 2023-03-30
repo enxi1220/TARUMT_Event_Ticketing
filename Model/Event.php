@@ -11,6 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketSt
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketStatusConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PosterPathConstant.php";
 
 class Event
 {
@@ -42,6 +43,8 @@ class Event
 
     private $category;
     private $tickets = array();
+
+    private $posterPath;
 
     public function __construct()
     {
@@ -180,6 +183,11 @@ class Event
     public function getTickets()
     {
         return $this->tickets;
+    }
+
+    public function getPosterPath()
+    {
+        return $this->posterPath;
     }
 
     public function setEventId($eventId)
@@ -342,6 +350,11 @@ class Event
     {
         $this->tickets = $tickets;
         return $this;
+    }
+
+    public function posterPath()
+    {
+        return PosterPathConstant::PATH;
     }
 
     public function prefix(){

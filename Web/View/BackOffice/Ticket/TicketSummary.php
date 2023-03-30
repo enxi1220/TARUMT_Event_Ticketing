@@ -12,7 +12,7 @@ require '../../Layout.php';
             </h2>
             
         </div>
-        <div class="col">
+        <div class="col-1">
             <a class="btn btn-secondary btn-lg btn-floating float-end" title="Back" href="../Event/EventSummary.php" role="button">
                 <i class="fas fa-arrow-left"></i>
             </a>
@@ -26,7 +26,7 @@ require '../../Layout.php';
                 <th>Description</th>
                 <th>Status</th>
                 <th>Owner</th>
-                <th>Ticket Sold By</th>
+                <th>Ticket Purchased By</th>
                 <th>Ticket Sold Date</th>
             </tr>
         </thead>
