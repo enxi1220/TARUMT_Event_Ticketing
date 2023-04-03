@@ -7,15 +7,8 @@ $(document).ready(function () {
         function (success) {
             var event = JSON.parse(success);
             display(event);
-        },
-        function (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: error.responseText
-            })
         }
-    )
+    );
 
     $(`#form-edit-event`).submit(function (event) {
         event.preventDefault();

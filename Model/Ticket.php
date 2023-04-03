@@ -5,6 +5,7 @@
  *
  * @author enxil
  */
+
 abstract class Ticket
 {
     private $ticketId;
@@ -17,6 +18,8 @@ abstract class Ticket
 
     private $event;
     private $eventNo;
+    private $count;
+    private $requestedAmount;
 
     public function __construct()
     {
@@ -67,6 +70,16 @@ abstract class Ticket
         return $this->eventNo;
     }
 
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    public function getRequestedAmount()
+    {
+        return $this->requestedAmount;
+    }
+
     public function setTicketId($ticketId)
     {
         $this->ticketId = $ticketId;
@@ -106,13 +119,13 @@ abstract class Ticket
                 $this->updatedDate = DateHelper::GetMalaysiaDateTime();
                 break;
             case 1:
-                $this->updatedDate = $updatedDate; 
+                $this->updatedDate = $updatedDate;
                 break;
             default:
                 // Invalid number of arguments
                 break;
         }
-        
+
         return $this;
     }
 
@@ -134,6 +147,27 @@ abstract class Ticket
         return $this;
     }
 
+    public function setCount($count)
+    {
+        $this->count = $count;
+        return $this;
+    }
+
+    public function setRequestedAmount($requestedAmount)
+    {
+        $this->requestedAmount = $requestedAmount;
+        return $this;
+    }
+
+    public function isAvailable(Ticket $ticket): bool
+    {
+        if ($ticket->getCount() < $ticket->getRequestedAmount()) {
+            return false;
+        }
+        return true;
+    }
+
     abstract function prefix();
     abstract function description();
+    abstract function type();
 }

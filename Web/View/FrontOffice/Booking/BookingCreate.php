@@ -3,7 +3,7 @@ require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
 <!-- Description: backend check quantity only go payment -->
-<form id="form-add-booking">
+<form id="form-add-booking" method="POST">
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col">
@@ -38,19 +38,19 @@ require '../../Layout.php';
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-label" for="txt-vip-ticket-qty">VIP Ticket Quantity*</label>
-                                            <input type="number" name="VIPTicketQuantity" id="txt-vip-ticket-qty" onchange="ticketChange()" min="0" class="form-control" />
+                                            <input type="number" name="VIPTicketQuantity" id="txt-vip-ticket-qty" onchange="ticketChange()" min="0" class="form-control" tabindex="1"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-label" for="txt-std-ticket-qty">Standard Ticket Quantity*</label>
-                                            <input type="number" name="StandardfTicketQuantity" id="txt-std-ticket-qty" onchange="ticketChange()" min="0" class="form-control" />
+                                            <input type="number" name="StandardfTicketQuantity" id="txt-std-ticket-qty" onchange="ticketChange()" min="0" class="form-control" tabindex="2"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-label" for="txt-bgt-ticket-qty">Budget Ticket Quantity*</label>
-                                            <input type="number" name="BudgetTicketQuantity" id="txt-bgt-ticket-qty" onchange="ticketChange()" min="0" class="form-control" />
+                                            <input type="number" name="BudgetTicketQuantity" id="txt-bgt-ticket-qty" onchange="ticketChange()" min="0" class="form-control" tabindex="3"/>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ require '../../Layout.php';
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
                                         <div class="d-flex justify-content-end pt-3 mt-3">
-                                            <button type="submit" id="btn-place-order" class="btn btn-primary ms-2 disabled" onclick="placeOrder()">Place order</button>
+                                            <button type="submit" id="btn-place-order" class="btn btn-primary ms-2 disabled" tabindex="4">Place order</button>
                                         </div>
                                     </div>
                                 </div>

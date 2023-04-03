@@ -4,8 +4,9 @@
 // database transaction
 // using PDO
 // Design pattern: Creational -> singleton
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/IDataAccess.php";
 
-class DataAccess
+class DataAccess implements IDataAccess
 {
     private static $instance;
     private PDO $_conn;

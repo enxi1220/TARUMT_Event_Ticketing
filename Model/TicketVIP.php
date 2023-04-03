@@ -7,6 +7,7 @@
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketDescConstant.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketTypeConstant.php";
 
 class TicketVIP extends Ticket
 {
@@ -16,7 +17,13 @@ class TicketVIP extends Ticket
         return PrefixConstant::TICKETVIP;
     }
 
-    public function description(){
+    public function description()
+    {
         return TicketDescConstant::TICKETVIP;
+    }
+
+    public function type()
+    {
+        return TicketTypeConstant::VIP;
     }
 }

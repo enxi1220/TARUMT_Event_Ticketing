@@ -49,7 +49,7 @@ function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
         Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: success,
+          html: '<pre>' + success + '</pre>',
           // timer: 1900,
           showConfirmButton: false
         }).then(function () {
@@ -68,7 +68,8 @@ function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: error.responseText
+          html: '<pre>' + error.responseText + '</pre>'
+          // text:  error.responseText
         })
       }
     }
@@ -89,7 +90,7 @@ function get(url, data, successHandler, errorHandler) {
         Swal.fire({
           icon: 'success',
           title: 'Success...',
-          text: success.responseText
+          html: '<pre>' + success + '</pre>'
         })
       }
     },
@@ -102,7 +103,7 @@ function get(url, data, successHandler, errorHandler) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: error.responseText
+          html: '<pre>' + error.responseText + '</pre>'
         })
       }
     }
@@ -111,13 +112,13 @@ function get(url, data, successHandler, errorHandler) {
 
 function checkDate(id, min, max) {
   // Attach a change event listener to the datetime input field
-  $('#datetime').on('change', function() {
+  $('#datetime').on('change', function () {
     // Get the value of the datetime input field
     var inputDate = new Date($(this).val());
-    
+
     // Get the current date and time
     var currentDate = new Date();
-    
+
     // Disable the submit button if the input date is in the past
     if (inputDate < currentDate) {
       $('button[type="submit"]').prop('disabled', true);
