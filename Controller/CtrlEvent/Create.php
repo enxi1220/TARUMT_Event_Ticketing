@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ->setCreatedBy($data->createdBy);
 
         $eventNo = Create::Create($event);
-        echo "Event $eventNo is added";
+        echo "Event $eventNo is added.";
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();

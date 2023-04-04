@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 'venue' => $booking->getEvent()->getVenue(),
                 'eventStartDate' => $booking->getEvent()->getEventStartDate(),
                 'eventEndDate' => $booking->getEvent()->getEventEndDate(),
-                'posterPath' => $_SERVER['DOCUMENT_ROOT'] . $booking->getEvent()->posterPath() . $booking->getEvent()->getPoster()
+                'posterPath' => $booking->getEvent()->posterPath() . $booking->getEvent()->getPoster()
             );
         }, $result);
 

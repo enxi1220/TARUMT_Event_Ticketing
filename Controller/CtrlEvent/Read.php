@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'tickets' => $result->getTickets(),
             'categoryName' => $result->getCategory()
                                     ->getName(),
-            'posterPath' => $_SERVER['DOCUMENT_ROOT'] . $result->posterPath() . $result->getPoster()
+            'posterPath' => $result->posterPath() . $result->getPoster()
         );
         // optimize to nested..xml? support complex..but js
 

@@ -55,8 +55,13 @@ require '../../Layout.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="txt-poster">Poster*</label>
-                    <input type="file" id="txt-poster" name="Poster" class="form-control" required />
-                    <div class="invalid-feedback">Required</div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-primary" type="button" id="btn-show-poster" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#modal-show-poster">
+                            Initial Preview
+                        </button>
+                        <input type="file" id="txt-poster" name="Poster" class="form-control" required />
+                        <div class="invalid-feedback">Required</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,6 +211,23 @@ require '../../Layout.php';
             </button>
         </div>
     </form>
+</div>
+<!----------------------- Modal ----------------------->
+<div class="modal fade " id="modal-show-poster" tabindex="-1" aria-labelledby="txt-modal-show-poster" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="txt-modal-show-poster">Image Preview</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="img-poster" src="" class="img-fluid" alt="Event poster" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 require '../../Footer.php';

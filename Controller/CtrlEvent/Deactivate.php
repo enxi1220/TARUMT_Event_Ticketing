@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         Deactivate::Deactivate($event);
         
-        echo "Event {$event->getEventNo()} is deactivated successfully";
+        echo "Event {$event->getEventNo()} is deactivated.";
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();
