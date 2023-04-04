@@ -47,7 +47,7 @@ function display(booking) {
                             <a class="btn btn-primary btn-floating" title="View Payment" href="../Payment/PaymentRead.php?bookingId=${item.bookingId}" role="button">
                                 <i class="fas fa-dollar-sign"></i>
                             </a>
-                            <a class="btn btn-primary btn-floating" title="View Event" href="../Event/PaymentRead.php?eventId=${item.eventId}" role="button">
+                            <a class="btn btn-primary btn-floating" title="View Event" href="../Event/EventRead.php?eventId=${item.eventId}" role="button">
                                 <i class="fas fa-eye"></i>
                             </a>
                         </p>
