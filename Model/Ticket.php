@@ -6,7 +6,9 @@
  * @author enxil
  */
 
-abstract class Ticket
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/ITicketFactory.php";
+
+abstract class Ticket implements ITicketFactory
 {
     private $ticketId;
     private $eventId;

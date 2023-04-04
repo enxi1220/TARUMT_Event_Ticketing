@@ -13,12 +13,11 @@ $(document).ready(function () {
 });
 
 function display(booking) {
-    const today = new Date();
     var template = '';
 
     booking.forEach(item => {
         const date = new Date(item.eventStartDate);
-        const isFuture = date > today;
+        const isFuture = date > new Date();
 
         template += `
             <div class="col">

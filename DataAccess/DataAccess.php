@@ -1,12 +1,12 @@
 <?php
 
-#  Author: Lim En Xi
-// database transaction
-// using PDO
-// Design pattern: Creational -> singleton
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/IDataAccess.php";
+/**
+ * Description of DataAccess
+ * Design pattern: Creational -> Singleton
+ * @author enxil
+ */
 
-class DataAccess implements IDataAccess
+class DataAccess
 {
     private static $instance;
     private PDO $_conn;
@@ -142,18 +142,4 @@ class DataAccess implements IDataAccess
             $stmt->closeCursor();
         }
     }
-
-    // flow
-    // open connection 
-    // begin transaction
-    // prepare statement
-    // bind value 
-    // execute 
-    // bind data to object 
-    // return object 
-    // #object should accept all classes, php loose type nvm
-    // rollback / commit 
-    // throw & handle exception 
-    // close connection 
-    // return as object, let them bind data to object 
 }

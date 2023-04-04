@@ -5,6 +5,9 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/EventStatusConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVIP.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 
 class Create
 {
@@ -14,7 +17,7 @@ class Create
         $event->setEventNo();
         $event->setStatus(EventStatusConstant::OPEN);
         $event->setCreatedDate();
-        $event->createTickets();
+        $event->createTickets(new TicketVIP(), new TicketStandard(), new TicketBudget());
 
         $tickets = $event->getTickets();
 

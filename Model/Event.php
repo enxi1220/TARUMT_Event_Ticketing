@@ -2,15 +2,13 @@
 
 /**
  * Description of Event
- *
+ * Design pattern: Creational -> Factory
  * @author enxil
  */
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Ticket.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVIP.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/TicketStatusConstant.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PosterPathConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
@@ -43,9 +41,8 @@ class Event
     private $updatedDate;
     private $updatedBy;
 
-    private $category;
+    private Category $category;
     private $tickets = array();
-
     private $posterPath;
 
     public function __construct()
@@ -339,7 +336,7 @@ class Event
                 $this->updatedDate = DateHelper::GetMalaysiaDateTime();
                 break;
             case 1:
-                $this->updatedDate = $updatedDate; 
+                $this->updatedDate = $updatedDate;
                 break;
             default:
                 // Invalid number of arguments
@@ -376,32 +373,20 @@ class Event
         return PrefixConstant::EVENT;
     }
 
-    public function createTickets()
+    public function createTickets(ITicketFactory $vipFactory, ITicketFactory $standardFactory, ITicketFactory $budgetFactory)
     {
         for ($i = 0; $i < $this->vipTicketQty; $i++) {
-            $ticket = new TicketVIP();
-            $ticket
-                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
-                ->setStatus(TicketStatusConstant::NEW);
-
+            $ticket = $vipFactory->createTicket();
             array_push($this->tickets, $ticket);
         }
 
         for ($i = 0; $i < $this->standardTicketQty; $i++) {
-            $ticket = new TicketStandard();
-            $ticket
-                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
-                ->setStatus(TicketStatusConstant::NEW);
-
+            $ticket = $standardFactory->createTicket();
             array_push($this->tickets, $ticket);
         }
 
         for ($i = 0; $i < $this->budgetTicketQty; $i++) {
-            $ticket = new TicketBudget();
-            $ticket
-                ->setTicketNo(UniqueNoHelper::RandomCode($ticket->prefix()))
-                ->setStatus(TicketStatusConstant::NEW);
-
+            $ticket = $budgetFactory->createTicket();
             array_push($this->tickets, $ticket);
         }
     }
