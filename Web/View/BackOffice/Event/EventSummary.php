@@ -3,34 +3,38 @@ require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
 <div class="p-5 rounded-2">
-    <div class="row">
-        <div class="col">
-            <h2 class="float-start mb-5">Event Summary</h2>
-        </div>
-        <div class="col">
-            <a class="btn btn-primary btn-lg btn-floating float-end" title="Add" href="EventCreate.php" role="button">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
+  <div class="row">
+    <div class="col">
+      <h2 class="float-start mb-5">Event Summary</h2>
     </div>
+    <div class="col">
+      <a class="btn btn-primary btn-lg btn-floating float-end" title="Add" href="EventCreate.php" role="button">
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+  </div>
 
-    <table id="event-summary" class="table table-striped w-100">
-        <thead>
-            <tr>
-                <th>Event No</th>
-                <th>Event Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-                <th>Created By</th>
-                <th>Created Date</th>
-                <th>Updated By</th>
-                <th>Updated Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+  <button id="btn-activate" class="btn btn-secondary btn-floating" title="Export" onclick="exportEvent()">
+    <i class="fas fa-file-csv fs-6"></i>
+  </button>
+
+  <table id="event-summary" class="table table-striped w-100">
+    <thead>
+      <tr>
+        <th>Event No</th>
+        <th>Event Name</th>
+        <th>Event Date</th>
+        <th>Status</th>
+        <th>Created By</th>
+        <th>Created Date</th>
+        <th>Updated By</th>
+        <th>Updated Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </div>
 
 <!----------------------- Modal ----------------------->

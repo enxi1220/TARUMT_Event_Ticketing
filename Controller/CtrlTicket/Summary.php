@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $eventId = json_decode($_GET['eventId']);
         
-        // cincai put a concrete class...
+        // todo: fix cincai put a concrete class...
         $ticket = new TicketStandard();
         $ticket->setEventId($eventId);
 

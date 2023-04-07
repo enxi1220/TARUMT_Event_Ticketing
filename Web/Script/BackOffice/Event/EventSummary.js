@@ -12,6 +12,17 @@ $(document).ready(function () {
     )
 });
 
+function exportEvent(){
+    post(
+        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Export.php',
+        [],
+        // null,
+        // function (){
+        //     location.reload();  
+        // }
+    );
+}
+
 function activateEvent(eventId, eventNo) {
     $(`#modal-activate-event`).modal('show');
     $(`#btn-activate-event`).click(function () {

@@ -2,20 +2,13 @@
 
 $(document).ready(function () {
     get(
-        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Update.php',
+        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
         { eventId: new URLSearchParams(window.location.search).get('eventId') },
         function (success) {
             var event = JSON.parse(success);
             display(event);
-        },
-        function (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: error.responseText
-            })
         }
-    )
+    );
 
     $(`#form-edit-event`).submit(function (event) {
         event.preventDefault();
@@ -90,4 +83,5 @@ function display(event) {
     $('#txt-organizer-phone').val(event.organizerPhone);
     $('#txt-organizer-mail').val(event.organizerMail);
     // $('#txt-poster').val(event.poster);
+    $('#img-poster').attr('src', event.posterPath);
 }

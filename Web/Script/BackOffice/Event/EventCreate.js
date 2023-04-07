@@ -56,7 +56,7 @@ function checkQty() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: "Total ticket quantity must be more than 0"
+            html: "Total ticket quantity must be more than 0"
         });
         return false;
     }

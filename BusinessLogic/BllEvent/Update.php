@@ -3,6 +3,7 @@
 #  Author: Lim En Xi
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/FileUploadHelper.php";
 
 class Update
 {
@@ -10,19 +11,13 @@ class Update
     {
         $event->setUpdatedDate();
 
-        //todo: optimize?. currently, $event->poster = $_FILES['poster']
-        $fileName = uniqid() . "_" . basename($event->getPoster()['name']); // generate new filename
-        $targetPath = $_SERVER['DOCUMENT_ROOT'] . $event->posterPath() . $fileName; // specify store location
-        
-        $posterTemp = $event->getPoster()['tmp_name'];
-        $event->setPoster($fileName); //store filename only
+        $fileName = FileUploadHelper::UploadImage($event->getPoster(), $event->posterPath());
+        $event->setPoster($fileName);
 
         $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {
             Update::UpdateEvent($dataAccess, $event);
         });
-
-        move_uploaded_file($posterTemp, $targetPath);
 
         return $event->getEventNo();
     }
@@ -70,7 +65,6 @@ class Update
                 $pstmt->bindValue(17, $event->getUpdatedBy(), PDO::PARAM_STR);
                 $pstmt->bindValue(18, $event->getUpdatedDate(), PDO::PARAM_STR);
                 $pstmt->bindValue(19, $event->getEventId(), PDO::PARAM_INT);
-
             }
         );
     }

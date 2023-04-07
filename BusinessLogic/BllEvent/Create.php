@@ -5,6 +5,10 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/EventStatusConstant.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVIP.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/FileUploadHelper.php";
 
 class Create
 {
@@ -14,16 +18,11 @@ class Create
         $event->setEventNo();
         $event->setStatus(EventStatusConstant::OPEN);
         $event->setCreatedDate();
-        $event->createTickets();
-
+        $event->createTickets(new TicketVIP(), new TicketStandard(), new TicketBudget());
         $tickets = $event->getTickets();
 
-        // todo: optimize?. currently, $event->poster = $_FILES['poster']
-        $fileName = uniqid() . "_". basename($event->getPoster()['name']); // generate new filename
-        $targetPath = $_SERVER['DOCUMENT_ROOT'] . $event->posterPath() . $fileName; // specify store location
-        
-        $posterTemp = $event->getPoster()['tmp_name'];
-        $event->setPoster($fileName); //store filename only
+        $fileName = FileUploadHelper::UploadImage($event->getPoster(), $event->posterPath());
+        $event->setPoster($fileName);
 
         // start database
         $dataAccess = DataAccess::getInstance();
@@ -32,8 +31,6 @@ class Create
             $eventId = Create::CreateEvent($dataAccess, $event);
             Create::CreateTickets($dataAccess, $tickets, $eventId);
         });
-
-        move_uploaded_file($posterTemp, $targetPath);
 
         return $event->getEventNo();
     }

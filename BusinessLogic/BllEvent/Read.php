@@ -16,13 +16,14 @@ class Read
                 return Read::ReadEvent($dataAccess, $event);
             }
         );
-        
+
         return $result;
     }
 
-    private static function ReadEvent(DataAccess $dataAccess, $event){
+    private static function ReadEvent(DataAccess $dataAccess, $event)
+    {
         return $dataAccess->Reader(
-                    "SELECT 
+            "SELECT 
                         e.event_id, 
                         e.category_id,
                         e.event_no, 
@@ -55,48 +56,46 @@ class Read
                         AND e.event_no = IF(:event_no IS NULL, e.event_no, :event_no)
                         AND e.status = IF(:status IS NULL, e.status, :status)
                     ORDER BY e.event_id DESC",
-                    function (PDOStatement $pstmt) use ($event) {
-                        $pstmt->bindValue(":event_id", $event->getEventId(), PDO::PARAM_INT);
-                        $pstmt->bindValue(":event_no", $event->getEventNo(), PDO::PARAM_STR);
-                        $pstmt->bindValue(":status", $event->getStatus(), PDO::PARAM_STR);
-                    },
-                    function ($row) {
-                        $event = new Event();
-                        $category = new Category();
+            function (PDOStatement $pstmt) use ($event) {
+                $pstmt->bindValue(":event_id", $event->getEventId(), PDO::PARAM_INT);
+                $pstmt->bindValue(":event_no", $event->getEventNo(), PDO::PARAM_STR);
+                $pstmt->bindValue(":status", $event->getStatus(), PDO::PARAM_STR);
+            },
+            function ($row) {
+                $category = new Category();
+                $category
+                    ->setCategoryId($row['category_id'])
+                    ->setName($row['category_name']);
 
-                        $category
-                            ->setCategoryId($row['category_id'])
-                            ->setName($row['category_name']);
-
-                        return $event
-                            ->setEventId($row['event_id'])
-                            ->setCategoryId($row['category_id'])
-                            ->setEventNo($row['event_no'])
-                            ->setName($row['event_name'])
-                            ->setPoster($row['poster'])
-                            ->setVenue($row['venue'])
-                            ->setRegisterStartDate($row['register_start_date'])
-                            ->setRegisterEndDate($row['register_end_date'])
-                            ->setEventStartDate($row['event_start_date'])
-                            ->setEventEndDate($row['event_end_date'])
-                            ->setDescription($row['description'])
-                            ->setVipTicketQty($row['vip_ticket_qty'])
-                            ->setStandardTicketQty($row['standard_ticket_qty'])
-                            ->setBudgetTicketQty($row['budget_ticket_qty'])
-                            ->setVipTicketPrice($row['vip_ticket_price'])
-                            ->setStandardTicketPrice($row['standard_ticket_price'])
-                            ->setBudgetTicketPrice($row['budget_ticket_price'])
-                            ->setOrganizerName($row['organizer_name'])
-                            ->setOrganizerMail($row['organizer_mail'])
-                            ->setOrganizerPhone($row['organizer_phone'])
-                            ->setStatus($row['status'])
-                            ->setCreatedBy($row['created_by'])
-                            ->setCreatedDate($row['created_date'])
-                            ->setUpdatedBy($row['updated_by'])
-                            ->setUpdatedDate($row['updated_date'])
-                            ->setCategory($category)
-                            ;
-                    }
-                );
+                $event = new Event();
+                return $event
+                    ->setEventId($row['event_id'])
+                    ->setCategoryId($row['category_id'])
+                    ->setEventNo($row['event_no'])
+                    ->setName($row['event_name'])
+                    ->setPoster($row['poster'])
+                    ->setVenue($row['venue'])
+                    ->setRegisterStartDate($row['register_start_date'])
+                    ->setRegisterEndDate($row['register_end_date'])
+                    ->setEventStartDate($row['event_start_date'])
+                    ->setEventEndDate($row['event_end_date'])
+                    ->setDescription($row['description'])
+                    ->setVipTicketQty($row['vip_ticket_qty'])
+                    ->setStandardTicketQty($row['standard_ticket_qty'])
+                    ->setBudgetTicketQty($row['budget_ticket_qty'])
+                    ->setVipTicketPrice($row['vip_ticket_price'])
+                    ->setStandardTicketPrice($row['standard_ticket_price'])
+                    ->setBudgetTicketPrice($row['budget_ticket_price'])
+                    ->setOrganizerName($row['organizer_name'])
+                    ->setOrganizerMail($row['organizer_mail'])
+                    ->setOrganizerPhone($row['organizer_phone'])
+                    ->setStatus($row['status'])
+                    ->setCreatedBy($row['created_by'])
+                    ->setCreatedDate($row['created_date'])
+                    ->setUpdatedBy($row['updated_by'])
+                    ->setUpdatedDate($row['updated_date'])
+                    ->setCategory($category);
+            }
+        );
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-#  Author: Lim En Xi
-// database transaction
-// using PDO
-// Design pattern: Creational -> singleton
+/**
+ * Description of DataAccess
+ * Design pattern: Creational -> Singleton
+ * @author enxil
+ */
 
 class DataAccess
 {
@@ -141,18 +142,4 @@ class DataAccess
             $stmt->closeCursor();
         }
     }
-
-    // flow
-    // open connection 
-    // begin transaction
-    // prepare statement
-    // bind value 
-    // execute 
-    // bind data to object 
-    // return object 
-    // #object should accept all classes, php loose type nvm
-    // rollback / commit 
-    // throw & handle exception 
-    // close connection 
-    // return as object, let them bind data to object 
 }
