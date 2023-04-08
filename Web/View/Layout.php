@@ -1,6 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_links.php';
 ?>
+<!-- author: Vinnie Chin Loh Xin -->
 <!DOCTYPE html>
 <html>
 

@@ -1,7 +1,6 @@
 <?php
 
 #  Author: Vinnie Chin Loh Xin
-
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllCategory/Read.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 
