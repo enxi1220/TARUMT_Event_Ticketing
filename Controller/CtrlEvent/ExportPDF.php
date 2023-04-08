@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 }
             }
             $event->setTicketQtySold($sold);
-        }
+        } 
 
         $output = array_map(
             function ($event) {

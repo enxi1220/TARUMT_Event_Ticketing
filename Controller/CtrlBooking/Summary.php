@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $booking = new Booking();
         // todo: get session user, rm hardcode
         $booking->setUserId(1);
-        $booking->setCreatedBy('Ryujin');
+        $booking->setCreatedBy('John Doe');
 
         $result = Read::Read($booking);
 

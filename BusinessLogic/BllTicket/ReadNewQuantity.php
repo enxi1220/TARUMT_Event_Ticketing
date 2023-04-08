@@ -51,8 +51,7 @@ class ReadNewQuantity
                     $ticket = $ticketBudget;
                 }
 
-                return $ticket
-                    ->setCount($row['ticket_quantity']);
+                return $ticket->setCount($row['ticket_quantity']);
             }
         );
     }

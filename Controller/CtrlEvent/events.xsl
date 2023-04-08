@@ -17,7 +17,7 @@
             padding: 8px;
             border: 1px solid #ddd;
           }
-          th {
+          th { 
             font-weight: bold;
           }
           h2,small {

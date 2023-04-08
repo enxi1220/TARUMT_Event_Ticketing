@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'Organizer Name',
             'Organizer Phone',
             'Organizer Mail',
-        ];
+        ]; 
 
         // xpath 
         $data = [];
