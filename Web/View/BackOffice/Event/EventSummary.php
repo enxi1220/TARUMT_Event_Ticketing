@@ -11,12 +11,15 @@ require '../../Layout.php';
       <a class="btn btn-primary btn-lg btn-floating float-end" title="Add" href="EventCreate.php" role="button">
         <i class="fas fa-plus"></i>
       </a>
+      <button id="btn-activate" class="btn btn-secondary btn-lg btn-floating float-end me-4" title="Export CSV" onclick="exportEventInCSV()">
+      <i class="fas fa-file-csv fs-4"></i>
+      <button id="btn-activate" class="btn btn-secondary btn-lg btn-floating float-end me-4" title="Export PDF" onclick="exportEventInPDF()">
+    <i class="fas fa-file-pdf fs-4"></i>
+  </button>
     </div>
   </div>
 
-  <button id="btn-activate" class="btn btn-secondary btn-floating" title="Export" onclick="exportEvent()">
-    <i class="fas fa-file-csv fs-6"></i>
-  </button>
+  
 
   <table id="event-summary" class="table table-striped w-100">
     <thead>

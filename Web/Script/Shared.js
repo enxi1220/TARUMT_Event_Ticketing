@@ -90,7 +90,8 @@ function get(url, data, successHandler, errorHandler) {
         Swal.fire({
           icon: 'success',
           title: 'Success...',
-          html: '<pre>' + success + '</pre>'
+          html: '<pre>' + success + '</pre>',
+          showConfirmButton: false
         })
       }
     },

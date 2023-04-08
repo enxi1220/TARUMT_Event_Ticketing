@@ -44,6 +44,7 @@ class Event
     private Category $category;
     private $tickets = array();
     private $posterPath;
+    private $ticketQtySold;
 
     public function __construct()
     {
@@ -187,6 +188,11 @@ class Event
     public function getPosterPath()
     {
         return $this->posterPath;
+    }
+
+    public function getTicketQtySold()
+    {
+        return $this->ticketQtySold;
     }
 
     public function setEventId($eventId)
@@ -360,6 +366,12 @@ class Event
     public function setTickets($tickets)
     {
         $this->tickets = $tickets;
+        return $this;
+    }
+
+    public function setTicketQtySold($ticketQtySold)
+    {
+        $this->ticketQtySold = $ticketQtySold;
         return $this;
     }
 

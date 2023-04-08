@@ -15,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $ticket = json_decode($_POST['ticket']);
 
+        $event = new Event();
+        $event->setEventId($ticket->eventId);
+
         $vip = new TicketVIP;
-        $vip
-            ->setRequestedAmount($ticket->vipTicketQty)
-            ->setEventId($ticket->eventId);
+        $vip->setRequestedAmount($ticket->vipTicketQty);
 
         $std = new TicketStandard;
         $std->setRequestedAmount($ticket->stdTicketQty);
@@ -26,11 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bgt = new TicketBudget;
         $bgt->setRequestedAmount($ticket->bgtTicketQty);
 
-        $result =  ReadNewQuantity::Read($vip, $std, $bgt);
+        $result = ReadNewQuantity::Read($event,$vip, $std, $bgt);
 
         echo "Please proceed with payment to complete transaction.";
 
     } catch (Throwable $e) {
+
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         echo $e->getMessage();
         // echo $e;

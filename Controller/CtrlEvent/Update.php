@@ -5,7 +5,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Update.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
-//in progress, no done yet
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         if (!isset($_POST['event'])) {
