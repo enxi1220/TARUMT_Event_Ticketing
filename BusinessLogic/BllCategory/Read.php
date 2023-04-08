@@ -7,18 +7,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/Poste
 
 class Read {
 
-    public static function Read(Event $event) {
+    public static function Read(Category $category) {
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
-                function (DataAccess $dataAccess) use ($event) {
-                    return Read::ReadCategory($dataAccess, $event);
+                function (DataAccess $dataAccess) use ($category) {
+                    return Read::ReadCategory($dataAccess, $category);
                 }
         );
 
         return $result;
     }
 
-    private static function ReadCategory(DataAccess $dataAccess, $event) {
+    private static function ReadCategory(DataAccess $dataAccess, $category) {
         return $dataAccess->Reader(
                         "SELECT 
                     c.category_id,
@@ -34,10 +34,10 @@ class Read {
                     AND c.name = IF(:name IS NULL, c.name, :name)
                     AND c.status = IF(:status IS NULL, c.status, :status)
                 ORDER BY c.category_id DESC",
-                        function (PDOStatement $pstmt) use ($event) {
-                            $pstmt->bindValue(":category_id", $event->getCategoryId(), PDO::PARAM_INT);
-                            $pstmt->bindValue(":name", $event->getCategory()->getName(), PDO::PARAM_STR);
-                            $pstmt->bindValue(":status", $event->getCategory()->getStatus(), PDO::PARAM_STR);
+                        function (PDOStatement $pstmt) use ($category) {
+                            $pstmt->bindValue(":category_id", $category->getCategoryId(), PDO::PARAM_INT);
+                            $pstmt->bindValue(":name", $category->getName(), PDO::PARAM_STR);
+                            $pstmt->bindValue(":status", $category->getStatus(), PDO::PARAM_STR);
                         },
                         function ($row) {
                             $category = new Category();
