@@ -126,48 +126,6 @@ class Create
         }
 
         return $allTickets;
-
-        // foreach ($tickets as $ticket) {
-        //     for ($i = 0; $i < $ticket['amount']; $i++) {
-        //         $dataAccess->NonQuery(
-        //             "UPDATE ticket SET 
-        //                 status = ?, 
-        //                 updated_by = ?, 
-        //                 updated_date = ?,
-        //                 owner = ?
-        //             WHERE LEFT(ticket_no, 3) = ?",
-        //             function (PDOStatement $pstmt) use ($booking, $ticket) {
-        //                 $pstmt->bindValue(1, TicketStatusConstant::SOLD, PDO::PARAM_STR);
-        //                 $pstmt->bindValue(2, $booking->getCreatedBy(), PDO::PARAM_STR);
-        //                 $pstmt->bindValue(3, $booking->getCreatedDate(), PDO::PARAM_STR);
-        //                 $pstmt->bindValue(4, $booking->getCreatedBy(), PDO::PARAM_STR);
-        //                 $pstmt->bindValue(5, $ticket['prefix'], PDO::PARAM_STR);
-        //             }
-        //         );
-        //     }
-        // }
-
-
-        // for ($i = 0; $i < $ticketVIP->getRequestedAmount(); $i++) {
-        //     $dataAccess->NonQuery(
-        //         "UPDATE ticket SET 
-        //             status = ?, 
-        //             updated_by = ?, 
-        //             updated_date = ?,
-        //             owner = ?
-        //         WHERE LEFT(ticket_no, 3) = ?
-        //         AND status = ?",
-        //         function (PDOStatement $pstmt) use ($booking) {
-        //             $pstmt->bindValue(1, TicketStatusConstant::SOLD, PDO::PARAM_STR);
-        //             $pstmt->bindValue(2, $booking->getCreatedBy(), PDO::PARAM_STR);
-        //             $pstmt->bindValue(3, $booking->getCreatedDate(), PDO::PARAM_STR);
-        //             $pstmt->bindValue(4, $booking->getCreatedBy(), PDO::PARAM_STR);
-        //             $pstmt->bindValue(5, PrefixConstant::TICKETVIP, PDO::PARAM_STR);
-        //             $pstmt->bindValue(6, TicketStatusConstant::NEW, PDO::PARAM_STR);
-        //         }
-
-        //     );
-        // }
     }
 
     private static function CreateBookingDetail(DataAccess $dataAccess, Booking $booking, $tickets)
