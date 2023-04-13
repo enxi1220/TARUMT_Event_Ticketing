@@ -89,12 +89,12 @@ class ReadNewQuantity
 
         foreach ($result as $ticket) {
             if (!$ticket->isAvailable($ticket)) {
-                $err .= "There are only {$ticket->getCount()} {$ticket->type()} tickets left.\n";
+                $err .= "Insufficient tickets. {$ticket->getCount()} {$ticket->type()} ticket(s) left.\n";
             }
         }
 
         if (!empty($err)) {
-            throw new Exception("Sorry. $err");
+            throw new Exception("$err");
         }
     }
 }

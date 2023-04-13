@@ -26,7 +26,7 @@ function submitData(name, value) {
   }
 }
 
-// successHandler & errorHandler optional
+// successHandler & afterSuccess & errorHandler optional
 function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
   var form = new FormData();
   for (let item of dataArr) {

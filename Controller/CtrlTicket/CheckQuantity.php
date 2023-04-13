@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
     try{
         if (!isset($_POST['ticket'])) {
-            throw new Exception("Please fill in quantity");
+            throw new Exception("Please fill in quantity.");
         }
 
         $ticket = json_decode($_POST['ticket']);

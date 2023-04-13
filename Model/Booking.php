@@ -83,7 +83,7 @@ class Booking
         return $this;
     }
 
-    public function setBookingNo($bookingNo): self
+    public function setBookingNo($bookingNo = null): self
     {
         $this->bookingNo = $bookingNo == null ? UniqueNoHelper::RandomCode($this->prefix()) : $bookingNo;
         return $this;

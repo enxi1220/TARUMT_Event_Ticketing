@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`booking`(
 );
 
 CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`booking_detail`(
-	`booking_detail_id` int NOT NULL,
+	`booking_detail_id` int NOT NULL AUTO_INCREMENT,
 	`booking_id` int NOT NULL,
 	`ticket_id` int NOT NULL,
 	PRIMARY KEY (`booking_detail_id`),
