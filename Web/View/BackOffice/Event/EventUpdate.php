@@ -37,9 +37,6 @@ require '../../Layout.php';
                 <label class="form-label" for="drop-down-category">Event Category*</label>
                 <select class="form-outline form-control" id="drop-down-category" name="Category" required>
                     <option disable selected hidden></option>
-                    <!-- todo: rm cat hardcode -->
-                    <option value="1">Festival</option>
-                    <option value="2">Competition</option>
                 </select>
                 <div class="invalid-feedback">Required</div>
             </div>

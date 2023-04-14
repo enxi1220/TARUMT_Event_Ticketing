@@ -14,7 +14,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/BookingD
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllTicket/ReadNewQuantity.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 
-
 class Create
 {
     public static function Create(Booking $booking, TicketVIP $ticketVIP, TicketStandard $ticketStandard, TicketBudget $ticketBudget)

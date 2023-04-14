@@ -10,6 +10,16 @@ $(document).ready(function () {
         }
     );
 
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
+        [],
+        function (success) {
+            var category = JSON.parse(success);
+            console.log(category);
+            displayCategory(category);
+        }
+    )
+
     $(`#form-edit-event`).submit(function (event) {
         event.preventDefault();
         if ($(`#form-edit-event`)[0].checkValidity()) {
@@ -52,6 +62,15 @@ function preparePostData() {
     });
 
     return event;
+}
+
+function displayCategory(category){
+    for (var c in category) {
+        $(`#drop-down-category`).append($("<option>", {
+            value: category[c].categoryId,
+            text: category[c].name
+        }));
+    }
 }
 
 function display(event) {
