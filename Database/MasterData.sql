@@ -17,14 +17,14 @@ VALUES
 ('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'active', 'system', NOW()),
 ('admin06', 'password06', 'admin', 'Sarah Lee', '555-1234', 'admin06@example.com', 'active', 'system', NOW());
 
-INSERT INTO category (name, description, status, created_by, created_date)
+INSERT INTO category (name, description, created_by, created_date)
 VALUES
-('Concert', 'Live music performance', 'active', 'admin', NOW()),
-('Sports', 'Sports event', 'active', 'admin', NOW()),
-('Theater', 'Drama and acting performance', 'active', 'admin', NOW()),
-('Exhibition', 'Art exhibition and showcase', 'active', 'admin', NOW()),
-('Conference', 'Meeting or discussion of experts', 'active', 'admin', NOW()),
-('Seminar', 'Educational and instructional event', 'active', 'admin', NOW());
+('Concert', 'Live music performance', 'admin', NOW()),
+('Sports', 'Sports event', 'admin', NOW()),
+('Theater', 'Drama and acting performance','admin', NOW()),
+('Exhibition', 'Art exhibition and showcase', 'admin', NOW()),
+('Conference', 'Meeting or discussion of experts', 'admin', NOW()),
+('Seminar', 'Educational and instructional event', 'admin', NOW());
 
 INSERT INTO event (event_no, category_id, name, poster, venue, register_start_date, register_end_date, event_start_date, event_end_date, vip_ticket_qty, standard_ticket_qty, budget_ticket_qty, vip_ticket_price, standard_ticket_price, budget_ticket_price, description, organizer_name, organizer_phone, organizer_mail, status, created_by, created_date)
 VALUES

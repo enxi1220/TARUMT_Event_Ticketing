@@ -2,13 +2,15 @@
 /**
  * Description of Category
  *
- * @author enxil
+ * @author Ong Yi Chween
  */
+
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 class Category {
     private $categoryId;
     private $name;
     private $description;
-    private $status;
     private $createdDate;
     private $createdBy;
     private $updatedDate;
@@ -28,10 +30,6 @@ class Category {
 
     public function getDescription() {
         return $this->description;
-    }
-
-    public function getStatus() {
-        return $this->status;
     }
 
     public function getCreatedDate() {
@@ -62,11 +60,6 @@ class Category {
 
     public function setDescription($description) {
         $this->description = $description;
-        return $this;
-    }
-
-    public function setStatus($status) {
-        $this->status = $status;
         return $this;
     }
 

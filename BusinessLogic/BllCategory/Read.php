@@ -24,7 +24,6 @@ class Read {
                     c.category_id,
                     c.name,
                     c.description,
-                    c.status,
                     c.created_by,
                     c.created_date,
                     c.updated_by,
@@ -32,12 +31,10 @@ class Read {
                 FROM category c
                 WHERE c.category_id = IF(:category_id IS NULL, c.category_id, :category_id)
                     AND c.name = IF(:name IS NULL, c.name, :name)
-                    AND c.status = IF(:status IS NULL, c.status, :status)
                 ORDER BY c.category_id DESC",
                         function (PDOStatement $pstmt) use ($category) {
                             $pstmt->bindValue(":category_id", $category->getCategoryId(), PDO::PARAM_INT);
                             $pstmt->bindValue(":name", $category->getName(), PDO::PARAM_STR);
-                            $pstmt->bindValue(":status", $category->getStatus(), PDO::PARAM_STR);
                         },
                         function ($row) {
                             $category = new Category();
@@ -46,7 +43,6 @@ class Read {
                                     ->setCategoryId($row['category_id'])
                                     ->setName($row['name'])
                                     ->setDescription($row['description'])
-                                    ->setStatus($row['status'])
                                     ->setCreatedBy($row['created_by'])
                                     ->setCreatedDate($row['created_date'])
                                     ->setUpdatedBy($row['updated_by'])

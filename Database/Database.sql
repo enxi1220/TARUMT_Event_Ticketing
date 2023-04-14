@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`category`(
 	`category_id` int NOT NULL AUTO_INCREMENT, 
 	`name` varchar(150) NOT NULL,
 	`description` varchar(250) NOT NULL,
-	`status` varchar(50) NOT NULL,
 	`created_by` varchar(20) NOT NULL,
 	`created_date` datetime NOT NULL,
 	`updated_by` varchar(20) DEFAULT NULL,
