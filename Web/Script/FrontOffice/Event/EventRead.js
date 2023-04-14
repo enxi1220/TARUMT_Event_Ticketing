@@ -194,9 +194,12 @@ function display(event) {
 
                         </div>
                         <hr class="my-4 mx-4">
-                        <div class="row d-flex align-items-end m-3 mt-0 mb-4">
+                        <div class="row d-flex m-3 mt-0 mb-4">
+                                <h5 class="card-title mb-3 d-flex justify-content-between">Organizer Details 
+                                <i class="fa-regular fa-heart fs-3"></i>
+                                </h5>
+                               
                             <div class="col-md-7">
-                                <h5 class="card-title mb-3">Organizer Details</h5>
                                 <p class="card-text"><i class="fas fa-user me-2"></i>${event.organizerName}</p>
                                 <p class="card-text"><i class="fas fa-phone me-2"></i>${event.organizerPhone}</p>
                                 <p class="card-text"><i class="far fa-envelope me-2"></i>${event.organizerMail}</p>
