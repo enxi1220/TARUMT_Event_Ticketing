@@ -35,7 +35,9 @@ class Read
                 t.updated_date,
                 t.updated_by,
                 e.event_no,
-                e.name
+                e.name,
+                e.event_start_date,
+                e.poster
             FROM ticket t
             JOIN event e ON t.event_id = e.event_id 
             WHERE t.event_id = IF(:ticket_id IS NULL, t.ticket_id, :ticket_id)
@@ -59,7 +61,9 @@ class Read
                 $event
                     ->setEventId($row['event_id'])
                     ->setEventNo($row['event_no'])
-                    ->setName($row['name']);
+                    ->setName($row['name'])
+                    ->setEventStartDate($row['event_start_date'])
+                    ->setPoster($row['poster']);
 
                 return $ticket
                     ->setTicketId($row['ticket_id'])
