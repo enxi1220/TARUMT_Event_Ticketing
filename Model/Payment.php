@@ -3,6 +3,7 @@
 /**
  * @author Ong Wi Lin
  */
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPayment.php";
 
 
 class Payment implements IPayment {
@@ -14,15 +15,17 @@ class Payment implements IPayment {
     private $createdDate;
     private $paymentDetails;
 
-    public function __construct($paymentId, $paymentNo, $bookingId, $paymentType, $price, $createdDate, $paymentDetails) {
-        $this->paymentId = $paymentId;
-        $this->paymentNo = $paymentNo;
-        $this->bookingId = $bookingId;
-        $this->paymentType = $paymentType;
-        $this->price = $price;
-        $this->createdDate = $createdDate;
-        $this->paymentDetails = $paymentDetails;
+    public function __construct() {
     }
+//    public function __construct($paymentId, $paymentNo, $bookingId, $paymentType, $price, $createdDate, $paymentDetails) {
+//        $this->paymentId = $paymentId;
+//        $this->paymentNo = $paymentNo;
+//        $this->bookingId = $bookingId;
+//        $this->paymentType = $paymentType;
+//        $this->price = $price;
+//        $this->createdDate = $createdDate;
+//        $this->paymentDetails = $paymentDetails;
+//    }
 
     public function getPaymentId() {
         return $this->paymentId;
@@ -30,6 +33,7 @@ class Payment implements IPayment {
 
     public function setPaymentId($paymentId) {
               $this->paymentId = $paymentId;
+              return $this;
     }
 
     public function getPaymentNo() {
@@ -38,6 +42,7 @@ class Payment implements IPayment {
 
     public function setPaymentNo($paymentNo) {
         $this->paymentNo = $paymentNo;
+        return $this;
     }
 
     public function getBookingId() {
@@ -46,6 +51,7 @@ class Payment implements IPayment {
 
     public function setBookingId($bookingId) {
         $this->bookingId = $bookingId;
+        return $this;
     }
 
     public function getPaymentType() {
@@ -54,6 +60,7 @@ class Payment implements IPayment {
 
     public function setPaymentType($paymentType) {
         $this->paymentType = $paymentType;
+        return $this;
     }
 
     public function getPrice() {
@@ -62,6 +69,7 @@ class Payment implements IPayment {
 
     public function setPrice($price) {
         $this->price = $price;
+        return $this;
     }
 
     public function getCreatedDate() {
@@ -70,6 +78,7 @@ class Payment implements IPayment {
 
     public function setCreatedDate($createdDate) {
         $this->createdDate = $createdDate;
+        return $this;
     }
 
     public function getPaymentDetails() {
@@ -78,5 +87,6 @@ class Payment implements IPayment {
 
     public function setPaymentDetails($paymentDetails) {
         $this->paymentDetails = $paymentDetails;
+        return $this;
     }
 }
