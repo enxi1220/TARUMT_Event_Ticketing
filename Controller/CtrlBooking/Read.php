@@ -20,15 +20,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $bookingDetails = array();
 
-        foreach ($result->getBookingDetails() as $bookingDetail) {
-            $ticket = $bookingDetail->getTicket();
+//        foreach ($result->getBookingDetails() as $bookingDetail) {
+//            $ticket = $bookingDetail->getTicket();
+//            $bookingDetails[] = array(
+//                'ticketNo' => $ticket->getTicketNo(),
+////                'desc' => $ticket->description(),
+////                'type' => $ticket->type(),
+//                
+//            );
+//        }
+        
+        foreach ($result->getPayment()->getPaymentDetails() as $paymentDetail) {
+           
+//            $ticket = $bookingDetail->getTicket();
             $bookingDetails[] = array(
-                'ticketNo' => $ticket->getTicketNo(),
+                'ticketNo' => $paymentDetail->getTicketNo(),
+                'ticketPrice' => $paymentDetail->getTicketPrice()
 //                'desc' => $ticket->description(),
 //                'type' => $ticket->type(),
                 
             );
         }
+        
+        
 
         $output = array(
             'bookingId' => $result->getBookingId(),
@@ -38,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'createdBy' => $result->getCreatedBy(),
             'createdDate' => $result->getCreatedDate(),
             'ticketCount' => $result->getTicketCount(),
-            'bookingDetails' => $bookingDetails,
+            'bookingDetails' => $bookingDetails, 
+            'price' => $result->getPayment()->getPrice(),
             'customerMail' => $result->getUser()->getMail(),
             'customerPhone' => $result->getUser()->getPhone(),
             'eventNo' => $result->getEvent()->getEventNo(),

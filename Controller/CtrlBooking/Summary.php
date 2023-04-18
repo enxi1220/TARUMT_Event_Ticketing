@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         'createdBy' => $booking->getCreatedBy(),
         'createdDate' => $booking->getCreatedDate(),
         'ticketCount' => $booking->getTicketCount(),
-        
         'eventNo' => $booking->getEvent()->getEventNo(),
         'eventName' => $booking->getEvent()->getName(),
         'poster' => $booking->getEvent()->getPoster(),

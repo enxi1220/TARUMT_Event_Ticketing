@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`user`(
 	`name` varchar(150) NOT NULL,
 	`phone` varchar(15) NOT NULL,
 	`mail` varchar(50) NOT NULL,
+	`otp` int(6) NULL,
 	`status` varchar(50) NOT NULL,
 	`created_by` varchar(20) NOT NULL,
 	`created_date` datetime NOT NULL,

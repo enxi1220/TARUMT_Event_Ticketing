@@ -21,20 +21,37 @@ function display(booking) {
      var ticket;
      booking.bookingDetails.forEach(function (bookingDetail, index) {
     
-          ticket = $(`  <div class="row mb-4 px-5">
-          <div class="col-md-1">
-                    ${index+1} 
-                </div>
-                <div class="col-md-7">
-                  ${bookingDetail.ticketNo} 
-                </div>
-                <div class="col-md-4">
-                  ${bookingDetail.price} 
-                </div>
-            </div>`);
+          ticket = $(`  
+<div class="row mb-4 px-5">
+    <div class="col-md-1 d-flex justify-content-center border-end">
+        ${index+1} 
+    </div>
+    <div class="col-md-7 border-end">
+        ${bookingDetail.ticketNo} 
+    </div>
+    <div class="col-md-4">
+        ${bookingDetail.ticketPrice} 
+    </div>
+</div>
+`);
      
       $(`.ticket-booked`).append(ticket);
     });
+    
+     ticketPrice = $(`<hr/>
+    <div class="row mb-4 px-5">
+              
+                <div class="col-md-8 d-flex justify-content-center">
+                    Total price
+                </div>
+                <div class="col-md-4 border-start">
+    ${booking.price} 
+                </div>
+            </div>
+`);
+     
+      $(`.ticket-booked`).append(ticketPrice);
+    
     
     
     $(`#txt-booking-no`).val(booking.bookingNo);

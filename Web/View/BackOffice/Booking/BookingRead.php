@@ -2,14 +2,17 @@
 require '../../Layout.php';
 ?>
 <!-- author: Vinnie Chin Loh Xin -->
-<div class="mx-5 p-5">
+<div class="mx-5 p-4">
     <div class="row">
         <div class="col">
-            <h2 class="float-start mb-5">View Booking</h2>
+            <h2 class="float-start mb-4">View Booking</h2>
         </div>
+          <div class="col d-flex justify-content-end mb-4">
+        <a class="btn btn-secondary btn-floating float-end" title="Back" href="BookingSummary.php" role="button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
     </div>
-
-
+    </div>
     <!-- Booking Information -->
     <div class="row">
         <div class="col-md-6 mb-4">
@@ -33,11 +36,12 @@ require '../../Layout.php';
 
 
 
-    <fieldset class="mb-3 border p-3">
+    <fieldset class="my-3 border p-3">
         <legend class="w-auto">Ticket Booked</legend>
         <!-- Price -->
         <div class="ticket-booked">
             <!--loop-->
+            
         </div>
 
 
@@ -45,7 +49,7 @@ require '../../Layout.php';
 
     <!-- Event Detail -->
     <fieldset class="mb-3 border p-3">
-        <legend class="w-auto">Event Detail</legend>
+        <legend class="w-auto">Event Booked</legend>
 
         <div class="row mb-4 mx-5 px-5">
             <div class="col-md-4 d-flex justify-content-center">
@@ -79,13 +83,7 @@ require '../../Layout.php';
         </div>
     </fieldset>
 
-
-    <!-- Action -->
-    <div class="col d-flex justify-content-end mb-4">
-        <a class="btn btn-secondary btn-floating float-end" title="Back" href="EventSummary.php" role="button">
-            <i class="fas fa-arrow-left"></i>
-        </a>
-    </div>
+  
 </div>
 
 <?php

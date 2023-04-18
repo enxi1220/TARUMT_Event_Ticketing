@@ -13,7 +13,9 @@ class Payment implements IPayment {
     private $paymentType;
     private $price;
     private $createdDate;
-    private $paymentDetails;
+//    private $paymentDetails;
+    
+    private $paymentDetails = array();
 
     public function __construct() {
     }
