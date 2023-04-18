@@ -1,38 +1,41 @@
 //author: Vinnie Chin Loh Xin
 
 $(document).ready(function () {
-    
+
     var categories;
-    get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
+
+
+    $.when(get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
             null,
             function (success) {
-//                   console.log(JSON.parse(success).length);
                 categories = JSON.parse(success);
                 displayCategories(categories)
             }
-    )
-    
-    get(
-            '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
-            null,
-            function (success) {
-                // console.log(success);
-                var events = JSON.parse(success);
-                displayEventsByCategory(events, categories);
-            }
-    )
+    )).done(function () {
+        get(
+                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
+                null,
+                function (success) {
+                    var events = JSON.parse(success);
+                    displayEventsByCategory(events, categories);
+                }
+        )
+    });
+
+
 });
 
 function displayEventsByCategory(events, categories) {
-  events.forEach(function (event) {
-    // Find the category for this event
-    var category = categories.find(function (category) {
-      return category.categoryId === event.categoryId;
-    });
+    events.forEach(function (event) {
+        // Find the category for this event
 
-    if (category) {
-      // Append the event card to the correct pill content
-      var card = $(`<div class="col-md-3 my-3 mx-2">
+        var category = categories.find(function (category) {
+            return category.categoryId === event.categoryId;
+        });
+
+        if (category) {
+            // Append the event card to the correct pill content
+            var card = $(`<div class="col-md-3 my-3 mx-2">
         <div class="card" style="background-color:#ffffff;">
           <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
             <img src="${event.poster}" class="img-fluid" />
@@ -47,20 +50,20 @@ function displayEventsByCategory(events, categories) {
           <div class="card-footer">Event Date: ${new Date(event.eventStartDate).toLocaleDateString()}</div>
         </div>
       </div>`);
-        
-      $(`#${category.name}-pill .row`).append(card);
-    }
-  });
+
+            $(`#${category.name}-pill .row`).append(card);
+        }
+    });
 }
 
 
 
 
 function displayCategories(categories) {
-  // Get all the unique event categories
-  categories.forEach(function (category, index) {
-        
-        
+    // Get all the unique event categories
+    categories.forEach(function (category, index) {
+
+
         var pillNav = $(`
   <li class="nav-item" role="presentation">
                 <a
@@ -78,8 +81,8 @@ function displayCategories(categories) {
 `);
         // Add the card to the row
         $('.nav-pills').append(pillNav);
-        
-        
+
+
         var pillContent = $(`
         <div
                 class="tab-pane fade show ${index === 0 ? "active" : ""} p-5"
@@ -94,13 +97,13 @@ function displayCategories(categories) {
 
             </div>
 `);
-          $('.tab-content').append(pillContent);
-        
+        $('.tab-content').append(pillContent);
+
     });
-    
+
 }
-  
-  
+
+
 //  const categories = [...new Set(events.map((event) => event.category))];
 //
 //  // Generate the pill nav items
@@ -124,7 +127,7 @@ function displayCategories(categories) {
 //    )
 //    .join("");
 
-  // Append the pill nav items
+// Append the pill nav items
 //  $("#event-categories").html(navItems);
 //
 //  // Generate the event cards for each category

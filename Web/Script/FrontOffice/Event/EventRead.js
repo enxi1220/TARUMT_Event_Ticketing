@@ -5,12 +5,12 @@ $(document).ready(function () {
             '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
             {eventId: new URLSearchParams(window.location.search).get('eventId')},
             function (success) {
+                console.log(success)
                 var event = JSON.parse(success);
                 display(event);
             }
     )
 });
-
 //function display(event) {
 //    const html = `<div class="container mt-5"> <h1 class="mb-3">Event Details</h1> <div class="row"> <div class="col-md-4 mb-3"> <img src="${event.poster}" alt="${event.name}" class="img-fluid" /> </div> <div class="col-md-8"> <h2>${event.name}</h2> <div class="mb-3"> <strong>Event ID:</strong> ${event.eventId} </div> <div class="mb-3"> <strong>Category:</strong> ${event.category.name} </div> <div class="mb-3"> <strong>Venue:</strong> ${event.venue} </div> <div class="mb-3"> <strong>Event Dates:</strong> ${new Date(event.eventStartDate).toDateString()} - ${new Date(event.eventEndDate).toDateString()} </div> <div class="mb-3"> <strong>Registration Dates:</strong> ${new Date(event.registerStartDate).toDateString()} - ${new Date(event.registerEndDate).toDateString()} </div> <div class="mb-3"> <strong>Description:</strong> ${event.description} </div> <div class="mb-3"> <strong>Organizer Name:</strong> ${event.organizerName} </div> <div class="mb-3"> <strong>Organizer Phone:</strong> ${event.organizerPhone} </div> <div class="mb-3"> <strong>Organizer Email:</strong> ${event.organizerMail} </div> <div class="mb-3"> <strong>Status:</strong> ${event.status} </div> </div> </div> </div>`;
 //    document.querySelector('body').innerHTML = html;
@@ -194,9 +194,12 @@ function display(event) {
 
                         </div>
                         <hr class="my-4 mx-4">
-                        <div class="row d-flex align-items-end m-3 mt-0 mb-4">
+                        <div class="row d-flex m-3 mt-0 mb-4">
+                                <h5 class="card-title mb-3 d-flex justify-content-between">Organizer Details 
+                                <i class="fa-regular fa-heart fs-3"></i>
+                                </h5>
+                               
                             <div class="col-md-7">
-                                <h5 class="card-title mb-3">Organizer Details</h5>
                                 <p class="card-text"><i class="fas fa-user me-2"></i>${event.organizerName}</p>
                                 <p class="card-text"><i class="fas fa-phone me-2"></i>${event.organizerPhone}</p>
                                 <p class="card-text"><i class="far fa-envelope me-2"></i>${event.organizerMail}</p>

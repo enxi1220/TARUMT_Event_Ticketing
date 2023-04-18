@@ -3,6 +3,7 @@
 /* 
  * Author : Ong Wi Lin
  */
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPaymentDetail.php";
 
 class PaymentDetail implements IPaymentDetail {
     private $paymentDetailId;
@@ -25,6 +26,7 @@ class PaymentDetail implements IPaymentDetail {
 
     public function setPaymentDetailId($paymentDetailId) {
         $this->paymentDetailId = $paymentDetailId;
+        return $this;
     }
 
     public function getPaymentId() {
@@ -33,6 +35,7 @@ class PaymentDetail implements IPaymentDetail {
 
     public function setPaymentId($paymentId) {
         $this->paymentId = $paymentId;
+        return $this;
     }
 
     public function getTicketNo() {
@@ -41,6 +44,7 @@ class PaymentDetail implements IPaymentDetail {
 
     public function setTicketNo($ticketNo) {
         $this->ticketNo = $ticketNo;
+        return $this;
     }
 
     public function getEventName() {
@@ -49,6 +53,7 @@ class PaymentDetail implements IPaymentDetail {
 
     public function setEventName($eventName) {
         $this->eventName = $eventName;
+        return $this;
     }
 
     public function getTicketPrice() {
@@ -57,5 +62,6 @@ class PaymentDetail implements IPaymentDetail {
 
     public function setTicketPrice($ticketPrice) {
         $this->ticketPrice = $ticketPrice;
+        return $this;
     }
 }
