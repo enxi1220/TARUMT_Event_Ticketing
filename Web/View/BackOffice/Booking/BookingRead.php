@@ -15,7 +15,7 @@ require '../../Layout.php';
     </div>
     <!-- Booking Information -->
     <div class="row">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-3">
             <label class="form-label" for="txt-booking-no">Booking No</label>
             <input type="text" id="txt-booking-no" minlength="150" class="form-control" readonly />
 
@@ -54,12 +54,15 @@ require '../../Layout.php';
         <div class="row mb-4 mx-5 px-5">
             <div class="col-md-4 d-flex justify-content-center">
 
-                <img id="event-poster" class="img-fluid rounded-0 w-50">
+                
+                <img id="event-poster" class="img-fluid rounded-0 w-50" style="object-fit: cover;">
 
             </div>
 
 
             <div class="col-md-8">
+                
+                    <h3 id="booking-event-no" class="mb-2"></h3>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="txt-event-name">Event Name</label>

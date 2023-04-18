@@ -22,7 +22,7 @@ function display(booking) {
      booking.bookingDetails.forEach(function (bookingDetail, index) {
     
           ticket = $(`  
-<div class="row mb-4 px-5">
+<div class="row mb-3 px-5">
     <div class="col-md-1 d-flex justify-content-center border-end">
         ${index+1} 
     </div>
@@ -39,7 +39,7 @@ function display(booking) {
     });
     
      ticketPrice = $(`<hr/>
-    <div class="row mb-4 px-5">
+    <div class="row mb-3 px-5">
               
                 <div class="col-md-8 d-flex justify-content-center">
                     Total price
@@ -56,9 +56,11 @@ function display(booking) {
     
     $(`#txt-booking-no`).val(booking.bookingNo);
     $(`#txt-booking-date`).val(booking.createdDate);
+    
    
     $('#txt-participant').val(booking.createdBy);
     $('#txt-phone').val(booking.customerPhone);
+    $('#booking-event-no').text(booking.eventNo);
     $('#event-poster').attr('src', booking.posterPath);
     $('#txt-event-name').val(booking.eventName);
     $('#txt-event-venue').val(booking.venue);

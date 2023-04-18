@@ -105,7 +105,6 @@ FROM booking b
 JOIN event e ON b.event_id = e.event_id
 JOIN user u ON b.user_id = u.user_id
 JOIN booking_detail bd ON b.booking_id = bd.booking_id
-JOIN ticket t ON bd.ticket_id = t.ticket_id
 JOIN (
   SELECT 
     payment_id,
