@@ -1,0 +1,16 @@
+# Author: Lim En Xi
+
+# Handle 400 errors
+ErrorDocument 400 /TARUMT_Event_Ticketing/Web/View/CustomError/BadRequest.php
+
+# Handle 401 errors
+ErrorDocument 401 /TARUMT_Event_Ticketing/Web/View/CustomError/Unauthorized.php
+
+# Handle 403 errors
+ErrorDocument 403 /TARUMT_Event_Ticketing/Web/View/CustomError/Forbidden.php
+
+# Handle 404 errors
+ErrorDocument 404 /TARUMT_Event_Ticketing/Web/View/CustomError/NotFound.php
+
+# Handle 503 errors
+ErrorDocument 503 /TARUMT_Event_Ticketing/Web/View/CustomError/ServiceUnavailable.php
