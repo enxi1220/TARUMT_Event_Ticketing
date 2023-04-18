@@ -1,4 +1,4 @@
-//author: Vinnie Chin Loh Xin
+    //author: Vinnie Chin Loh Xin
 
 $(document).ready(function () {
     
@@ -27,7 +27,7 @@ function stringifyData() {
        
         username: $('#username').val(),
         name: $('#name').val(),
-        email: $('#email').val(),
+        mail: $('#mail').val(),
         phone: $('#phone').val(),
         password: $('#password').val()
     });

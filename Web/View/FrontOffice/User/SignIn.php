@@ -23,14 +23,14 @@ require '../../Layout.php';
                                 <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div class="card-body p-4 p-lg-5 text-black">
 
-                                        <form class="needs-validation" novalidate>
+                                        <form id="sign-in-form" method="POST" class="needs-validation" novalidate>
                                             <h1 class="mb-3 pb-3">Sign In</h1>
 
 
                                             <div class="row">
                                                 <div class="col-md-12 mb-4">
                                                     <div class="form-outline">
-                                                        <input type="email" id="email" class="form-control form-control-lg" required />
+                                                        <input type="email" id="signInMail" class="form-control form-control-lg" required />
                                                         <label class="form-label" for="email">Email address</label>
                                                         <div class="invalid-feedback">Please enter a valid email address.</div>
                                                     </div>
@@ -38,7 +38,7 @@ require '../../Layout.php';
 
                                                 <div class="col-md-12  mb-4">
                                                     <div class="form-outline">
-                                                        <input type="password" id="password" class="form-control form-control-lg" required />
+                                                        <input type="password" id="signInPwd" class="form-control form-control-lg" required />
                                                         <label class="form-label" for="password">Password</label>
                                                         <div class="invalid-feedback">Please enter your password.</div>
                                                     </div>
@@ -69,6 +69,8 @@ require '../../Layout.php';
         <?php
         require '../../Footer.php';
         ?>
+        <script src="<?php $_SERVER['DOCUMENT_ROOT'] ?>/TARUMT_Event_Ticketing/Web/Script/FrontOffice/User/UserRead.js" type="text/javascript"></script>
+
     </body>
 </html>
 

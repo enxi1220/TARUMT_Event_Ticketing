@@ -63,7 +63,7 @@ require '../../Layout.php';
 
                                                 <div class="col-md-6 mb-3">
                                                     <div class="form-outline">
-                                                        <input type="email" id="email" class="form-control" required />
+                                                        <input type="email" id="mail" class="form-control" required />
                                                         <label class="form-label" for="email">Email</label>
                                                         <div class="invalid-feedback">Please enter a valid email address.</div>
                                                     </div>

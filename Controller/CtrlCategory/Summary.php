@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         'categoryId' => $category->getCategoryId(),
         'name' => $category->getName(),
         'description' => $category->getDescription(),
-        'status' => $category->getStatus(),
         'createdDate' => $category->getCreatedDate(),
         'createdBy' => $category->getCreatedBy(),
         'updatedDate' => $category->getUpdatedDate(),

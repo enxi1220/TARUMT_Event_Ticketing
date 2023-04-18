@@ -9,6 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHel
 
 class User {
 
+    private $userId;
     private $username;
     private $password;
     private $name;
@@ -19,6 +20,25 @@ class User {
     private $createdDate;
     private $updatedBy;
     private $updatedDate;
+    private $userOtp;
+    
+       public function getUserOtp() {
+        return $this->userOtp;
+    }
+
+    public function setUserOtp($userOtp) {
+        $this->userOtp = $userOtp;
+        return $this;
+    }
+    
+      public function getUserId() {
+        return $this->userId;
+    }
+
+    public function setUserId($userId) {
+        $this->userId = $userId;
+        return $this;
+    }
 
     public function getUsername() {
         return $this->username;

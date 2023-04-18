@@ -23,16 +23,16 @@ require '../../Layout.php';
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form id="resetPwd-mail-form">
                   <h1 class="mb-3 pb-3" style="letter-spacing: 1px;">Reset Password</h1>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Enter email you used to register</label>
+                    <input type="email" id="resetPwd-mail" class="form-control form-control-lg" />
+                    <label class="form-label" for="resetPwd-mail">Enter email you used to register</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Get code</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Get code</button>
                   </div>
 
                 </form>
@@ -45,11 +45,65 @@ require '../../Layout.php';
     </div>
   </div>
 </section>
+        
+         <!-- -------------------------------------------------- OTP Modal -------------------------------------------------- -->
+    <div class="modal fade in " id="otp-modal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="otpModalLabel">OTP to reset password</h3>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-3 mb-5">
+                    <form id="otp-form">
+                        <div class="form-outline mt-3">
+                            <input type="text" id="otpNum" class="form-control border-bottom"/>
+                            <label class="form-label" for="otpNum">Enter OTP received in email</label>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------- Reset Password Modal -------------------------------------------------- -->
+    <div class="modal fade" id="resetPwd-modal" tabindex="-1" aria-labelledby="resetPassModalLabel" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="resetPassModalLabel">Reset your password</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reset-pwd-form">
+                        <div class="form-outline mt-3">
+                            <input type="password" id="reset-pwd" class="form-control border-bottom" />
+                            <label class="form-label" for="reset-pwd">New Password</label>
+                            <div class="form-helper"></div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Reset</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
         <?php
         require '../../Footer.php';
         ?>
+        
+        
+        <script src="<?php $_SERVER['DOCUMENT_ROOT'] ?>/TARUMT_Event_Ticketing/Web/Script/FrontOffice/User/UserUpdate.js" type="text/javascript"></script>
+
     </body>
 </html>
 

@@ -26,7 +26,7 @@ $user = new User();
         $user
             ->setUsername($data->username)
             ->setName($data->name)
-            ->setMail($data->email)
+            ->setMail($data->mail)
             ->setPhone($data->phone)
             ->setPassword($data->password)
             ->setCreatedBy($data->createdBy);

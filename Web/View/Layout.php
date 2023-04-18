@@ -29,10 +29,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Events</a>
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Booking</a>
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/Booking/BookingSummary.php">Booking</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -42,33 +42,37 @@ require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-
-
-                <!-- Avatar -->
-                <div class="dropdown">
-                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="https://www.gifcen.com/wp-content/uploads/2022/08/luffy-gif-10.gif" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <a
+          class="btn btn-dark px-3 sign-in-link"
+          href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/SignIn.php"
+          role="button"
+          >Sign In</i
+        ></a>
+        
+                <div class="dropdown profile-dropdown invisible">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <button class=" btn btn-dark btn-floating"><i class="fas fa-user"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end" >
                         <li>
-                            <a class="dropdown-item" href="#">My profile</a>
+                            <a class="dropdown-item" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/UserRead.php">My Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/WishList.php">My Wish List</a>
                         </li>
+                         <li><hr class="dropdown-divider"/></li>
                         <li>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="#" onclick="signOut()">Sign Out</a>
+
                         </li>
                     </ul>
                 </div>
+                
             </div>
             <!-- Right elements -->
         </div>
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
+    
 </body>
 </html>

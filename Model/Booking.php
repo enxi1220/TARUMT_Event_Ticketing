@@ -17,6 +17,7 @@ class Booking
     private $userId;
     private $createdBy;
     private $createdDate;
+    private $ticketCount;
 
     private $bookingDetails = array();
     private User $user;
@@ -56,6 +57,11 @@ class Booking
     {
         return $this->createdDate;
     }
+    
+     public function getTicketCount() 
+    {
+        return $this->ticketCount;
+    }
 
     public function getBookingDetails()
     {
@@ -76,6 +82,8 @@ class Booking
     {
         return $this->event;
     }
+    
+   
 
     public function setBookingId($bookingId): self
     {
@@ -110,6 +118,12 @@ class Booking
     public function setCreatedDate($createdDate = null): self
     {
         $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
+        return $this;
+    }
+   
+    public function setTicketCount($ticketCount): self
+    {
+        $this->ticketCount = $ticketCount;
         return $this;
     }
 
