@@ -38,12 +38,7 @@ class BookingDetail
     {
         return $this->ticket;
     }
-
-    public function getTicket()
-    {
-        return $this->ticket;
-    }
-
+    
     public function setBookingDetailId($bookingDetailId): self
     {
         $this->bookingDetailId = $bookingDetailId;
