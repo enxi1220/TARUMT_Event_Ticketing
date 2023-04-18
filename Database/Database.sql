@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`category`(
 	`category_id` int NOT NULL AUTO_INCREMENT, 
 	`name` varchar(150) NOT NULL,
 	`description` varchar(250) NOT NULL,
-	`status` varchar(50) NOT NULL,
 	`created_by` varchar(20) NOT NULL,
 	`created_date` datetime NOT NULL,
 	`updated_by` varchar(20) DEFAULT NULL,
@@ -118,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`booking`(
 );
 
 CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`booking_detail`(
-	`booking_detail_id` int NOT NULL,
+	`booking_detail_id` int NOT NULL AUTO_INCREMENT,
 	`booking_id` int NOT NULL,
 	`ticket_id` int NOT NULL,
 	PRIMARY KEY (`booking_detail_id`),

@@ -12,4 +12,6 @@ class PrefixConstant {
     const TICKETBGT = "BGT";
     const BOOKING = "BKT";
     const PAYMENT = "INV";
+    const ADMIN = "ADM";
+
 }

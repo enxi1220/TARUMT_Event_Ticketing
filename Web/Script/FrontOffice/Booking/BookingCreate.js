@@ -16,7 +16,8 @@ $(document).ready(function () {
         var ticket = preparePostData();
         console.log(ticket);
         post(
-            '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
+            // '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
+            '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
             [
                 submitData('ticket', ticket)
             ],

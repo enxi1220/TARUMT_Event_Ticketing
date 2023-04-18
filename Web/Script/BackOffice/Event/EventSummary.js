@@ -12,14 +12,15 @@ $(document).ready(function () {
     )
 });
 
-function exportEvent(){
-    post(
-        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Export.php',
-        [],
-        // null,
-        // function (){
-        //     location.reload();  
-        // }
+function exportEventInCSV(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/ExportCSV.php',
+    );
+}
+
+function exportEventInPDF(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/ExportPDF.php',
     );
 }
 

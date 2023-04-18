@@ -10,7 +10,6 @@
 
 class BookingDetail
 {
-
     private $bookingDetailId;
     private $bookingId;
     private $ticketId;
@@ -35,6 +34,11 @@ class BookingDetail
         return $this->ticketId;
     }
     
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+
     public function getTicket()
     {
         return $this->ticket;

@@ -16,6 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $event->setEventId($eventId);
 
         $result = Read::Read($event);
+
+        if (empty($result)) {
+            exit;
+        }
+
         $result = $result[0];
         $output = array(
             'eventId' => $result->getEventId(),
@@ -46,13 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             'category' => $result->getCategory(),
             'tickets' => $result->getTickets(),
             'categoryName' => $result->getCategory()
-                                    ->getName(),
+                ->getName(),
             'posterPath' => $result->posterPath() . $result->getPoster()
         );
         // optimize to nested..xml? support complex..but js
 
         echo json_encode($output);
-        
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();

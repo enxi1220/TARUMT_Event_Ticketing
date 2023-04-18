@@ -32,6 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     ->getEventNo(),
                 'eventName' => $ticket->getEvent()
                     ->getName(),
+                'eventStartDate' => $ticket->getEvent()
+                    ->getEventStartDate(),
+                'posterPath' => $ticket->getEvent()
+                    ->posterPath().$ticket->getEvent()
+                    ->getPoster(),
                 'description' => $ticket->description()
             );
         }, $result);

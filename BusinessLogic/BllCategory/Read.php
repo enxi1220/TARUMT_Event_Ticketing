@@ -35,7 +35,7 @@ class Read {
                         function (PDOStatement $pstmt) use ($category) {
                             $pstmt->bindValue(":category_id", $category->getCategoryId(), PDO::PARAM_INT);
                             $pstmt->bindValue(":name", $category->getName(), PDO::PARAM_STR);
-                            
+
                         },
                         function ($row) {
                             $category = new Category();

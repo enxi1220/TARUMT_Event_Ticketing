@@ -1,6 +1,16 @@
 //author: Lim En Xi
 
 $(document).ready(function () {
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
+        [],
+        function (success) {
+            var category = JSON.parse(success);
+            console.log(category);
+            display(category);
+        }
+    )
+
     $(`#form-add-event`).submit(function (event) {
         event.preventDefault();
         if ($(`#form-add-event`)[0].checkValidity() && checkQty()) {
@@ -63,7 +73,12 @@ function checkQty() {
     return true;
 }
 
-function display(event) {
-    // todo: category 
-    
+function display(category) {
+    for (var c in category) {
+        $(`#drop-down-category`).append($("<option>", {
+            value: category[c].categoryId,
+            text: category[c].name
+        }));
+    }
+
 }

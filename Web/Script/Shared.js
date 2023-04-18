@@ -26,7 +26,7 @@ function submitData(name, value) {
   }
 }
 
-// successHandler & errorHandler optional
+// successHandler & afterSuccess & errorHandler optional
 function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
   var form = new FormData();
   for (let item of dataArr) {
@@ -90,7 +90,8 @@ function get(url, data, successHandler, errorHandler, afterError) {
         Swal.fire({
           icon: 'success',
           title: 'Success...',
-          html: '<pre>' + success + '</pre>'
+          html: '<pre>' + success + '</pre>',
+          showConfirmButton: false
         })
       }
     },
