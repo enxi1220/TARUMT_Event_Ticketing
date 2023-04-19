@@ -10,12 +10,12 @@ INSERT INTO `user` (`username`, `password`, `name`, `phone`, `mail`, `status`, `
 INSERT INTO `tarumt_event_ticketing`.`admin` 
 (`username`, `password`, `role`, `name`, `phone`, `mail`, `status`, `created_by`, `created_date`) 
 VALUES 
-('admin01', 'password01', 'admin', 'John Doe', '555-1234', 'admin01@example.com', 'active', 'system', NOW()),
-('admin02', 'password02', 'admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'active', 'system', NOW()),
-('admin03', 'password03', 'admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'active', 'system', NOW()),
-('admin04', 'password04', 'admin', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'active', 'system', NOW()),
-('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'active', 'system', NOW()),
-('admin06', 'password06', 'admin', 'Sarah Lee', '555-1234', 'admin06@example.com', 'active', 'system', NOW());
+('admin01', 'password01', 'admin', 'John Doe', '555-1234', 'admin01@example.com', 'Activate', 'system', NOW()),
+('admin02', 'password02', 'admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'Activate', 'system', NOW()),
+('admin03', 'password03', 'admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'Activate', 'system', NOW()),
+('admin04', 'password04', 'admin', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'Activate', 'system', NOW()),
+('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'Activate', 'system', NOW()),
+('admin06', 'password06', 'admin', 'Sarah Lee', '555-1234', 'admin06@example.com', 'Deactivate', 'system', NOW());
 
 INSERT INTO category (name, description, created_by, created_date)
 VALUES

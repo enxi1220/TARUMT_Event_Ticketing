@@ -4,12 +4,13 @@
  * @author ONG WI LIN
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Person.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
 
 class Admin extends Person {
     private IPerson $person;
-    private string $admin_id;
+    private $admin_id = null;
     private $adminNo;
     private string $role;
 
@@ -30,6 +31,7 @@ class Admin extends Person {
 //    $this->createdBy = $createdBy;
     $this->adminNo = $adminNo;
     $this->role = $role;
+    $this->admin_id = ''; 
 }
 
     
@@ -40,7 +42,7 @@ class Admin extends Person {
 //        $this->role = $role;
 //    }
 
-    public function getAdminId(): string {
+    public function getAdminId() {
         return $this->admin_id;
     }
     
@@ -100,6 +102,12 @@ class Admin extends Person {
         return $this;
     }
     
+    public function setAdminId($admin_id){
+        $this->admin_id = $admin_id;
+        return $this;
+    }
+
+    
     public function setName($name)
     {
         $this->person->name = $name;
@@ -111,6 +119,12 @@ class Admin extends Person {
         $helper = new UniqueNoHelper();
         $this->person->username = $username == null ? $helper->generateUsername($name, $role) : $username;
 //        $this->person->username = $username == null ? UniqueNoHelper::generateUsername($name, $role) : $username;
+        return $this;
+    }
+    
+    public function setUsername2($username)
+    {
+        $this->person->username = $username;
         return $this;
     }
     
@@ -152,20 +166,23 @@ class Admin extends Person {
 
     public function setUpdatedDate($updatedDate = null)
     {
-        $args = func_get_args();
-
-        switch (count($args)) {
-            case 0:
-                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
-                break;
-            case 1:
-                $this->updatedDate = $updatedDate;
-                break;
-            default:
-                // Invalid number of arguments
-                break;
-        }
+        $this->person->updatedDate = $updatedDate == null ? DateHelper::GetMalaysiaDateTime() : $updatedDate;
         return $this;
+        
+//        $args = func_get_args();
+//
+//        switch (count($args)) {
+//            case 0:
+//                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
+//                break;
+//            case 1:
+//                $this->updatedDate = $updatedDate;
+//                break;
+//            default:
+//                // Invalid number of arguments
+//                break;
+//        }
+//        return $this;
     }
 
     public function setUpdatedBy($updatedBy)

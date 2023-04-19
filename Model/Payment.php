@@ -4,6 +4,8 @@
  * @author Ong Wi Lin
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPayment.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/PaymentDetail.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPaymentDetail.php";
 
 
 class Payment implements IPayment {
@@ -13,9 +15,13 @@ class Payment implements IPayment {
     private $paymentType;
     private $price;
     private $createdDate;
-    private $paymentDetails;
+//    private PaymentDetail $paymentDetails;
+    private $paymentDetails = [];
+
 
     public function __construct() {
+//            $this->paymentDetails = new PaymentDetail();
+
     }
 //    public function __construct($paymentId, $paymentNo, $bookingId, $paymentType, $price, $createdDate, $paymentDetails) {
 //        $this->paymentId = $paymentId;
@@ -27,6 +33,11 @@ class Payment implements IPayment {
 //        $this->paymentDetails = $paymentDetails;
 //    }
 
+    public function addPaymentDetail(PaymentDetail $paymentDetail) {
+        $this->paymentDetails[] = $paymentDetail;
+    }
+
+    
     public function getPaymentId() {
         return $this->paymentId;
     }

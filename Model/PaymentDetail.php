@@ -12,12 +12,13 @@ class PaymentDetail implements IPaymentDetail {
     private $eventName;
     private $ticketPrice;
 
-    public function __construct($paymentDetailId, $paymentId, $ticketNo, $eventName, $ticketPrice) {
-        $this->paymentDetailId = $paymentDetailId;
-        $this->paymentId = $paymentId;
-        $this->ticketNo = $ticketNo;
-        $this->eventName = $eventName;
-        $this->ticketPrice = $ticketPrice;
+//    public function __construct($paymentDetailId, $paymentId, $ticketNo, $eventName, $ticketPrice) {
+    public function __construct() {
+//        $this->paymentDetailId = $paymentDetailId;
+//        $this->paymentId = $paymentId;
+//        $this->ticketNo = $ticketNo;
+//        $this->eventName = $eventName;
+//        $this->ticketPrice = $ticketPrice;
     }
 
     public function getPaymentDetailId() {

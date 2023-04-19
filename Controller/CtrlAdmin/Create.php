@@ -36,15 +36,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
         // todo: rm hard code
-        $data->createdBy = "sth";
+//        $data->createdBy = "sth";
+        if ($data->role == 1) {
+            $role = "Staff";
+        } else if ($data->role == 2) {
+            $role = "Admin";
+        } else {
+            throw new Exception("Invalid role value: " . $data->role);
+        }
+
 
         $admin
             ->setName($data->name)
 //            ->setUsername($data->name, $data->role)
             ->setPhone($data->phone)
             ->setMail($data->mail)
-            ->setCreatedBy($data->createdBy)
-            ->setRole($data->role);
+//            ->setCreatedBy($data->createdBy)
+            ->setCreatedBy("sth")
+            ->setRole($role);
         
 
         $adminNo = Create::Create($admin);

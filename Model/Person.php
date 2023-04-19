@@ -34,7 +34,7 @@ class Person implements IPerson {
 //        $this->updated_by = $updated_by;
 //    }
 
-    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status) {
+    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status, string $updated_by = "null") {
         $this->name = $name;
         $this->username = $username;
         $this->phone = $phone;
@@ -42,6 +42,10 @@ class Person implements IPerson {
         $this->created_date = new DateTime();
         $this->created_by = $created_by;
         $this->status = $status;
+        
+        $this->updated_date = new DateTime();
+        $this->updated_by = $updated_by;
+
     }
 
     public function getUsername(): string {

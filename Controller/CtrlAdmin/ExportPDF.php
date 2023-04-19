@@ -17,23 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
 
         $admin = new Admin();
+        $admin->setAdminId(null);
         $result = AdminRead::Read($admin);
 
         if (empty($result)) {
             exit;
         }
-
-        foreach ($result as $admin) {
-//            $admin->setTickets(ReadSoldQuantity::Read($event, new TicketVIP(), new TicketStandard(), new TicketBudget()));
-            
-//            $sold = 0;
-//            if (!empty($event->getTickets())) {
-//                foreach ($event->getTickets() as $ticket) {
-//                    $sold += $ticket->getCount();
-//                }
-//            }
-//            $event->setTicketQtySold($sold);
-        } 
 
         $output = array_map(
             function ($admin) {
@@ -58,9 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><admins></admins>');
         foreach ($output as $admin) {
             $adminNode = $xml->addChild('admin');
-            foreach ($admin as $key => $value) {
-                $adminNode->addChild($key, $value);
-            }
+                foreach ($admin as $key => $value) {
+                    if ($key === 'created_date' || $key === 'updated_date') {
+                        $value = $value->format('Y-m-d H:i:s');
+                    }
+                    $adminNode->addChild($key, $value);
+                } 
+
         }
 
         $xmlString = $xml->asXML();
@@ -101,12 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         file_put_contents('AdminStaffRecord.pdf', $pdf->output());
 
         if (file_exists('AdminStaffRecord.pdf')) {
-            echo 'The file AdminStaffRecord.pdf is downloaded to your folder.';
+            echo 'The file AdminStaffRecord.pdf is downloaded.';
         }
     } catch (\Throwable $e) {
 
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
-        // echo $e->getMessage();
         echo $e;
     }
 }

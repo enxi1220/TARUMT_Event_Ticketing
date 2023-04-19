@@ -1,9 +1,9 @@
-//    Author     : Ong Wi Lin
-
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+    <!--//    Author     : Ong Wi Lin-->
 
   <xsl:template match="/">
     <html>
@@ -18,13 +18,19 @@
             text-align: left;
             padding: 8px;
             border: 1px solid #ddd;
+            font-size: 10px;
           }
           th { 
             font-weight: bold;
           }
-          h2,small {
+          h2 {
             font-family: Calibri, sans-serif;
+            font-size: 20px;
           }
+        small{
+            font-family: Calibri, sans-serif;
+            font-size: 10px;
+            }
         </style>
       </head>
       <body>
