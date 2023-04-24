@@ -76,9 +76,9 @@ class Create
                 $pstmt->bindValue(10, $event->getVipTicketQty(), PDO::PARAM_INT);
                 $pstmt->bindValue(11, $event->getStandardTicketQty(), PDO::PARAM_INT);
                 $pstmt->bindValue(12, $event->getBudgetTicketQty(), PDO::PARAM_INT);
-                $pstmt->bindValue(13, $event->getVipTicketPrice(), PDO::PARAM_INT);
-                $pstmt->bindValue(14, $event->getStandardTicketPrice(), PDO::PARAM_INT);
-                $pstmt->bindValue(15, $event->getBudgetTicketPrice(), PDO::PARAM_INT);
+                $pstmt->bindValue(13, $event->getVipTicketPrice(), PDO::PARAM_STR);
+                $pstmt->bindValue(14, $event->getStandardTicketPrice(), PDO::PARAM_STR);
+                $pstmt->bindValue(15, $event->getBudgetTicketPrice(), PDO::PARAM_STR);
                 $pstmt->bindValue(16, $event->getDescription(), PDO::PARAM_STR);
                 $pstmt->bindValue(17, $event->getOrganizerName(), PDO::PARAM_STR);
                 $pstmt->bindValue(18, $event->getOrganizerPhone(), PDO::PARAM_STR);

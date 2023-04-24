@@ -16,7 +16,7 @@ class FileUploadHelper
         $posterTemp = $file['tmp_name'];
         move_uploaded_file($posterTemp, $targetPath); // move the uploaded file to the specified location
 
-        if (is_uploaded_file($file['tmp_name'])) {
+        if (!is_uploaded_file($file['tmp_name'])) {
             throw new Exception("Image failed to upload.");
         }
         return $fileName;
