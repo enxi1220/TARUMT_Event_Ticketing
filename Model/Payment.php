@@ -15,26 +15,56 @@ class Payment implements IPayment {
     private $paymentType;
     private $price;
     private $createdDate;
-//    private PaymentDetail $paymentDetails;
-    private $paymentDetails = [];
-
+//    private $paymentArray = [];
+    
+//    private $paymentDetails;
+    
+    private $paymentDetails = array();
+    private $paymentArray = array();
+    private User $user;
+//    private Payment $payment;
+    private Event $event;
 
     public function __construct() {
-//            $this->paymentDetails = new PaymentDetail();
 
     }
-//    public function __construct($paymentId, $paymentNo, $bookingId, $paymentType, $price, $createdDate, $paymentDetails) {
-//        $this->paymentId = $paymentId;
-//        $this->paymentNo = $paymentNo;
-//        $this->bookingId = $bookingId;
-//        $this->paymentType = $paymentType;
-//        $this->price = $price;
-//        $this->createdDate = $createdDate;
-//        $this->paymentDetails = $paymentDetails;
-//    }
 
     public function addPaymentDetail(PaymentDetail $paymentDetail) {
         $this->paymentDetails[] = $paymentDetail;
+    }
+    
+      public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function getPayment(): Payment
+    {
+        return $this->payment;
+    }
+    
+    public function getEvent(): Event 
+    {
+        return $this->event;
+    }
+    
+    
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function setPayment(Payment $payment): self
+    {
+        $this->payment = $payment;
+        return $this;
+    }
+    
+    public function setEvent(Event $event): self
+    {
+        $this->event = $event;
+        return $this;
     }
 
     
@@ -98,6 +128,15 @@ class Payment implements IPayment {
 
     public function setPaymentDetails($paymentDetails) {
         $this->paymentDetails = $paymentDetails;
+        return $this;
+    }
+
+    public function getPaymentArray() {
+        return $this->paymentArray;
+    }
+
+    public function setPaymentArray($paymentArray) {
+        $this->paymentArray= $paymentArray;
         return $this;
     }
 }

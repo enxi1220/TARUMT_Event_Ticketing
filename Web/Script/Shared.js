@@ -76,7 +76,7 @@ function post(url, dataArr, successHandler, afterSuccess, errorHandler) {
   });
 }
 
-function get(url, data, successHandler, errorHandler) {
+function get(url, data, successHandler, errorHandler, afterError) {
   $.ajax({
     type: "GET",
     url: url,
@@ -105,7 +105,11 @@ function get(url, data, successHandler, errorHandler) {
           icon: 'error',
           title: 'Oops...',
           html: '<pre>' + error.responseText + '</pre>'
-        })
+        }).then(function () {
+          if (afterError) {
+            afterError();
+          }
+        });
       }
     }
   });

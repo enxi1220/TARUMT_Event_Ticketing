@@ -13,7 +13,6 @@ class PaymentRead
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($payment) {
-//                return Read::ReadAdmin($dataAccess, $admin);
                 return PaymentRead::ReadPayment($dataAccess, $payment);
             }
         );
@@ -43,7 +42,6 @@ class PaymentRead
                 return $payment
                     ->setPaymentId($row['payment_id'])
                     ->setPaymentNo($row['payment_no'])
-//                    ->setUsername($row['username'])
                     ->setBookingId($row['booking_id'])
                     ->setPaymentType($row['payment_type'])
                     ->setPrice($row['price'])

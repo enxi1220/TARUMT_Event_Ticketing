@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $admin
             ->setName($data->name)
-            ->setUsername2($data->username)
+            ->setUsername($data->username)
             ->setPhone($data->phone)
             ->setMail($data->mail)
 //            ->setCreatedBy($data->createdBy)

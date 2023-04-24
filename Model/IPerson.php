@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 /**
  * Composite pattern
@@ -17,17 +17,51 @@
  */
 
 
+//interface IPerson {
+//    function getUsername(): string;
+//    function getPassword(): string;
+//    function getName(): string;
+//    function getPhone(): string;
+//    function getMail(): string;
+//    function getStatus(): string;
+//    function getCreatedDate(): DateTime;
+//    function getCreatedBy(): string;
+//    function getUpdatedDate(): DateTime;
+//    function getUpdatedBy(): string;
+//    
+//    function setStatus($status): void;
+//    function setCreatedDate($createdDate = null): void;
+//    function setCreatedBy($createdBy): void;
+//    function setUpdatedDate($updatedDate = null): void;
+//    function setUpdatedBy($updatedBy): void;
+//    function setProfilePic($profilePic): void;
+//    
+//    
+//    function setStatus($status);
+//    function setCreatedDate($createdDate = null);
+//    function setCreatedBy($createdBy);
+//    function setUpdatedDate($updatedDate = null);
+//    function setUpdatedBy($updatedBy);
+//    function setProfilePic($profilePic);
+//    function setUsername($name, $role, $username = null);
+//    function setName($name);
+//    function setPhone($phone);
+//    function setMail($mail);
+//    function setPassword($password);
+//
+//}
+
 interface IPerson {
-    function getUsername(): string;
-    function getPassword(): string;
-    function getName(): string;
-    function getPhone(): string;
-    function getMail(): string;
-    function getStatus(): string;
-    function getCreatedDate(): DateTime;
-    function getCreatedBy(): string;
-    function getUpdatedDate(): DateTime;
-    function getUpdatedBy(): string;
+    function getUsername();
+    function getPassword();
+    function getName();
+    function getPhone();
+    function getMail();
+    function getStatus();
+    function getCreatedDate();
+    function getCreatedBy();
+    function getUpdatedDate();
+    function getUpdatedBy();
 //    
 //    function setStatus($status): void;
 //    function setCreatedDate($createdDate = null): void;
@@ -38,16 +72,16 @@ interface IPerson {
 //    
     
     function setStatus($status);
-    function setCreatedDate($createdDate = null);
-    function setCreatedBy($createdBy);
-    function setUpdatedDate($updatedDate = null);
-    function setUpdatedBy($updatedBy);
+    function setCreatedDate($created_date);
+    function setCreatedBy($created_by);
+    function setUpdatedDate($updated_date = null);
+    function setUpdatedBy($updated_by);
     function setProfilePic($profilePic);
-    function setUsername($name, $role, $username = null);
+    function setRandomUsername($name, $role, $username = null);
+    function setUsername($username);
     function setName($name);
     function setPhone($phone);
     function setMail($mail);
     function setPassword($password);
 
 }
-

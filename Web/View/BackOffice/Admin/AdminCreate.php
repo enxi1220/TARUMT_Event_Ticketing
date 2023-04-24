@@ -46,7 +46,7 @@ author : ONG WI LIN
                 <div class="invalid-feedback">Required</div>
             </div>
         </div>
-        <div class="row mb-4">
+<!--        <div class="row mb-4">
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="profile-pic">Profile Picture</label>
@@ -54,7 +54,7 @@ author : ONG WI LIN
                     <div class="invalid-feedback">Only allow jpg, jpeg, png, gif file types</div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Save -->
         <div class="col d-flex justify-content-end mb-4">
             <a class="btn btn-secondary btn-floating float-end" title="Back" href="AdminSummary.php" role="button">

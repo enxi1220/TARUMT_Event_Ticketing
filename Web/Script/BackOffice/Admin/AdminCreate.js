@@ -1,8 +1,6 @@
 /* 
  * author : ONG WI LIN
- * 
  */
-
 
 $(document).ready(function () {
     $(`#form-add-admin`).submit(function (admin) {
@@ -13,8 +11,7 @@ $(document).ready(function () {
             post(
                 '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/Create.php',
                 [
-                    submitData('admin', admin),
-                    submitData('pic', $('#profile-pic')[0].files[0])
+                    submitData('admin', admin)
                 ],
                 null,
                 function () {
@@ -24,19 +21,6 @@ $(document).ready(function () {
         }
     });
 });
-
-//function preparePostData() {
-//    return JSON.stringify({
-//        name: $('#txt-name').val(),
-//        role: $(`#drop-down-role`).val(),
-//        phone: $('#txt-phone').val(),
-//        mail: $('#txt-mail').val()
-//      
-//    });
-
-
-
-
 
 function preparePostData() {
     var admin = {

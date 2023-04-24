@@ -1,6 +1,8 @@
 //author: Lim En Xi
 
 $(document).ready(function () {
+    
+    checkLogin();
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Summary.php',
         {},

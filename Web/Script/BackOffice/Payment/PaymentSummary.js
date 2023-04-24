@@ -2,13 +2,6 @@
  * AUTHOR : ONG WI LIN
  */
 
-//<a class="btn btn-secondary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?admin_id=${row.admin_id}" role="button">
-//                        <i class="fas fa-ticket"></i>
-//                    </a>
-//                    <a class="btn btn-secondary btn-floating" title="View Participant" href="../Participant/ParticipantSummary.php?admin_id=${row.admin_id}" role="button">
-//                        <i class="fas fa-users"></i>
-//                    </a>
-
 $(document).ready(function () {
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlPayment/Summary.php',
@@ -79,14 +72,12 @@ function buildDataTable(payments){
         data: payments,
         columns: 
         [
-//            { data: "eventNo" },
             { data: "payment_id" },
             { data: "payment_no" },
             { data: "booking_id" },
             { data: "payment_type" },
             { data: "price" },
             { data: "created_date" },
-
             {
                render: function (data, type, row, meta) {
                 var html = `

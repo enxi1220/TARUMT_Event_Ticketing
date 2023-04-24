@@ -53,18 +53,88 @@ require '../../Layout.php';
 
         <!-- Payment Detail -->
         <fieldset class="mb-3 border p-3">
+            <legend class="w-auto">User Details</legend>
+            <div id="user-details"></div>
+
+            <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="txt-user-id">User ID</label>
+                    <input type="text" name="txt-user-id" id="txt-user-id" minlength="150" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="txt-user-name">Name</label>
+                <input type="text" name="Name" id="txt-user-name" minlength="150" class="form-control" readonly />
+            </div>
+        </div>
+            
+
+            <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="txt-user-mail">Email</label>
+                    <input type="text" name="txt-user-mail" id="txt-user-mail" minlength="150" class="form-control" readonly />
+                </div>
+            </div>
+
+        </div>
+            
+        </fieldset>
+        
+
+        <!-- Payment Detail -->
+        <fieldset class="mb-3 border p-3">
+            <legend class="w-auto">Payment Details</legend>
+            <div id="user-details"></div>
+
+            <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="txt-event-id">Event ID</label>
+                    <input type="text" name="txt-event-id" id="txt-event-id" minlength="150" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="txt-event-no">Event No</label>
+                <input type="text" name="Name" id="txt-event-no" minlength="150" class="form-control" readonly />
+            </div>
+        </div>
+            
+
+            <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="form-label" for="txt-event-name">Event Name</label>
+                    <input type="text" name="txt-event-name" id="txt-event-name" minlength="150" class="form-control" readonly />
+                </div>
+            </div>
+
+        </div>
+            
+        <div class="row mb-4" id="ticket-info">
+<!--            <label class="form-label" for="txt-event-name">Ticket(s) Purchased</label>-->
+
+        </div>
+
+            
+        </fieldset>
+        
+
+        <!-- Payment Detail -->
+<!--        <fieldset class="mb-3 border p-3">
             <legend class="w-auto">Product Details</legend>
             <div id="product-details"></div>
 
-<!--            <div class="row mb-4">
+                <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="form-label" for="txt-venue">Venue</label>
                         <input type="text" name="Venue" id="txt-venue" class="form-control" minlength="100" readonly />
                     </div>
                 </div>
-            </div>
-            <div class="row mb-4">
+            </div>-->
+<!--        <div class="row mb-4">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label" for="date-reg-start">Register Start Date</label>
@@ -92,7 +162,7 @@ require '../../Layout.php';
                     </div>
                 </div>
             </div>-->
-        </fieldset>
+        <!--</fieldset>-->
         
         <!-- Action -->
         <div class="col d-flex justify-content-end mb-4">
@@ -123,3 +193,65 @@ require '../../Layout.php';
 require '../../Footer.php';
 ?>
 <script src="../../../Script/BackOffice/Payment/PaymentRead.js"></script>
+>
+<style>
+/*    body{
+         background-color: rgba(33, 40, 50, 0.03);
+    }*/
+/*table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}*/
+table {
+  border-collapse: collapse;
+  width: 20%;
+  margin: 0 auto; /* Centers the table horizontally */
+  background-color: white;
+}
+
+th{
+         background-color: rgba(33, 40, 50, 0.03);
+
+/*    background-color: rgba(0, 0, 0, 0.1);
+    color: white;*/
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+td:first-child {
+  padding-right: 100px;
+  /*text-align: right;*/
+  width: 40%;
+}
+
+td:last-child {
+/*  padding-right: 100px;*/
+  /*text-align: right;*/
+  width: 40%;
+}
+
+tr:nth-child(odd) {
+  /*background-color: #dddddd;*/
+           background-color: rgba(33, 40, 50, 0.03);
+
+}
+
+</style>

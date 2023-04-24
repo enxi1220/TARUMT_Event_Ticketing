@@ -20,15 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     'phone' => $admin->getPhone(),
                     'mail' => $admin->getMail(),
                     'status' => $admin->getStatus(),
-//                    'created_date' => $admin->getCreatedDate(),
+                    'created_date' => $admin->getCreatedDate(),
 //                    'created_date' => date('Y-m-d H:i:s', strtotime($admin->getCreatedDate())),
-                    'created_date' => $admin->getCreatedDate()->format('Y-m-d H:i:s'),
+//                    'created_date' => $admin->getCreatedDate()->format('Y-m-d H:i:s'),
 
                     
                     'created_by' => $admin->getCreatedBy(),
-//                    'updated_date' => $admin->getUpdatedDate(),
+                    'updated_date' => $admin->getUpdatedDate(),
 //                    'updated_date' => date('Y-m-d H:i:s', strtotime($admin->getUpdatedDate())),
-                    'updated_date' => $admin->getUpdatedDate()->format('Y-m-d H:i:s'),
+//                    'updated_date' => $admin->getUpdatedDate()->format('Y-m-d H:i:s'),
 
                     'updated_by' => $admin->getUpdatedBy()                
                         );

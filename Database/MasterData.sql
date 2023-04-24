@@ -10,11 +10,11 @@ INSERT INTO `user` (`username`, `password`, `name`, `phone`, `mail`, `status`, `
 INSERT INTO `tarumt_event_ticketing`.`admin` 
 (`username`, `password`, `role`, `name`, `phone`, `mail`, `status`, `created_by`, `created_date`) 
 VALUES 
-('admin01', 'password01', 'admin', 'John Doe', '555-1234', 'admin01@example.com', 'Activate', 'system', NOW()),
-('admin02', 'password02', 'admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'Activate', 'system', NOW()),
-('admin03', 'password03', 'admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'Activate', 'system', NOW()),
-('admin04', 'password04', 'admin', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'Activate', 'system', NOW()),
-('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'Activate', 'system', NOW()),
+('admin01', 'password01', 'admin', 'John Doe', '555-1234', 'admin01@example.com', 'Active', 'system', NOW()),
+('admin02', 'password02', 'admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'Active', 'system', NOW()),
+('admin03', 'password03', 'admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'Active', 'system', NOW()),
+('admin04', 'password04', 'admin', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'Active', 'system', NOW()),
+('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'Active', 'system', NOW()),
 ('admin06', 'password06', 'admin', 'Sarah Lee', '555-1234', 'admin06@example.com', 'Deactivate', 'system', NOW());
 
 INSERT INTO category (name, description, created_by, created_date)
@@ -48,7 +48,14 @@ VALUES
 ('BGT000003', 2, 'John Doe', 'New', NULL, NULL),
 ('STD000004', 2, 'Jane Smith', 'New', NULL, NULL),
 ('VIP000005', 3, 'John Doe', 'New', NULL, NULL),
-('BGT000006', 3, 'Jane Smith', 'New', NULL, NULL);
+('BGT000006', 3, 'Jane Smith', 'New', NULL, NULL),
+('STD000007', 4, 'John Doe', 'New', NULL, NULL),
+('VIP000008', 4, 'Jane Smith', 'New', NULL, NULL),
+('BGT000009', 5, 'John Doe', 'New', NULL, NULL),
+('STD000010', 5, 'Jane Smith', 'New', NULL, NULL),
+('VIP000011', 6, 'John Doe', 'New', NULL, NULL),
+('BGT000012', 6, 'Jane Smith', 'New', NULL, NULL),
+('STD000013', 7, 'John Doe', 'New', NULL, NULL);
 
 INSERT INTO tarumt_event_ticketing.wishlist (event_id, user_id)
 VALUES
@@ -82,46 +89,23 @@ INSERT INTO tarumt_event_ticketing.payment (payment_no, booking_id, payment_type
 VALUES
 ('P000001', 1, 'Credit Card', 150.00, NOW()),
 ('P000002', 2, 'PayPal', 80.00, NOW()),
-('P000003', 3, 'Debit Card', 200.00, NOW()),
+('P000003', 3, 'Debit Card', 120.00, NOW()),
 ('P000004', 4, 'Credit Card', 50.00, NOW()),
-('P000005', 5, 'PayPal', 120.00, NOW()),
+('P000005', 5, 'PayPal', 60.00, NOW()),
 ('P000006', 6, 'Debit Card', 70.00, NOW());
 
 INSERT INTO tarumt_event_ticketing.payment_detail (payment_id, ticket_no, event_name, ticket_price)
 VALUES
-(1, 'T000001', 'Concert A', 50.00),
-(1, 'T000002', 'Concert A', 50.00),
-(1, 'T000003', 'Concert A', 50.00),
-(2, 'T000004', 'Concert B', 40.00),
-(2, 'T000005', 'Concert B', 40.00),
-(3, 'T000009', 'Musical C', 40.00),
-(3, 'T000010', 'Musical C', 40.00),
-(3, 'T000011', 'Musical C', 40.00),
-(4, 'T000006', 'Conference D', 50.00),
-(5, 'T000012', 'Exhibition E', 30.00),
-(5, 'T000013', 'Exhibition E', 30.00),
-(6, 'T000007', 'Seminar F', 35.00),
-(6, 'T000008', 'Seminar F', 35.00);
-
-
--- INSERT INTO `category` (
--- 	`category_id`, 
--- 	`name`, 
--- 	`description`, 
--- 	`status`, 
--- 	`created_by`, 
--- 	`created_date`, 
--- 	`updated_by`, 
--- 	`updated_date`) 
--- VALUES (
--- 	NULL, 
--- 	'Competition', 
--- 	'Competition ', 
--- 	'Activate', 
--- 	'Kuma', 
--- 	'2023-03-26 12:14:17.000000', 
--- 	NULL, 
--- 	NULL);
---     
--- INSERT INTO `event` (`event_id`, `event_no`, `category_id`, `name`, `poster`, `venue`, `register_start_date`, `register_end_date`, `event_start_date`, `event_end_date`, `vip_ticket_qty`, `standard_ticket_qty`, `budget_ticket_qty`, `vip_ticket_price`, `standard_ticket_price`, `budget_ticket_price`, `description`, `organizer_name`, `organizer_phone`, `organizer_mail`, `status`, `created_by`, `created_date`, `updated_by`, `updated_date`) VALUES
--- (1, 'EVT2023/0405/23:39:38.256016', 1, 'Voice Of Rahman', '642d963a3e83f_i.jpg', 'Arte S', '2023-04-05 23:39:00', '2023-04-05 23:39:00', '2023-04-05 23:39:00', '2023-04-05 23:39:00', 2, 4, 5, 10, 7, 5, 'Sing! Vote! ', 'En En', '0123456789', 'enen@event.com', 'Open', 'Kuma', '2023-04-05 23:39:38', NULL, NULL);
+(1, 'VIP000001', 'Concert A', 50.00),
+(1, 'STD000002', 'Concert A', 50.00),
+(1, 'BGT000003', 'Concert A', 50.00),
+(2, 'STD000004', 'Concert B', 40.00),
+(2, 'VIP000005', 'Concert B', 40.00),
+(3, 'BGT000006', 'Musical C', 40.00),
+(3, 'STD000007', 'Musical C', 40.00),
+(3, 'VIP000008', 'Musical C', 40.00),
+(4, 'BGT000009', 'Conference D', 50.00),
+(5, 'STD000010', 'Exhibition E', 30.00),
+(5, 'VIP000011', 'Exhibition E', 30.00),
+(6, 'BGT000012', 'Seminar F', 35.00),
+(6, 'STD000013', 'Seminar F', 35.00);

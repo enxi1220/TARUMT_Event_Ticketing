@@ -9,67 +9,45 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPerson.
 
 
 class Person implements IPerson {
-    protected string $username;
-    protected string $password;
-    protected string $name;
-    protected string $phone;
-    protected string $mail;
-    protected string $status;
-    protected DateTime $created_date;
-    protected string $created_by;
-    protected DateTime $updated_date;
-    protected string $updated_by;
-    protected string $profilePic;
-//
-//    public function __construct(string $username, string $password, string $name, string $phone, string $mail, string $status, DateTime $created_date, string $created_by, DateTime $updated_date, string $updated_by) {
-//        $this->username = $username;
-//        $this->password = $password;
-//        $this->name = $name;
-//        $this->phone = $phone;
-//        $this->mail = $mail;
-//        $this->status = $status;
-//        $this->created_date = $created_date;
-//        $this->created_by = $created_by;
-//        $this->updated_date = $updated_date;
-//        $this->updated_by = $updated_by;
-//    }
+    protected $username;
+    protected $password;
+    protected $name;
+    protected $phone;
+    protected $mail;
+    protected $status;
+    protected $created_date;
+    protected $created_by;
+    protected $updated_date;
+    protected $updated_by;
+    protected $profilePic;
 
-    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status, string $updated_by = "null") {
-        $this->name = $name;
-        $this->username = $username;
-        $this->phone = $phone;
-        $this->mail = $mail;
-        $this->created_date = new DateTime();
-        $this->created_by = $created_by;
-        $this->status = $status;
+    
+    public function __construct() {
         
-        $this->updated_date = new DateTime();
-        $this->updated_by = $updated_by;
-
     }
 
-    public function getUsername(): string {
+    public function getUsername(){
         return $this->username;
     }
 
-    public function getPassword(): string {
+    public function getPassword(){
         return $this->password;
     }
 
-    public function getName(): string {
+    public function getName(){
         return $this->name;
     }
     
-//    public function setUsername($username = null)
-//    {
-//        $this->username = $username == null ? UniqueNoHelper::generateUsername($name, $role()) : $username;
-//        return $this;
-//    }
-
-    
-    public function setUsername($name, $role, $username = null)
+    public function setRandomUsername($name, $role, $username = null)
     {
-        $this->username = $username == null ? UniqueNoHelper::generateUsername($name, $role) : $username;
+        $uniqueNoHelper = new UniqueNoHelper();
+        $this->username = $username == null ? $uniqueNoHelper->generateUsername($name, $role) : $username;
+        return $this;
+    }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
         return $this;
     }
     
@@ -97,53 +75,34 @@ class Person implements IPerson {
         return $this;
     }
         
-//    public function setStatus($status)
     public function setStatus($status)
     {
         $this->status = $status;
         return $this;
     }
 
-    public function setCreatedDate($createdDate = null)
+    public function setCreatedDate($created_date = null)
     {
-        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
-        return $this;
-    }
-    
-    public function setCreatedBy($createdBy)
-    {
-        $this->createdBy = $createdBy;
-        return $this;
-    }
+        $this->created_date = $created_date == null ? DateHelper::GetMalaysiaDateTime(): $created_date;
 
-//    public function setUpdatedDate($updatedDate = null)
-//    {
-//        $args = func_get_args();
-//
-//        switch (count($args)) {
-//            case 0:
-//                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
-//                break;
-//            case 1:
-//                $this->updatedDate = $updatedDate;
-//                break;
-//            default:
-//                // Invalid number of arguments
-//                break;
-//        }
-//        return $this;
-//    }
-
-    
-    public function setUpdatedDate($updatedDate = null)
-    {
-        $this->updated_date = $updatedDate == null ? DateHelper::GetMalaysiaDateTime() : $updatedDate;
         return $this;
     }
     
-    public function setUpdatedBy($updatedBy)
+    public function setCreatedBy($created_by)
     {
-        $this->updatedBy = $updatedBy;
+        $this->created_by = $created_by;
+        return $this;
+    }
+    
+    public function setUpdatedDate($update_date = null)
+    {
+        $this->updated_date = $update_date == null ? DateHelper::GetMalaysiaDateTime() : $update_date;
+        return $this;
+    }
+    
+    public function setUpdatedBy($updated_by)
+    {
+        $this->updated_by = $updated_by;
         return $this;
     }
     
@@ -153,31 +112,31 @@ class Person implements IPerson {
         return $this;
     }
     
-    public function getPhone(): string {
+    public function getPhone() {
         return $this->phone;
     }
 
-    public function getMail(): string {
+    public function getMail(){
         return $this->mail;
     }
 
-    public function getStatus(): string {
+    public function getStatus() {
         return $this->status;
     }
 
-    public function getCreatedDate(): DateTime {
+    public function getCreatedDate() {
         return $this->created_date;
     }
 
-    public function getCreatedBy(): string {
+    public function getCreatedBy(){
         return $this->created_by;
     }
 
-    public function getUpdatedDate(): DateTime {
+    public function getUpdatedDate(){
         return $this->updated_date;
     }
 
-    public function getUpdatedBy(): string {
+    public function getUpdatedBy() {
         return $this->updated_by;
     }
     

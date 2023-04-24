@@ -43,7 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $adminNode = $xml->addChild('admin');
                 foreach ($admin as $key => $value) {
                     if ($key === 'created_date' || $key === 'updated_date') {
-                        $value = $value->format('Y-m-d H:i:s');
+                        $value = $value;
+//                        $value = $value->format('Y-m-d H:i:s');
                     }
                     $adminNode->addChild($key, $value);
                 } 

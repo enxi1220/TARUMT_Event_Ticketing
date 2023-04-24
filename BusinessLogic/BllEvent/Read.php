@@ -98,4 +98,50 @@ class Read
             }
         );
     }
+    
+//    Author : Ong Wi Lin
+     public static function ReadReport(Event $event)
+    {
+        $dataAccess = DataAccess::getInstance();
+        $result = $dataAccess->BeginDatabase(
+            function (DataAccess $dataAccess) use ($event) {
+                return Read::EventReport($dataAccess, $event);
+            }
+        );
+
+        return $result;
+    }
+
+    
+    
+    private static function EventReport(DataAccess $dataAccess, $event)
+    {
+        return $dataAccess->Reader(
+                //                        c.name AS category_name,
+
+            "SELECT  
+                        e.name AS event_name,
+                        e.vip_ticket_qty, 
+                        e.standard_ticket_qty, 
+                        e.budget_ticket_qty
+                    FROM event e
+                    JOIN category c ON e.category_id = c.category_id
+                    WHERE e.status = \"Open\";",
+            function (PDOStatement $pstmt) use ($event) {
+//                $pstmt->bindValue(":event_id", $event->getEventId(), PDO::PARAM_INT);
+//                $pstmt->bindValue(":event_no", $event->getEventNo(), PDO::PARAM_STR);
+                $pstmt->bindValue(":status", $event->getStatus(), PDO::PARAM_STR);
+            },
+            function ($row) {
+ 
+                $event = new Event();
+                return $event
+                    ->setName($row['event_name'])
+                    ->setVipTicketQty($row['vip_ticket_qty'])
+                    ->setStandardTicketQty($row['standard_ticket_qty'])
+                    ->setBudgetTicketQty($row['budget_ticket_qty']);
+            }
+        );
+    }
+    
 }
