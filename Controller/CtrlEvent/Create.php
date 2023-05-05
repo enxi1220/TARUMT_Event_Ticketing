@@ -1,12 +1,9 @@
 <?php
 
 #  Author: Lim En Xi
+
 // collect value from front end
 // validation without database
-
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Create.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
@@ -19,13 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $poster = $_FILES['poster'];
-        $ext = pathinfo($poster['name'], PATHINFO_EXTENSION);
+        $validExtensions = '/\.(jpg|jpeg|gif|png)$/i';
+        $validMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
 
-        if ($ext != 'jpg' && $ext != 'jpeg' && $ext != 'gif' && $ext != 'png') {
-            throw new Exception("Image with jpg, gif and png format only.");
+        if (!preg_match($validExtensions, $poster['name']) || !in_array($poster['type'], $validMimeTypes)) {
+            throw new Exception("Image with jpg, gif, and png format only.");
         }
+
         $data = json_decode($_POST['event']);
         $data->poster = $poster;
+        // todo: rm hard code
+        $data->createdBy = "Kuma";
+
+        // $fileContents = file_get_contents($_FILES['poster']['tmp_name']);
+        // $data->poster = $fileContents;
 
         // todo: date from date to validation
         // if($data->registerStartDate > $data->registerEndDate){
@@ -44,36 +48,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //     throw new Exception("Back date is not allowed to select on event start date.");
         // }
 
-        // todo: rm hard code
-        $data->createdBy = "Kuma";
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Create";
 
-        $event = new Event();
-        $event
-            ->setName($data->name)
-            ->setPoster($data->poster)
-            ->setCategoryId($data->categoryId)
-            ->setVenue($data->venue)
-            ->setRegisterStartDate($data->registerStartDate)
-            ->setRegisterEndDate($data->registerEndDate)
-            ->setEventStartDate($data->eventStartDate)
-            ->setEventEndDate($data->eventEndDate)
-            ->setDescription($data->description)
-            ->setVipTicketQty($data->vipTicketQty)
-            ->setStandardTicketQty($data->stdTicketQty)
-            ->setBudgetTicketQty($data->bgtTicketQty)
-            ->setVipTicketPrice($data->vipTicketPrice)
-            ->setStandardTicketPrice($data->stdTicketPrice)
-            ->setBudgetTicketPrice($data->bgtTicketPrice)
-            ->setOrganizerName($data->organizerName)
-            ->setOrganizerMail($data->organizerMail)
-            ->setOrganizerPhone($data->organizerPhone)
-            ->setCreatedBy($data->createdBy);
+        $client = curl_init();
 
-        $eventNo = Create::Create($event);
-        echo "Event $eventNo is added.";
+        curl_setopt($client, CURLOPT_URL, $apiURL);
+        curl_setopt($client, CURLOPT_POST, true);
+        curl_setopt($client, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($client, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+        $response = curl_exec($client);
+
+        $result = json_decode($response);
+            // var_dump($response);
+
+        if ($result->status === 200) {
+            // msg is string, no need encode
+            echo $result->message;
+            exit;
+        }
+
+        if ($result->status == 404) {
+            throw new Exception($result->message, 404);
+        }
+
+        if ($result->status == 500) {
+            throw new Exception($result->message, 404);
+        }
+        
     } catch (\Throwable $e) {
-        header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
+        header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
         // echo $e->getMessage();
-        echo $e;
+        echo $e->getCode() . " " . $e->getMessage();
     }
 }
