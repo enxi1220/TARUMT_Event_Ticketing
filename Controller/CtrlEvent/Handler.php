@@ -10,6 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Controller/RESTfulAPI.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/LoginUser.php";
+
 $action = $_GET["action"] ?? "";
 if ($action !== "Summary" && $action !== "Read"){
     $request_body = file_get_contents('php://input');
@@ -187,9 +189,16 @@ function read()
 }
 
 function summary()
-{
+{   
+    // todo: move to login process
+    $loginUser = new LoginUser();
+    $loginUser->attach(new Event());
+    $loginUser->setLoginUser("enxi");
+    // ----------
+
     $event = new Event();
     $result = Read::Read($event);
+
     $output = array_map(
         function ($event) {
             return array(

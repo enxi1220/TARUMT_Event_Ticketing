@@ -2,14 +2,8 @@
 
 #  Author: Lim En Xi
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/LoginUser.php";
-
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-
-        $loginUser = new LoginUser();
-        $loginUser->setLoginUser("mik");
-
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Summary";
         
         $client = curl_init($apiURL);
