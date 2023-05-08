@@ -12,12 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $data = json_decode($_POST['user']);
       
-        var_dump($data);
+//        var_dump($data);
         
-        print($data->email);
+//        print($data->mail);
         
 
-        $data->createdBy = "Vinnie";
+//        $data->createdBy = "Vinnie";
 
      echo "Creating new user object...<br>";
 $user = new User();
@@ -29,7 +29,7 @@ $user = new User();
             ->setMail($data->mail)
             ->setPhone($data->phone)
             ->setPassword($data->password)
-            ->setCreatedBy($data->createdBy);
+            ->setCreatedBy($data->username);
         
         if(Create::Create($user))
             echo "Register Successfully";

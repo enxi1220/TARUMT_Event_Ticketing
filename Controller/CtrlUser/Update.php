@@ -65,3 +65,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //        echo $e;
     }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    try {
+//// Include the Event class file
+//include $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php"; 
+//
+//// Retrieve the serialized event object from the session
+//$event = unserialize($_SESSION['event']);
+//
+//// Call the notify() method on the event object
+//$event->notify();
+        include $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php"; 
+// Retrieve the serialized event from the session
+$serializedEvent = $_SESSION['event'];
+
+// Unserialize the event object
+$event = unserialize($serializedEvent);
+
+// Use the event object as normal
+$event->notify();
+
+unset($_SESSION['event']);
+
+
+
+        
+    } catch (\Throwable $e) {
+        header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
+        echo $e->getMessage();
+//        echo $e;
+    }
+}
+

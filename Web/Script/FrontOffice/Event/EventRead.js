@@ -139,12 +139,11 @@ $(document).ready(function () {
 
 function display(event) {
   const html = `
-           <div class="container my-5">
             <div class="row">
                 <div class="col-lg-7 mb-4 mb-lg-0">
-                    <div class="card rounded-0 border-0 shadow ">
+                    <div class="card rounded-0 border-0 shadow h-100">
                         <div class="card-body p-0">
-                            <img src="${event.posterPath}" alt="${event.name}" class="img-fluid rounded-0">
+                            <img src="${event.posterPath}" alt="${event.name}" class="img-fluid rounded-0 w-100 " >
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -213,8 +212,7 @@ function display(event) {
                     </div>
                 </div>
             </div>
-        </div>
   `;
-  document.querySelector('body').innerHTML = html;
+      $('.container').append(html);
 }
 

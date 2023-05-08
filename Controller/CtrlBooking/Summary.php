@@ -2,7 +2,7 @@
 
 #  Author: Lim En Xi
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Booking.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/Read.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/BookingRead.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $booking->setCreatedBy($_SESSION['username']);
         }
 
-        $result = Read::Read($booking);
+        $result = BookingRead::Read($booking);
 
         $output = array_map(function ($booking) {
            
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         'createdBy' => $booking->getCreatedBy(),
         'createdDate' => $booking->getCreatedDate(),
         'ticketCount' => $booking->getTicketCount(),
+        'price' => $booking->getPayment()->getPrice(),
         'eventNo' => $booking->getEvent()->getEventNo(),
         'eventName' => $booking->getEvent()->getName(),
         'poster' => $booking->getEvent()->getPoster(),

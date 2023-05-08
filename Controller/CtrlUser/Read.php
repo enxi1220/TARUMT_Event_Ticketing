@@ -24,7 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($result != null) {
                 $_SESSION['userId'] = $result[0]->getUserId();
-                $userOtp = MailSenderHelper::sendMail($data->mail);
+                $userOtp = MailSenderHelper::sendMail(
+                                $data->mail,
+                                "Reset Password",
+                                "Hi! You may use the OTP below to reset you password",
+                                "resetPwd");
+                
                 $user
                         ->setUserOtp($userOtp)
                         ->setUserId($_SESSION['userId']);
@@ -104,25 +109,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
         } else {
 
-        if(isset($_SESSION['userId'])){
-             $user = new User();
+            if (isset($_SESSION['userId'])) {
+                $user = new User();
 
-            $user->setUserId($_SESSION['userId']);
+                $user->setUserId($_SESSION['userId']);
 
-            $result = Read::Read($user);
-            $result = $result[0];
-            $output = array(
-                'userId' => $result->getUserId(),
-                'username' => $result->getUsername(),
-                'name' => $result->getName(),
-                'mail' => $result->getMail(),
-                'phone' => $result->getPhone(),
-                'createdDate' => $result->getCreatedDate(),
-                'updatedDate' => $result->getUpdatedDate(),
-            );
-            echo json_encode($output);
-        }
-           
+                $result = Read::Read($user);
+                $result = $result[0];
+                $output = array(
+                    'userId' => $result->getUserId(),
+                    'username' => $result->getUsername(),
+                    'name' => $result->getName(),
+                    'mail' => $result->getMail(),
+                    'phone' => $result->getPhone(),
+                    'createdDate' => $result->getCreatedDate(),
+                    'updatedDate' => $result->getUpdatedDate(),
+                );
+                echo json_encode($output);
+            }
         }
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);

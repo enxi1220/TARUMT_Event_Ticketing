@@ -2,7 +2,7 @@
 
 #  Author: Vinnie Chin Loh Xin
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Booking.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/Read.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/BookingRead.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $booking = new Booking();
         $booking->setBookingId($bookingId);
 
-        $result = Read::Read($booking);
+        $result = BookingRead::Read($booking);
         $result = $result[0];
 
         $bookingDetails = array();
@@ -31,14 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //        }
         
         foreach ($result->getPayment()->getPaymentDetails() as $paymentDetail) {
-           
-//            $ticket = $bookingDetail->getTicket();
             $bookingDetails[] = array(
                 'ticketNo' => $paymentDetail->getTicketNo(),
                 'ticketPrice' => $paymentDetail->getTicketPrice()
-//                'desc' => $ticket->description(),
-//                'type' => $ticket->type(),
-                
             );
         }
         

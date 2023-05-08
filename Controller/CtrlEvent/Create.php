@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 #  Author: Lim En Xi
 // collect value from front end
 // validation without database
@@ -43,37 +43,121 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // if($data->eventStartDate < DateHelper::GetMalaysiaDateTime()){
         //     throw new Exception("Back date is not allowed to select on event start date.");
         // }
-
         // todo: rm hard code
         $data->createdBy = "Kuma";
 
         $event = new Event();
+       
         $event
-            ->setName($data->name)
-            ->setPoster($data->poster)
-            ->setCategoryId($data->categoryId)
-            ->setVenue($data->venue)
-            ->setRegisterStartDate($data->registerStartDate)
-            ->setRegisterEndDate($data->registerEndDate)
-            ->setEventStartDate($data->eventStartDate)
-            ->setEventEndDate($data->eventEndDate)
-            ->setDescription($data->description)
-            ->setVipTicketQty($data->vipTicketQty)
-            ->setStandardTicketQty($data->stdTicketQty)
-            ->setBudgetTicketQty($data->bgtTicketQty)
-            ->setVipTicketPrice($data->vipTicketPrice)
-            ->setStandardTicketPrice($data->stdTicketPrice)
-            ->setBudgetTicketPrice($data->bgtTicketPrice)
-            ->setOrganizerName($data->organizerName)
-            ->setOrganizerMail($data->organizerMail)
-            ->setOrganizerPhone($data->organizerPhone)
-            ->setCreatedBy($data->createdBy);
+                ->setName($data->name)
+                ->setPoster($data->poster)
+                ->setCategoryId($data->categoryId)
+                ->setVenue($data->venue)
+                ->setRegisterStartDate($data->registerStartDate)
+                ->setRegisterEndDate($data->registerEndDate)
+                ->setEventStartDate($data->eventStartDate)
+                ->setEventEndDate($data->eventEndDate)
+                ->setDescription($data->description)
+                ->setVipTicketQty($data->vipTicketQty)
+                ->setStandardTicketQty($data->stdTicketQty)
+                ->setBudgetTicketQty($data->bgtTicketQty)
+                ->setVipTicketPrice($data->vipTicketPrice)
+                ->setStandardTicketPrice($data->stdTicketPrice)
+                ->setBudgetTicketPrice($data->bgtTicketPrice)
+                ->setOrganizerName($data->organizerName)
+                ->setOrganizerMail($data->organizerMail)
+                ->setOrganizerPhone($data->organizerPhone)
+                ->setCreatedBy($data->createdBy);
 
-        $eventNo = Create::Create($event);
-        echo "Event $eventNo is added.";
+        
+ $eventNo = Create::Create($event);
+// Serialize the event object
+$serializedEvent = serialize($event);
+
+// Store the serialized event in the session
+$_SESSION['event'] = $serializedEvent;
+
+    echo "Event $eventNo is added.";
+//
+//    ob_start(); // start output buffering
+//
+//
+//    // flush the output buffer
+//    ob_end_flush();
+//
+//    $event->attach(new User());
+//    $event->notify();
+//
+
+//         $eventData = serialize($event);
+//$eventData = str_replace("\0", "", $eventData);
+//$command = "php NotifyScript.php ".escapeshellarg($eventData)." > /dev/null 2>&1 &";
+//$returnValue = 0;
+//$output = array();
+//exec($command, $output, $returnValue);
+//
+//if ($returnValue !== 0) {
+//    // Handle error
+//    echo "Error: Unable to execute command";
+//    // You may also want to log the error message and/or the return value
+//}
+//         $eventData = serialize($event);
+//$eventData = str_replace("\0", "", $eventData);
+//$eventDataEncoded = base64_encode($eventData);
+//$command = "php notify_script.php $eventDataEncoded > /dev/null 2>&1 &";
+//exec($command);
+//         
+//         $eventData = base64_encode(serialize($event));
+//$command = "php notify_script.php $eventData > /dev/null 2>&1 &";
+//exec($command);
+//         $eventData = serialize($event);
+//         $eventData = json_encode($event);
+//$eventData = str_replace("\0", "", $eventData);
+//$command = "php notify_script.php $eventData > /dev/null 2>&1 &";
+//exec($command);
+//// Serialize the $event object
+//$event_data = serialize($event);
+//
+//// Pass the serialized $event object as an argument
+//exec("php notify_script.php '$event_data' > /dev/null 2>&1 &");
+//         exec("php notify_script.php $event > /dev/null 2>&1 &");
+        // fork a child process to execute notify() method
+//    $pid = pcntl_fork();
+//    if ($pid == -1) {
+//        throw new Exception("Failed to fork process.");
+//    } else if ($pid == 0) {
+//        // child process
+//        $event->attach(new User());
+//        $event->notify();
+//        exit(0);
+//    }
+////
+//         // Turn on output buffering
+//    ob_start();
+//
+//    // Print success message
+//    echo "Event $eventNo is added.";
+//
+//    // Flush the output buffer to send the success message to the browser
+//    ob_flush();
+//    flush();
+//
+//    // Allow the script to continue executing even if the user aborts the connection
+//    ignore_user_abort(true);
+//
+//    // Call notify() method
+//    $event->attach(new User());
+//    $event->notify();
+//        register_shutdown_function('notify_event', $event);
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();
         echo $e;
     }
 }
+
+//function notify_event(Event $event) {
+//
+//    $event->attach(new User());
+//    $event->notify();
+//}

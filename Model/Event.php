@@ -13,7 +13,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/Poste
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 
-class Event
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Subject.php";
+
+class Event extends Subject
 {
     private $eventId;
     private $categoryId;
@@ -199,6 +201,7 @@ class Event
     {
         $this->eventId = $eventId;
         return $this;
+        
     }
 
     public function setCategoryId($categoryId)
@@ -401,5 +404,6 @@ class Event
             $ticket = $budgetFactory->createTicket();
             array_push($this->tickets, $ticket);
         }
+        
     }
 }

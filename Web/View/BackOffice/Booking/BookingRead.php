@@ -7,11 +7,11 @@ require '../../Layout.php';
         <div class="col">
             <h2 class="float-start mb-4">View Booking</h2>
         </div>
-          <div class="col d-flex justify-content-end mb-4">
-        <a class="btn btn-secondary btn-floating float-end" title="Back" href="BookingSummary.php" role="button">
-            <i class="fas fa-arrow-left"></i>
-        </a>
-    </div>
+        <div class="col d-flex justify-content-end mb-4">
+            <a class="btn btn-secondary btn-floating float-end" title="Back" href="BookingSummary.php" role="button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
     </div>
     <!-- Booking Information -->
     <div class="row">
@@ -41,7 +41,7 @@ require '../../Layout.php';
         <!-- Price -->
         <div class="ticket-booked">
             <!--loop-->
-            
+
         </div>
 
 
@@ -54,15 +54,15 @@ require '../../Layout.php';
         <div class="row mb-4 mx-5 px-5">
             <div class="col-md-4 d-flex justify-content-center">
 
-                
+
                 <img id="event-poster" class="img-fluid rounded-0 w-50" style="object-fit: cover;">
 
             </div>
 
 
             <div class="col-md-8">
-                
-                    <h3 id="booking-event-no" class="mb-2"></h3>
+
+                <h3 id="booking-event-no" class="mb-2"></h3>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="txt-event-name">Event Name</label>
@@ -86,7 +86,7 @@ require '../../Layout.php';
         </div>
     </fieldset>
 
-  
+
 </div>
 
 <?php

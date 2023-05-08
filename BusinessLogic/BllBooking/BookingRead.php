@@ -14,14 +14,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketSt
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
 
-class Read {
+class BookingRead {
 
     public static function Read(Booking $booking) {
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
                 function (DataAccess $dataAccess) use ($booking) {
 
-                    return Read::ReadBooking($dataAccess, $booking);
+                    return BookingRead::ReadBooking($dataAccess, $booking);
                 }
         );
 
