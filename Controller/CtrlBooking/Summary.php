@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $booking->setCreatedBy($_SESSION['username']);
         }
 
-        $result = Read::Read($booking);
+        $result = BookingRead::Read($booking);
 
         $output = array_map(function ($booking) {
            
