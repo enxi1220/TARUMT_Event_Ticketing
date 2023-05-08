@@ -2,9 +2,6 @@
 
 #  Author: Lim En Xi
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
-
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
         if (!isset($_GET['eventId'])) {
@@ -12,54 +9,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
 
         $eventId = json_decode($_GET['eventId']);
-        $event = new Event();
-        $event->setEventId($eventId);
 
-        $result = Read::Read($event);
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Read&eventId=$eventId";
+        
+        $client = curl_init($apiURL);
 
-        if (empty($result)) {
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($client);
+
+        $result = json_decode($response);
+        
+        if ($result->status === 200) {
+            echo json_encode($result->data);
             exit;
         }
 
-        $result = $result[0];
-        $output = array(
-            'eventId' => $result->getEventId(),
-            'categoryId' => $result->getCategoryId(),
-            'eventNo' => $result->getEventNo(),
-            'name' => $result->getName(),
-            'poster' => $result->getPoster(),
-            'venue' => $result->getVenue(),
-            'registerStartDate' => $result->getRegisterStartDate(),
-            'registerEndDate' => $result->getRegisterEndDate(),
-            'eventStartDate' => $result->getEventStartDate(),
-            'eventEndDate' => $result->getEventEndDate(),
-            'description' => $result->getDescription(),
-            'vipTicketQty' => $result->getVipTicketQty(),
-            'standardTicketQty' => $result->getStandardTicketQty(),
-            'budgetTicketQty' => $result->getBudgetTicketQty(),
-            'vipTicketPrice' => $result->getVipTicketPrice(),
-            'standardTicketPrice' => $result->getStandardTicketPrice(),
-            'budgetTicketPrice' => $result->getBudgetTicketPrice(),
-            'organizerName' => $result->getOrganizerName(),
-            'organizerPhone' => $result->getOrganizerPhone(),
-            'organizerMail' => $result->getOrganizerMail(),
-            'status' => $result->getStatus(),
-            'createdDate' => $result->getCreatedDate(),
-            'createdBy' => $result->getCreatedBy(),
-            'updatedDate' => $result->getUpdatedDate(),
-            'updatedBy' => $result->getUpdatedBy(),
-            'category' => $result->getCategory(),
-            'tickets' => $result->getTickets(),
-            'categoryName' => $result->getCategory()
-                ->getName(),
-            'posterPath' => $result->posterPath() . $result->getPoster()
-        );
-        // optimize to nested..xml? support complex..but js
-
-        echo json_encode($output);
+        if($result->status == 404){
+            throw new Exception($result->message, 404);
+        }
+        
     } catch (\Throwable $e) {
-        header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
+        header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
         // echo $e->getMessage();
-        echo $e;
+        echo $e->getCode(). " " . $e->getMessage();
     }
 }
