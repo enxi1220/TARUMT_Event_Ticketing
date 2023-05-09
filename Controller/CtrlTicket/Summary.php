@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $ticket = new TicketStandard();
         $ticket->setEventId($eventId);
 
-        $result = Read::Read($ticket);
+        $result = TicketRead::Read($ticket);
         
         $output = array_map(function ($ticket) {
             return array(

@@ -56,8 +56,8 @@ require '../../Layout.php';
                         <button class="btn btn-outline-primary" type="button" id="btn-show-poster" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#modal-show-poster">
                             Initial Preview
                         </button>
-                        <input type="file" id="txt-poster" name="Poster" class="form-control" required />
-                        <div class="invalid-feedback">Required</div>
+                        <input type="file" id="txt-poster" name="Poster" class="form-control" required accept="image/jpeg, image/png, image/gif"/>
+                        <div class="invalid-feedback">Required and only allow jpg, jpeg, png, gif file types</div>
                     </div>
                 </div>
             </div>

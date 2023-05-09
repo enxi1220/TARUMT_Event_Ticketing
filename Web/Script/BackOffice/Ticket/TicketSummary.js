@@ -5,6 +5,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlTicket/Summary.php',
         { eventId: new URLSearchParams(window.location.search).get('eventId') },
         function (success) {
+            console.log(success);
             var tickets = JSON.parse(success);
             display(tickets[0]);
             buildDataTable(tickets);
@@ -33,4 +34,3 @@ function display(ticket) {
     $(`#txt-event-no`).text(ticket.eventNo);
     $('#txt-event-name').text(ticket.eventName);
 }
-
