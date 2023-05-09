@@ -48,7 +48,6 @@ class Event extends Subject implements Observer
 
     private Category $category;
     private $tickets = array();
-    private $posterPath;
     private $ticketQtySold;
 
     public function __construct()
@@ -188,11 +187,6 @@ class Event extends Subject implements Observer
     public function getTickets()
     {
         return $this->tickets;
-    }
-
-    public function getPosterPath()
-    {
-        return $this->posterPath;
     }
 
     public function getTicketQtySold()
