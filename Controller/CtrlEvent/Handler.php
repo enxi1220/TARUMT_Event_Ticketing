@@ -144,7 +144,7 @@ function read()
     $eventId = $_GET['eventId'] ?? 0;
     $event = new Event();
     $event->setEventId($eventId);
-    $result = Read::Read($event);
+    $result = EventRead::Read($event);
 
     if (empty($result)) {
         RESTfulAPI::response(404, "Data Not Found", null);
@@ -197,7 +197,7 @@ function summary()
     // ----------
 
     $event = new Event();
-    $result = Read::Read($event);
+    $result = EventRead::Read($event);
 
     $output = array_map(
         function ($event) {
@@ -235,8 +235,4 @@ function summary()
     );
 
     RESTfulAPI::response(200, "Data Found", $output);
-}
-
-function getRequestBody($data)
-{
 }
