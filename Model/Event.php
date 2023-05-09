@@ -14,11 +14,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/Poste
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/UniqueNoHelper.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Subject.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Deactivate.php";
 
-class Event implements IObserver 
+class Event implements IObserver
 {
     private $eventId;
     private $categoryId;
@@ -408,6 +407,18 @@ class Event implements IObserver
             array_push($this->tickets, $ticket);
         }
         
+    }
+
+    public function update(\Subject $subject)
+    {
+        $event = new Event();
+        $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
+        $result = Read::Read($event);
+
+        foreach ($result as $event) {
+            $event->setUpdatedBy("System");
+            Deactivate::Deactivate($event);
+        }
     }
 
     public function update(\Subject $subject)
