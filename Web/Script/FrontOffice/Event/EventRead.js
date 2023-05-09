@@ -241,7 +241,7 @@ function display(event) {
                 </div>
             </div>
   `;
-    document.querySelector('body').innerHTML = html;
+
       $('.container').append(html);
 }
 
