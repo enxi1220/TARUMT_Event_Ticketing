@@ -23,6 +23,7 @@ class Create
 
         ReadNewQuantity::Read($booking->getEvent(), $ticketVIP, $ticketStandard, $ticketBudget);
         $event = Read::Read($booking->getEvent()->setStatus(EventStatusConstant::CLOSED));
+        
         if (!empty($event)) {
             throw new Exception("The event has been closed.");
         }

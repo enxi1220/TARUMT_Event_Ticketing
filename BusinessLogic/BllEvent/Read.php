@@ -5,6 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/Dat
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PosterPathConstant.php";
 
+
 class Read
 {
 
@@ -13,7 +14,7 @@ class Read
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($event) {
-                return Read::ReadEvent($dataAccess, $event);
+                return self::ReadEvent($dataAccess, $event);
             }
         );
 
@@ -55,11 +56,13 @@ class Read
                     WHERE   e.event_id = IF(:event_id IS NULL, e.event_id, :event_id)
                         AND e.event_no = IF(:event_no IS NULL, e.event_no, :event_no)
                         AND e.status = IF(:status IS NULL, e.status, :status)
+                        AND e.event_end_date <= IF(:event_end_date IS NULL, e.event_end_date, :event_end_date)
                     ORDER BY e.event_id DESC",
             function (PDOStatement $pstmt) use ($event) {
                 $pstmt->bindValue(":event_id", $event->getEventId(), PDO::PARAM_INT);
                 $pstmt->bindValue(":event_no", $event->getEventNo(), PDO::PARAM_STR);
                 $pstmt->bindValue(":status", $event->getStatus(), PDO::PARAM_STR);
+                $pstmt->bindValue(":event_end_date", $event->getEventEndDate(), PDO::PARAM_STR);
             },
             function ($row) {
                 $category = new Category();

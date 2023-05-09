@@ -65,36 +65,35 @@ class Create {
                 created_by,
                 created_date
             ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                function (PDOStatement $pstmt) use ($event) {
-                    $pstmt->bindValue(1, $event->getEventNo(), PDO::PARAM_STR);
-                    $pstmt->bindValue(2, $event->getCategoryId(), PDO::PARAM_INT);
-                    $pstmt->bindValue(3, $event->getName(), PDO::PARAM_STR);
-                    $pstmt->bindValue(4, $event->getPoster(), PDO::PARAM_STR);
-                    $pstmt->bindValue(5, $event->getVenue(), PDO::PARAM_STR);
-                    $pstmt->bindValue(6, $event->getRegisterStartDate(), PDO::PARAM_STR);
-                    $pstmt->bindValue(7, $event->getRegisterEndDate(), PDO::PARAM_STR);
-                    $pstmt->bindValue(8, $event->getEventStartDate(), PDO::PARAM_STR);
-                    $pstmt->bindValue(9, $event->getEventEndDate(), PDO::PARAM_STR);
-                    $pstmt->bindValue(10, $event->getVipTicketQty(), PDO::PARAM_INT);
-                    $pstmt->bindValue(11, $event->getStandardTicketQty(), PDO::PARAM_INT);
-                    $pstmt->bindValue(12, $event->getBudgetTicketQty(), PDO::PARAM_INT);
-                    $pstmt->bindValue(13, $event->getVipTicketPrice(), PDO::PARAM_INT);
-                    $pstmt->bindValue(14, $event->getStandardTicketPrice(), PDO::PARAM_INT);
-                    $pstmt->bindValue(15, $event->getBudgetTicketPrice(), PDO::PARAM_INT);
-                    $pstmt->bindValue(16, $event->getDescription(), PDO::PARAM_STR);
-                    $pstmt->bindValue(17, $event->getOrganizerName(), PDO::PARAM_STR);
-                    $pstmt->bindValue(18, $event->getOrganizerPhone(), PDO::PARAM_STR);
-                    $pstmt->bindValue(19, $event->getOrganizerMail(), PDO::PARAM_STR);
-                    $pstmt->bindValue(20, $event->getStatus(), PDO::PARAM_STR);
-                    $pstmt->bindValue(21, $event->getCreatedBy(), PDO::PARAM_STR);
-                    $pstmt->bindValue(22, $event->getCreatedDate(), PDO::PARAM_STR);
-                },
-                function (Exception $ex) {
-                    if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'event_no_UNIQUE')) {
-                        echo "Duplicate event no is generated. Please try again.";
-                    }
-                    echo $ex;
+            function (PDOStatement $pstmt) use ($event) {
+                $pstmt->bindValue(1, $event->getEventNo(), PDO::PARAM_STR);
+                $pstmt->bindValue(2, $event->getCategoryId(), PDO::PARAM_INT);
+                $pstmt->bindValue(3, $event->getName(), PDO::PARAM_STR);
+                $pstmt->bindValue(4, $event->getPoster(), PDO::PARAM_STR);
+                $pstmt->bindValue(5, $event->getVenue(), PDO::PARAM_STR);
+                $pstmt->bindValue(6, $event->getRegisterStartDate(), PDO::PARAM_STR);
+                $pstmt->bindValue(7, $event->getRegisterEndDate(), PDO::PARAM_STR);
+                $pstmt->bindValue(8, $event->getEventStartDate(), PDO::PARAM_STR);
+                $pstmt->bindValue(9, $event->getEventEndDate(), PDO::PARAM_STR);
+                $pstmt->bindValue(10, $event->getVipTicketQty(), PDO::PARAM_INT);
+                $pstmt->bindValue(11, $event->getStandardTicketQty(), PDO::PARAM_INT);
+                $pstmt->bindValue(12, $event->getBudgetTicketQty(), PDO::PARAM_INT);
+                $pstmt->bindValue(13, $event->getVipTicketPrice(), PDO::PARAM_STR);
+                $pstmt->bindValue(14, $event->getStandardTicketPrice(), PDO::PARAM_STR);
+                $pstmt->bindValue(15, $event->getBudgetTicketPrice(), PDO::PARAM_STR);
+                $pstmt->bindValue(16, $event->getDescription(), PDO::PARAM_STR);
+                $pstmt->bindValue(17, $event->getOrganizerName(), PDO::PARAM_STR);
+                $pstmt->bindValue(18, $event->getOrganizerPhone(), PDO::PARAM_STR);
+                $pstmt->bindValue(19, $event->getOrganizerMail(), PDO::PARAM_STR);
+                $pstmt->bindValue(20, $event->getStatus(), PDO::PARAM_STR);
+                $pstmt->bindValue(21, $event->getCreatedBy(), PDO::PARAM_STR);
+                $pstmt->bindValue(22, $event->getCreatedDate(), PDO::PARAM_STR);
+            },
+            function (Exception $ex) {
+                if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'event_no_UNIQUE')) {
+                    echo "Duplicate event no is generated. Please try again.";
                 }
+            }
         );
         return $eventId;
     }

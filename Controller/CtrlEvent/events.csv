@@ -1,10 +1,23 @@
 "Event No","Category Name","Event Name",Status,"Event Start Date","Event End Date",Venue,"VIP Ticket Quantity","Standard Ticket Quantity","Budget Ticket Quantity","VIP Ticket Price","Standard Ticket Price","Budget Ticket Price","Organizer Name","Organizer Phone","Organizer Mail"
+EVT2023/0506/02:46:42.377564,Conference,mikael,Open,"2023-05-06 02:46:00","2023-05-06 02:46:00","Arte S",5,5,8,10,7,5,"En En",0123857857,enen@event.com
+EVT2023/0419/04:49:50.203280,Seminar,"layin low",Open,"2023-04-19 04:49:00","2023-04-19 04:49:00","Arte S",2,3,4,8.88,6.88,5.88,"En En",0123456789,enen@event.com
+EVT2023/0419/04:49:00.381938,Conference,"Voice Of Rahman",Open,"2023-04-19 04:48:00","2023-04-19 04:48:00","Arte S",2,3,4,8.88,6.88,2.88,"En En",0123456789,enen@event.com
+EVT2023/0419/04:48:49.379592,Conference,"Voice Of Rahman",Open,"2023-04-19 04:48:00","2023-04-19 04:48:00","Arte S",2,3,4,8.88,6.88,2.88,"En En",0123456789,enen@event.com
+EVT2023/0419/04:46:57.312281,Conference,"Voice Of Rahman",Open,"2023-04-19 04:46:00","2023-04-19 04:46:00","Arte S",2,3,4,8,5,2,"En En",0123456789,enen@event.com
+EVT2023/0419/04:46:05.606813,Exhibition,"Voice Of Rahman",Open,"2023-04-19 04:44:00","2023-04-19 04:44:00","Arte S",2,3,4,8,7,5,"En En",0123456789,enen@event.com
+EVT2023/0419/04:45:54.157653,Exhibition,"Voice Of Rahman",Open,"2023-04-19 04:44:00","2023-04-19 04:44:00","Arte S",2,3,4,8,7,5,"En En",0123456789,enen@event.com
+EVT2023/0419/04:45:32.482655,Exhibition,"Voice Of Rahman",Open,"2023-04-19 04:44:00","2023-04-19 04:44:00","Arte S",2,3,4,8,7,5,"En En",0123456789,enen@event.com
+EVT2023/0419/03:55:52.093038,Seminar,"layin low",Open,"2023-04-19 03:53:00","2023-04-19 03:53:00","Arte S",3,4,3,6,5,4,dfg,0123456789,enen@event.com
+EVT2023/0419/02:52:47.603288,Seminar,"Voice Of Rahman",Open,"2023-04-19 02:52:00","2023-04-19 02:52:00","Arte S",5,6,7,10,7,5,"En En",0123456789,enen@event.com
+EVT2023/0419/02:46:49.387904,Seminar,"Voice Of Rahman",Open,"2023-04-19 02:42:00","2023-04-19 02:42:00","Arte S",10,7,5,10,7,5,"En En",0123456789,enen@event.com
+EVT2023/0414/01:38:57.527324,Seminar,"Ludovico Einaudi Concert",Closed,"2023-04-14 01:38:00","2023-04-14 01:38:00","Arte S",5,5,5,10,7.55,5,"En En",0123456789,enen@event.com
+EVT2023/0414/01:15:52.098210,Concert,"Voice Of Rahman",Closed,"2023-04-14 01:15:00","2023-04-14 01:15:00","Arte S",3,4,5,10,7,5,"En En",0123456789,enen@event.com
 EV000012,Seminar,"Food Festival",Open,"2023-09-15 00:00:00","2023-09-17 00:00:00","City Square J",200,1000,2000,500,250,100,"Blockchain Events LLC","+1 (555) 555-55",info@blockchainevents.com
 EV000011,Conference,"Blockchain Conference",Open,"2024-01-15 00:00:00","2024-01-16 00:00:00","Conference Center I",200,1000,2000,500,250,100,"Blockchain Events LLC","+1 (555) 555-55",info@blockchainevents.com
 EV000010,Exhibition,"Art Fair",Open,"2023-12-15 00:00:00","2023-12-17 00:00:00","Convention Center H",0,0,0,0,0,0,"Art Expo Inc.","+1 (555) 555-55",info@artexpo.com
 EV000009,Theater,"Comedy Show",Open,"2023-10-01 00:00:00","2023-10-01 00:00:00","Comedy Club G",20,100,200,75,50,25,"Comedy Central Live","+1 (555) 555-55",info@comedycentrallive.com
 EV000008,Sports,"Basketball Game",Open,"2023-08-01 00:00:00","2023-08-01 00:00:00","Arena F",75,300,750,50,25,10,"Sports Entertainment LLC","+1 (555) 555-55",info@sportsentertainment.com
-EV000007,Concert,"Jazz Festival",Closed,"2023-10-15 00:00:00","2023-10-16 00:00:00","City Park",200,1000,2000,200,100,50,"Jazz Music Productions","+1 (555) 555-55",info@jazzmusicpro.com
+EV000007,Concert,"Jazz Festival",Open,"2023-10-15 00:00:00","2023-10-16 00:00:00","City Park",200,1000,2000,200,100,50,"Jazz Music Productions","+1 (555) 555-55",info@jazzmusicpro.com
 EV000006,Seminar,"Music Festival",Open,"2023-08-31 00:00:00","2023-09-01 00:00:00","Central Park",500,5000,10000,250,100,50,"Music Festivals LLC","+1 (555) 555-55",info@musicfestivals.com
 EV000005,Conference,"Tech Conference",Open,"2023-12-31 00:00:00","2024-01-01 00:00:00","Convention Center E",100,500,1000,150,100,50,"Tech Events Inc.","+1 (555) 555-55",info@techevents.com
 EV000004,Exhibition,"Art Exhibition",active,"2023-12-01 00:00:00","2023-12-01 00:00:00","Art Gallery D",0,0,0,0,0,0,"Art Management Company",4433221100,artmgmt@company.com

@@ -21,7 +21,7 @@ class BookingRead {
         $result = $dataAccess->BeginDatabase(
                 function (DataAccess $dataAccess) use ($booking) {
 
-                    return BookingRead::ReadBooking($dataAccess, $booking);
+                    return self::ReadBooking($dataAccess, $booking);
                 }
         );
 

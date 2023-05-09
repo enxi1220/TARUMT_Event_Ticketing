@@ -9,7 +9,7 @@ class Activate
 {
     public static function Activate(Event $event)
     {
-        $event->setUpdatedDate(DateHelper::GetMalaysiaDateTime());
+        $event->setUpdatedDate();
 
         $dataAccess = DataAccess::getInstance();
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event) {
