@@ -2,7 +2,7 @@
 
 /**
  * Description of Event
- * Design pattern: Creational -> Factory
+ * Design pattern: Creational -> Factory, Behavior -> Observer 
  * @author enxil
  */
 
@@ -414,7 +414,7 @@ class Event extends Subject implements Observer
     {
         $event = new Event();
         $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
-        $result = Read::Read($event);
+        $result = EventRead::Read($event);
 
         foreach ($result as $event) {
             $event->setUpdatedBy("System");
