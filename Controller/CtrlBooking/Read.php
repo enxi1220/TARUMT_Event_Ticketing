@@ -10,8 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
          if (!isset($_GET['bookingId'])) {
             throw new Exception("Booking not found.");
         }
-
-
         $bookingId = json_decode($_GET['bookingId']);
 
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Read&bookingId=$bookingId";

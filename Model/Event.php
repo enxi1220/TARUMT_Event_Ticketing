@@ -421,5 +421,4 @@ class Event extends Subject implements Observer
             Deactivate::Deactivate($event);
         }
     }
-
 }

@@ -25,5 +25,4 @@ class Subject {
             $observer->update($this);
         }
     }
-
 }
