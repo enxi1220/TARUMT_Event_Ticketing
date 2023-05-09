@@ -14,9 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $result = json_decode($response);
         
-        var_dump($result);
-        
-        if($result->status === 200){
+        if ($result->status === 200) {
             echo json_encode($result->data);
             exit;
         }

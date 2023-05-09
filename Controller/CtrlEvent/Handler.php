@@ -12,7 +12,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Controller/RES
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/LoginUser.php";
 
-
 $action = $_GET["action"] ?? "";
 if ($action !== "Summary" && $action !== "Read"){
     $request_body = file_get_contents('php://input');
@@ -145,7 +144,7 @@ function read()
     $eventId = $_GET['eventId'] ?? 0;
     $event = new Event();
     $event->setEventId($eventId);
-    $result = Read::Read($event);
+    $result = EventRead::Read($event);
 
     if (empty($result)) {
         RESTfulAPI::response(404, "Data Not Found", null);
@@ -191,15 +190,14 @@ function read()
 
 function summary()
 {   
-    
     // todo: move to login process
-    $loginUser = new LoginUser();
-    $loginUser->attach(new Event());
-    $loginUser->setLoginUser("enxi");
+    // $loginUser = new LoginUser();
+    // $loginUser->attach(new Event());
+    // $loginUser->setLoginUser("enxi");
     // ----------
 
     $event = new Event();
-    $result = Read::Read($event);
+    $result = EventRead::Read($event);
 
     $output = array_map(
         function ($event) {
@@ -237,8 +235,4 @@ function summary()
     );
 
     RESTfulAPI::response(200, "Data Found", $output);
-}
-
-function getRequestBody($data)
-{
 }

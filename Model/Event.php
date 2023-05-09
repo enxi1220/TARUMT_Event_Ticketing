@@ -421,4 +421,16 @@ class Event implements IObserver
             Deactivate::Deactivate($event);
         }
     }
+
+    public function update(\Subject $subject)
+    {
+        $event = new Event();
+        $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
+        $result = Read::Read($event);
+
+        foreach ($result as $event) {
+            $event->setUpdatedBy("System");
+            Deactivate::Deactivate($event);
+        }
+    }
 }
