@@ -6,7 +6,8 @@
  * @author enxil
  */
 
-require_once 'IObserver.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Observer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Subject.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Ticket.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
@@ -17,7 +18,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHel
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Deactivate.php";
 
-class Event implements IObserver
+class Event extends Subject implements Observer
 {
     private $eventId;
     private $categoryId;
@@ -421,27 +422,4 @@ class Event implements IObserver
         }
     }
 
-    public function update(\Subject $subject)
-    {
-        $event = new Event();
-        $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
-        $result = Read::Read($event);
-
-        foreach ($result as $event) {
-            $event->setUpdatedBy("System");
-            Deactivate::Deactivate($event);
-        }
-    }
-
-    public function update(\Subject $subject)
-    {
-        $event = new Event();
-        $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
-        $result = Read::Read($event);
-
-        foreach ($result as $event) {
-            $event->setUpdatedBy("System");
-            Deactivate::Deactivate($event);
-        }
-    }
 }
