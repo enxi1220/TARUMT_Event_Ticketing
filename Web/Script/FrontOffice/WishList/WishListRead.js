@@ -2,19 +2,19 @@
 
 $(document).ready(function () {
     get(
-            '/TARUMT_Event_Ticketing/Controller/CtrlTicket/Summary.php',
-            {eventId: new URLSearchParams(window.location.search).get('eventId')},
+            '/TARUMT_Event_Ticketing/Controller/CtrlWishList/Read.php',
+            null,
             function (success) {
-                console.log(success);
-                var ticket = JSON.parse(success);
-                display(ticket);
+//                console.log(success);
+                var wishlist = JSON.parse(success);
+                display(wishlist);
             }
     );
 });
 
-function display(ticket) {
+function display(wishlist) {
     var template = '';
-    ticket.forEach(item => {
+    wishlist.forEach(item => {
 
         template += `
             <div class="card rounded-3 mb-4  w-75">
@@ -25,9 +25,10 @@ function display(ticket) {
                                     </div>
 
                                     <div class="col-md-7 ">
-                                        <h5 class="card-title d-flex justify-content-between" id="txt-ticket-no">${item.ticketNo}
-                                            <span>${new Date(item.eventStartDate).toLocaleDateString()}</span>
-                                        </h5>
+                                        <i class="fa-regular fa-trash"></i>
+                                        <i class="fa-regular fa-heart fs-3" onclick="deleteWishlist(${item.wishlistId})"></i>
+
+        
                                         <p class="card-text">
                                             ${item.eventNo} 
                                         </p>
@@ -43,7 +44,31 @@ function display(ticket) {
         `;
 
 
-        $('#future').append(template);
-    });
 
+    });
+    $('#wishlist').append(template);
+}
+
+function deleteWishlist(wishlistId) {
+
+    
+    var wishlist = JSON.stringify({
+       
+        wishlistId: wishlistId
+   
+    });
+    
+    
+     post(
+                '/TARUMT_Event_Ticketing/Controller/CtrlWishList/Delete.php',
+                [
+                    submitData('wishlist', wishlist)
+                  
+                ],
+                null,
+                function () {
+                    location.href = "EventSummary.php";
+                }
+            );
+   
 }

@@ -9,8 +9,34 @@ $(document).ready(function () {
                 var event = JSON.parse(success);
                 display(event);
             }
-    )
+    );
+
+
 });
+
+function addToWishlist() {
+
+    
+    var wishlist = JSON.stringify({
+       
+        eventId: new URLSearchParams(window.location.search).get('eventId')
+   
+    });
+    
+    
+     post(
+                '/TARUMT_Event_Ticketing/Controller/CtrlWishList/Create.php',
+                [
+                    submitData('wishlist', wishlist)
+                  
+                ],
+                null,
+                function () {
+                    location.href = "EventSummary.php";
+                }
+            );
+   
+}
 //function display(event) {
 //    const html = `<div class="container mt-5"> <h1 class="mb-3">Event Details</h1> <div class="row"> <div class="col-md-4 mb-3"> <img src="${event.poster}" alt="${event.name}" class="img-fluid" /> </div> <div class="col-md-8"> <h2>${event.name}</h2> <div class="mb-3"> <strong>Event ID:</strong> ${event.eventId} </div> <div class="mb-3"> <strong>Category:</strong> ${event.category.name} </div> <div class="mb-3"> <strong>Venue:</strong> ${event.venue} </div> <div class="mb-3"> <strong>Event Dates:</strong> ${new Date(event.eventStartDate).toDateString()} - ${new Date(event.eventEndDate).toDateString()} </div> <div class="mb-3"> <strong>Registration Dates:</strong> ${new Date(event.registerStartDate).toDateString()} - ${new Date(event.registerEndDate).toDateString()} </div> <div class="mb-3"> <strong>Description:</strong> ${event.description} </div> <div class="mb-3"> <strong>Organizer Name:</strong> ${event.organizerName} </div> <div class="mb-3"> <strong>Organizer Phone:</strong> ${event.organizerPhone} </div> <div class="mb-3"> <strong>Organizer Email:</strong> ${event.organizerMail} </div> <div class="mb-3"> <strong>Status:</strong> ${event.status} </div> </div> </div> </div>`;
 //    document.querySelector('body').innerHTML = html;
@@ -138,7 +164,7 @@ $(document).ready(function () {
 //}
 
 function display(event) {
-  const html = `
+    const html = `
            <div class="container my-5">
             <div class="row">
                 <div class="col-lg-7 mb-4 mb-lg-0">
@@ -186,7 +212,7 @@ function display(event) {
                                     <p class="card-text"><i class="far fa-calendar-alt me-2"></i>${new Date(event.registerStartDate).toLocaleDateString()} - ${new Date(event.registerEndDate).toLocaleDateString()}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="card-text"><i class="far fa-clock me-2"></i>${new Date(event.eventStartDate).toLocaleString([], {hour: '2-digit', minute:'2-digit'})} - ${new Date(event.eventEndDate).toLocaleString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                                    <p class="card-text"><i class="far fa-clock me-2"></i>${new Date(event.eventStartDate).toLocaleString([], {hour: '2-digit', minute: '2-digit'})} - ${new Date(event.eventEndDate).toLocaleString([], {hour: '2-digit', minute: '2-digit'})}</p>
                                 </div>
                             </div>
                             <hr class="my-4">
@@ -196,7 +222,7 @@ function display(event) {
                         <hr class="my-4 mx-4">
                         <div class="row d-flex m-3 mt-0 mb-4">
                                 <h5 class="card-title mb-3 d-flex justify-content-between">Organizer Details 
-                                <i class="fa-regular fa-heart fs-3"></i>
+                                <i class="fa-regular fa-heart fs-3" onclick="addToWishlist()"></i>
                                 </h5>
                                
                             <div class="col-md-7">
@@ -215,6 +241,6 @@ function display(event) {
             </div>
         </div>
   `;
-  document.querySelector('body').innerHTML = html;
+    document.querySelector('body').innerHTML = html;
 }
 
