@@ -32,7 +32,7 @@ class Create {
             mail,
             status,
             created_by,
-            created_date,
+            created_date
         ) VALUES (?,?,?,?,?,?,?,?)",
                 function (PDOStatement $pstmt) use ($user) {
                     $pstmt->bindValue(1, $user->getUsername(), PDO::PARAM_STR);
@@ -44,7 +44,7 @@ class Create {
                     $pstmt->bindValue(7, $user->getCreatedBy(), PDO::PARAM_STR);
                     $pstmt->bindValue(8, $user->getCreatedDate(), PDO::PARAM_STR);
                 },
-                function (Exception $ex) {
+                function (\Throwable $ex) {
                     if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'mail_UNIQUE')) {
                         echo "This email has been signed up. Please try again.";
                     }

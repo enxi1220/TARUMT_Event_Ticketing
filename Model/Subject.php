@@ -1,36 +1,28 @@
 <?php
+require_once 'Observer.php';
+/**
+ * Description of Subject
+ *
+ * @author vinnie chin
+ */
+class Subject {
 
-require_once 'IObserver.php';
+    private $observers = array();
 
-class Subject
-{
-    private $observers;
-
-    public function __construct()
-    {
-        $this->observers = array();
+    public function attach(Observer $observer) {
+        $this->observers[] = $observer;
     }
 
-    public function attach(IObserver $observer)
-    { //register the observer
-        array_push($this->observers, $observer);
-    }
-
-    public function detach(IObserver $observer)
-    {
-        $index = 0;
-        foreach ($this->observers as $o) {
-            if ($o == $observer) {
-                array_splice($this->observers, $index);
-            }
-            $index++;
+    public function detach(Observer $observer) {
+        $key = array_search($observer, $this->observers, true);
+        if ($key !== false) {
+            unset($this->observers[$key]);
         }
     }
 
-    public function notify()
-    {
-        foreach ($this->observers as $o) {
-            $o->update($this);
+    public function notify() {
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
         }
     }
 }

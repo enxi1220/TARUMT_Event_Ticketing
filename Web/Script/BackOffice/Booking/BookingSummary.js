@@ -16,6 +16,20 @@ $(document).ready(function () {
     );
 });
 
+function exportBookingInCSV(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Export.php',
+        { action: "exportCSV"}
+    );
+}
+
+function exportBookingInPDF(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Export.php',
+        { action: "exportPDF"}
+    );
+}
+
 function buildDataTable(booking){
     $('#booking-summary').DataTable({
         order: [[0, 'desc']],
@@ -24,10 +38,11 @@ function buildDataTable(booking){
         [
             { data: "bookingNo" },
             { data: "ticketCount" },
-            { data: "eventName" },
-            { data: "venue" },
-            { data: "createdDate" },
+            { data: "price" },
             { data: "createdBy" },
+            { data: "createdDate" },
+            { data: "eventName" },
+            { data: "eventNo" },
             {
                 render: function (data, type, row, meta) {
                     var html = `

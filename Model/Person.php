@@ -9,17 +9,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPerson.
 
 
 class Person implements IPerson {
-    protected string $username;
-    protected string $password;
-    protected string $name;
-    protected string $phone;
-    protected string $mail;
-    protected string $status;
-    protected DateTime $created_date;
-    protected string $created_by;
-    protected DateTime $updated_date;
-    protected string $updated_by;
-    protected string $profilePic;
+    protected $username;
+    protected $password;
+    protected $name;
+    protected $phone;
+    protected $mail;
+    protected $status;
+    protected $created_date;
+    protected $created_by;
+    protected $updated_date;
+    protected $updated_by;
+    protected $profilePic;
 //
 //    public function __construct(string $username, string $password, string $name, string $phone, string $mail, string $status, DateTime $created_date, string $created_by, DateTime $updated_date, string $updated_by) {
 //        $this->username = $username;
@@ -34,25 +34,29 @@ class Person implements IPerson {
 //        $this->updated_by = $updated_by;
 //    }
 
-    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status) {
-        $this->name = $name;
-        $this->username = $username;
-        $this->phone = $phone;
-        $this->mail = $mail;
-        $this->created_date = new DateTime();
-        $this->created_by = $created_by;
-        $this->status = $status;
+//    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status) {
+//        $this->name = $name;
+//        $this->username = $username;
+//        $this->phone = $phone;
+//        $this->mail = $mail;
+//        $this->created_date = new DateTime();
+//        $this->created_by = $created_by;
+//        $this->status = $status;
+//    }
+    
+    public function __construct() {
+        
     }
 
-    public function getUsername(): string {
+    public function getUsername(){
         return $this->username;
     }
 
-    public function getPassword(): string {
+    public function getPassword(){
         return $this->password;
     }
 
-    public function getName(): string {
+    public function getName(){
         return $this->name;
     }
     
@@ -63,9 +67,15 @@ class Person implements IPerson {
 //    }
 
     
-    public function setUsername($name, $role, $username = null)
+    public function setRandomUsername($name, $role, $username = null)
     {
         $this->username = $username == null ? UniqueNoHelper::generateUsername($name, $role) : $username;
+        return $this;
+    }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
         return $this;
     }
     
@@ -139,7 +149,7 @@ class Person implements IPerson {
     
     public function setUpdatedBy($updatedBy)
     {
-        $this->updatedBy = $updatedBy;
+        $this->updated_by = $updatedBy;
         return $this;
     }
     
@@ -149,31 +159,31 @@ class Person implements IPerson {
         return $this;
     }
     
-    public function getPhone(): string {
+    public function getPhone() {
         return $this->phone;
     }
 
-    public function getMail(): string {
+    public function getMail(){
         return $this->mail;
     }
 
-    public function getStatus(): string {
+    public function getStatus() {
         return $this->status;
     }
 
-    public function getCreatedDate(): DateTime {
+    public function getCreatedDate() {
         return $this->created_date;
     }
 
-    public function getCreatedBy(): string {
+    public function getCreatedBy(){
         return $this->created_by;
     }
 
-    public function getUpdatedDate(): DateTime {
+    public function getUpdatedDate(){
         return $this->updated_date;
     }
 
-    public function getUpdatedBy(): string {
+    public function getUpdatedBy() {
         return $this->updated_by;
     }
     

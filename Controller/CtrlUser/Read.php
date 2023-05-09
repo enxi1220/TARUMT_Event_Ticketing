@@ -2,7 +2,7 @@
 
 session_start();
 #  Author: Vinnie Chin Loh Xin
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllUser/Read.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllUser/UserRead.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllUser/Update.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/User.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/MailSenderHelper.php";
@@ -20,11 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($data->action == "existingMail") {
             $user->setMail($data->mail);
 
-            $result = Read::Read($user);
+            $result = UserRead::Read($user);
 
             if ($result != null) {
                 $_SESSION['userId'] = $result[0]->getUserId();
-                $userOtp = MailSenderHelper::sendMail($data->mail);
+                $userOtp = MailSenderHelper::sendMail(
+                                $data->mail,
+                                "Reset Password",
+                                "Hi! You may use the OTP below to reset you password",
+                                "resetPwd");
+                
                 $user
                         ->setUserOtp($userOtp)
                         ->setUserId($_SESSION['userId']);
@@ -39,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->setUserOtp($data->otpNum)
                     ->setUserId($_SESSION['userId']);
 
-            $result = Read::Read($user);
+            $result = UserRead::Read($user);
 
             if ($result != null) {
 
@@ -53,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ->setPassword($data->password)
                     ->setUserId($_SESSION['userId']);
 
-            $result = Read::Read($user);
+            $result = UserRead::Read($user);
 
             if ($result != null) {
                 echo true;
@@ -65,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ->setMail($data->mail)
                     ->setPassword($data->password);
 
-            $result = Read::Read($user);
+            $result = UserRead::Read($user);
 
             if ($result != null) {
 
@@ -104,25 +109,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
         } else {
 
-        if(isset($_SESSION['userId'])){
-             $user = new User();
+            if (isset($_SESSION['userId'])) {
+                $user = new User();
 
-            $user->setUserId($_SESSION['userId']);
+                $user->setUserId($_SESSION['userId']);
 
-            $result = Read::Read($user);
-            $result = $result[0];
-            $output = array(
-                'userId' => $result->getUserId(),
-                'username' => $result->getUsername(),
-                'name' => $result->getName(),
-                'mail' => $result->getMail(),
-                'phone' => $result->getPhone(),
-                'createdDate' => $result->getCreatedDate(),
-                'updatedDate' => $result->getUpdatedDate(),
-            );
-            echo json_encode($output);
-        }
-           
+                $result = UserRead::Read($user);
+                $result = $result[0];
+                $output = array(
+                    'userId' => $result->getUserId(),
+                    'username' => $result->getUsername(),
+                    'name' => $result->getName(),
+                    'mail' => $result->getMail(),
+                    'phone' => $result->getPhone(),
+                    'createdDate' => $result->getCreatedDate(),
+                    'updatedDate' => $result->getUpdatedDate(),
+                );
+                echo json_encode($output);
+            }
         }
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);

@@ -16,6 +16,7 @@ $(document).ready(function () {
                 '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
                 null,
                 function (success) {
+                   
                     var events = JSON.parse(success);
                     displayEventsByCategory(events, categories);
                 }

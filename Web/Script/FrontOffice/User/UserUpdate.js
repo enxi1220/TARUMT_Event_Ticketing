@@ -23,7 +23,6 @@ $(document).ready(function () {
         event.preventDefault();
 
         var user = JSON.stringify({
-
             password: $(`#old-pwd`).val(),
             action: "validPwd"
         });
@@ -44,7 +43,7 @@ $(document).ready(function () {
 
     $('#new-pwd-form').submit(function (event) {
         event.preventDefault();
-        JSON.stringify({
+        var user = JSON.stringify({
 
             password: $(`#new-pwd`).val(),
             action: "editPwd"

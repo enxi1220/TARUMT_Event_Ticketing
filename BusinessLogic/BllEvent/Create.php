@@ -9,11 +9,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketVI
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketStandard.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/FileUploadHelper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/User.php";
 
-class Create
-{
-    public static function Create(Event $event)
-    {
+class Create {
+
+    public static function Create(Event $event) {
+        $event->attach(new User());
         // complete event object and tickets object 
         $event->setEventNo();
         $event->setStatus(EventStatusConstant::OPEN);
@@ -29,17 +30,18 @@ class Create
         $dataAccess->BeginDatabase(function ($dataAccess) use ($event, $tickets) {
             // insert event & tickets 
             $eventId = Create::CreateEvent($dataAccess, $event);
+            $event->setEventId($eventId);
             Create::CreateTickets($dataAccess, $tickets, $eventId);
         });
-
         return $event->getEventNo();
+        
+        //notify
     }
 
     //private func for database
-    private static function CreateEvent(DataAccess $dataAccess, $event)
-    {
+    private static function CreateEvent(DataAccess $dataAccess, $event) {
         $eventId = $dataAccess->NonQuery(
-            "INSERT INTO event (
+                "INSERT INTO event (
                 event_no,
                 category_id,
                 name,
@@ -91,28 +93,26 @@ class Create
                 if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'event_no_UNIQUE')) {
                     echo "Duplicate event no is generated. Please try again.";
                 }
-                echo $ex;
             }
         );
         return $eventId;
     }
 
-    private static function CreateTickets(DataAccess $dataAccess, $tickets, $eventId)
-    {
+    private static function CreateTickets(DataAccess $dataAccess, $tickets, $eventId) {
         foreach ($tickets as $ticket) {
             $dataAccess->NonQuery(
-                "INSERT INTO ticket (
+                    "INSERT INTO ticket (
                     ticket_no,
                     event_id, 
                     status
                     ) VALUES (?,?,?)",
-                function (PDOStatement $pstmt) use ($ticket, $eventId) {
-                    $pstmt->bindValue(1, $ticket->getTicketNo(), PDO::PARAM_STR);
-                    $pstmt->bindValue(2, $eventId, PDO::PARAM_INT);
-                    $pstmt->bindValue(3, $ticket->getStatus(), PDO::PARAM_STR);
-                }
-
+                    function (PDOStatement $pstmt) use ($ticket, $eventId) {
+                        $pstmt->bindValue(1, $ticket->getTicketNo(), PDO::PARAM_STR);
+                        $pstmt->bindValue(2, $eventId, PDO::PARAM_INT);
+                        $pstmt->bindValue(3, $ticket->getStatus(), PDO::PARAM_STR);
+                    }
             );
         }
     }
+
 }

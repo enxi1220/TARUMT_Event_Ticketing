@@ -1,16 +1,17 @@
 <?php
 
+
 #  Author: Ong Yi Chween
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Category.php";
 
-class Read {
+class CategoryRead {
 
     public static function Read(Category $category) {
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
                 function (DataAccess $dataAccess) use ($category) {
-                    return Read::ReadCategory($dataAccess, $category);
+                    return self::ReadCategory($dataAccess, $category);
                 }
         );
 

@@ -18,16 +18,16 @@
 
 
 interface IPerson {
-    function getUsername(): string;
-    function getPassword(): string;
-    function getName(): string;
-    function getPhone(): string;
-    function getMail(): string;
-    function getStatus(): string;
-    function getCreatedDate(): DateTime;
-    function getCreatedBy(): string;
-    function getUpdatedDate(): DateTime;
-    function getUpdatedBy(): string;
+    function getUsername();
+    function getPassword();
+    function getName();
+    function getPhone();
+    function getMail();
+    function getStatus();
+    function getCreatedDate();
+    function getCreatedBy();
+    function getUpdatedDate();
+    function getUpdatedBy();
 //    
 //    function setStatus($status): void;
 //    function setCreatedDate($createdDate = null): void;
@@ -43,7 +43,8 @@ interface IPerson {
     function setUpdatedDate($updatedDate = null);
     function setUpdatedBy($updatedBy);
     function setProfilePic($profilePic);
-    function setUsername($name, $role, $username = null);
+    function setRandomUsername($name, $role, $username = null);
+    function setUsername($username);
     function setName($name);
     function setPhone($phone);
     function setMail($mail);
