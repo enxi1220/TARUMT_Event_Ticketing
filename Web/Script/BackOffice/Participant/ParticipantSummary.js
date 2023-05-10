@@ -45,4 +45,10 @@ function display(event) {
    $(`#txt-event-name`).text(event.name);
 }
 
+function exportParticipantInPDF(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlParticipant/ExportPDF.php',
+    );
+}
+
 
