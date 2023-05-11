@@ -14,14 +14,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketSt
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBudget.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/PrefixConstant.php";
 
-class Read {
+class BookingRead {
 
     public static function Read(Booking $booking) {
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
                 function (DataAccess $dataAccess) use ($booking) {
 
-                    return Read::ReadBooking($dataAccess, $booking);
+                    return self::ReadBooking($dataAccess, $booking);
                 }
         );
 
@@ -83,42 +83,42 @@ class Read {
 
         return $dataAccess->Reader(
                         "SELECT 
-    b.booking_id, 
-    b.booking_no, 
-    b.event_id, 
-    b.user_id, 
-    b.created_by, 
-    b.created_date,
-    u.user_id,
-    u.mail,
-    u.phone,
-    e.event_no, 
-    e.name AS event_name, 
-    e.poster, 
-    e.venue, 
-    e.event_start_date, 
-    e.event_end_date,
-    p.price,
-    pd.ticket_prices,
-    pd.ticket_nos
-FROM booking b
-JOIN event e ON b.event_id = e.event_id
-JOIN user u ON b.user_id = u.user_id
-JOIN booking_detail bd ON b.booking_id = bd.booking_id
-JOIN (
-  SELECT 
-    payment_id,
-    GROUP_CONCAT(ticket_price) AS ticket_prices,
-    GROUP_CONCAT(ticket_no) AS ticket_nos
-  FROM payment_detail
-  GROUP BY payment_id
-) pd ON b.booking_id = pd.payment_id
-JOIN payment p ON b.booking_id = p.booking_id
-WHERE b.booking_id = IF(:booking_id IS NULL, b.booking_id, :booking_id)
-    AND b.user_id = IF(:user_id IS NULL, b.user_id, :user_id)
-    AND b.created_by = IF(:created_by IS NULL, b.created_by, :created_by)
-GROUP BY b.booking_id
-",
+                            b.booking_id, 
+                            b.booking_no, 
+                            b.event_id, 
+                            b.user_id, 
+                            b.created_by, 
+                            b.created_date,
+                            u.user_id,
+                            u.mail,
+                            u.phone,
+                            e.event_no, 
+                            e.name AS event_name, 
+                            e.poster, 
+                            e.venue, 
+                            e.event_start_date, 
+                            e.event_end_date,
+                            p.price,
+                            pd.ticket_prices,
+                            pd.ticket_nos
+                        FROM booking b
+                        JOIN event e ON b.event_id = e.event_id
+                        JOIN user u ON b.user_id = u.user_id
+                        JOIN booking_detail bd ON b.booking_id = bd.booking_id
+                        JOIN (
+                            SELECT 
+                                payment_id,
+                                GROUP_CONCAT(ticket_price) AS ticket_prices,
+                                GROUP_CONCAT(ticket_no) AS ticket_nos
+                            FROM payment_detail
+                            GROUP BY payment_id
+                        ) pd ON b.booking_id = pd.payment_id
+                        JOIN payment p ON b.booking_id = p.booking_id
+                        WHERE b.booking_id = IF(:booking_id IS NULL, b.booking_id, :booking_id)
+                            AND b.user_id = IF(:user_id IS NULL, b.user_id, :user_id)
+                            AND b.created_by = IF(:created_by IS NULL, b.created_by, :created_by)
+                        GROUP BY b.booking_id
+                        ",
                         function (PDOStatement $pstmt) use ($booking) {
                             $pstmt->bindValue(":booking_id", $booking->getBookingId(), PDO::PARAM_INT);
                             $pstmt->bindValue(":user_id", $booking->getUserId(), PDO::PARAM_INT);

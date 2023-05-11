@@ -163,10 +163,7 @@ abstract class Ticket implements ITicketFactory
 
     public function isAvailable(Ticket $ticket): bool
     {
-        if ($ticket->getCount() < $ticket->getRequestedAmount()) {
-            return false;
-        }
-        return true;
+        return !($ticket->getCount() < $ticket->getRequestedAmount());
     }
 
     abstract function prefix();

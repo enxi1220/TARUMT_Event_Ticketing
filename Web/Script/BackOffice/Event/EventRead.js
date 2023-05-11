@@ -5,6 +5,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
         { eventId: new URLSearchParams(window.location.search).get('eventId') },
         function (success) {
+            console.log(success);
             var event = JSON.parse(success);
             display(event);
         }

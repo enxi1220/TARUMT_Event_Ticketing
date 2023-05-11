@@ -81,8 +81,8 @@ class Payment implements IPayment {
         return $this->paymentNo;
     }
 
-    public function setPaymentNo($paymentNo) {
-        $this->paymentNo = $paymentNo;
+    public function setPaymentNo($paymentNo = null): self {
+        $this->paymentNo = $paymentNo == null ? UniqueNoHelper::RandomCode($this->prefix()) : $paymentNo;
         return $this;
     }
 
@@ -117,8 +117,8 @@ class Payment implements IPayment {
         return $this->createdDate;
     }
 
-    public function setCreatedDate($createdDate) {
-        $this->createdDate = $createdDate;
+    public function setCreatedDate($createdDate = null): self {
+        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
         return $this;
     }
 
@@ -131,12 +131,8 @@ class Payment implements IPayment {
         return $this;
     }
 
-    public function getPaymentArray() {
-        return $this->paymentArray;
-    }
-
-    public function setPaymentArray($paymentArray) {
-        $this->paymentArray= $paymentArray;
-        return $this;
+    public function prefix()
+    {
+        return PrefixConstant::PAYMENT;
     }
 }

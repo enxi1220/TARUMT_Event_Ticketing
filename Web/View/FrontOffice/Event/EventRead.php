@@ -1,5 +1,7 @@
 <?php
 require '../../Layout.php';
+
+
 ?>
 <!-- author: Vinnie Chin Loh Xin -->
 <!DOCTYPE html>
@@ -11,7 +13,14 @@ require '../../Layout.php';
 
     </head>
     <body>
+        <div class="container">
+            <div class="row me-2 my-3 d-flex justify-content-end">
 
+                <a class="btn btn-secondary btn-floating fs-4" title="Back" href="EventSummary.php" role="button">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
         <!--        <div class="container my-5">
                     <h1 class="mb-4 text-center display-4">Event Details</h1>
                     <div class="row">

@@ -37,7 +37,7 @@ require '../../Layout.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="txt-poster">Poster*</label>
-                    <input type="file" id="txt-poster" name="Poster" class="form-control" pattern="^$" required />
+                    <input type="file" id="txt-poster" name="Poster" class="form-control" required accept="image/jpeg, image/png, image/gif">
                     <div class="invalid-feedback">Required and only allow jpg, jpeg, png, gif file types</div>
                 </div>
             </div>
@@ -66,7 +66,7 @@ require '../../Layout.php';
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label" for="date-reg-end">Register End Date*</label>
-                        <input type="datetime-local" name="RegisterEndDate" id="date-reg-end" class="form-control" required />
+                        <input type="datetime-local" name="RegisterEndDate" id="date-reg-end" class="form-control" min="{{ date('d-m-Y\TH:i') }}" required />
                         <div class="invalid-feedback">Required</div>
                     </div>
                 </div>

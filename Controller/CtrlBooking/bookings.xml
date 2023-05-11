@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookings>
+    <booking>
+        <bookingId>1</bookingId>
+        <bookingNo>B000001</bookingNo>
+        <bookingDetails>
+            <bookingDetail>
+                <ticketNo>VIP000001</ticketNo>
+                <ticketPrice>50</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>STD000002</ticketNo>
+                <ticketPrice>50</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>BGT000003</ticketNo>
+                <ticketPrice>50</ticketPrice>
+            </bookingDetail>
+        </bookingDetails>
+        <eventId>1</eventId>
+        <userId>1</userId>
+        <createdBy>John Doe</createdBy>
+        <createdDate>2023-04-24 11:22:59</createdDate>
+        <ticketCount>3</ticketCount>
+        <event>
+            <eventNo>EV000001</eventNo>
+            <eventName>Summer Concert</eventName>
+            <poster>642d963a3e83f_i.jpg</poster>
+            <venue>Stadium A</venue>
+            <eventStartDate>2023-08-01 00:00:00</eventStartDate>
+            <eventEndDate>2023-08-01 00:00:00</eventEndDate>
+            <posterPath>/TARUMT_Event_Ticketing/Web/Poster/642d963a3e83f_i.jpg</posterPath>
+        </event>
+    </booking>
+    <booking>
+        <bookingId>3</bookingId>
+        <bookingNo>B000003</bookingNo>
+        <bookingDetails>
+            <bookingDetail>
+                <ticketNo>VIP000008</ticketNo>
+                <ticketPrice>40</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>STD000007</ticketNo>
+                <ticketPrice>40</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>BGT000006</ticketNo>
+                <ticketPrice>40</ticketPrice>
+            </bookingDetail>
+        </bookingDetails>
+        <eventId>3</eventId>
+        <userId>3</userId>
+        <createdBy>Mike Johnson</createdBy>
+        <createdDate>2023-04-24 11:22:59</createdDate>
+        <ticketCount>3</ticketCount>
+        <event>
+            <eventNo>EV000003</eventNo>
+            <eventName>Theater Play</eventName>
+            <poster>642d963a3e83f_i.jpg</poster>
+            <venue>Theater C</venue>
+            <eventStartDate>2023-11-01 00:00:00</eventStartDate>
+            <eventEndDate>2023-11-01 00:00:00</eventEndDate>
+            <posterPath>/TARUMT_Event_Ticketing/Web/Poster/642d963a3e83f_i.jpg</posterPath>
+        </event>
+    </booking>
+    <booking>
+        <bookingId>4</bookingId>
+        <bookingNo>B000004</bookingNo>
+        <bookingDetails>
+            <bookingDetail>
+                <ticketNo>BGT000009</ticketNo>
+                <ticketPrice>50</ticketPrice>
+            </bookingDetail>
+        </bookingDetails>
+        <eventId>4</eventId>
+        <userId>4</userId>
+        <createdBy>Sarah Lee</createdBy>
+        <createdDate>2023-04-24 11:22:59</createdDate>
+        <ticketCount>1</ticketCount>
+        <event>
+            <eventNo>EV000004</eventNo>
+            <eventName>Art Exhibition</eventName>
+            <poster>642d963a3e83f_i.jpg</poster>
+            <venue>Art Gallery D</venue>
+            <eventStartDate>2023-12-01 00:00:00</eventStartDate>
+            <eventEndDate>2023-12-01 00:00:00</eventEndDate>
+            <posterPath>/TARUMT_Event_Ticketing/Web/Poster/642d963a3e83f_i.jpg</posterPath>
+        </event>
+    </booking>
+    <booking>
+        <bookingId>5</bookingId>
+        <bookingNo>B000005</bookingNo>
+        <bookingDetails>
+            <bookingDetail>
+                <ticketNo>STD000010</ticketNo>
+                <ticketPrice>30</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>VIP000011</ticketNo>
+                <ticketPrice>30</ticketPrice>
+            </bookingDetail>
+        </bookingDetails>
+        <eventId>5</eventId>
+        <userId>5</userId>
+        <createdBy>David Kim</createdBy>
+        <createdDate>2023-04-24 11:22:59</createdDate>
+        <ticketCount>2</ticketCount>
+        <event>
+            <eventNo>EV000005</eventNo>
+            <eventName>Tech Conference</eventName>
+            <poster>642d963a3e83f_i.jpg</poster>
+            <venue>Convention Center E</venue>
+            <eventStartDate>2023-12-31 00:00:00</eventStartDate>
+            <eventEndDate>2024-01-01 00:00:00</eventEndDate>
+            <posterPath>/TARUMT_Event_Ticketing/Web/Poster/642d963a3e83f_i.jpg</posterPath>
+        </event>
+    </booking>
+    <booking>
+        <bookingId>6</bookingId>
+        <bookingNo>B000006</bookingNo>
+        <bookingDetails>
+            <bookingDetail>
+                <ticketNo>BGT000012</ticketNo>
+                <ticketPrice>35</ticketPrice>
+            </bookingDetail>
+            <bookingDetail>
+                <ticketNo>STD000013</ticketNo>
+                <ticketPrice>35</ticketPrice>
+            </bookingDetail>
+        </bookingDetails>
+        <eventId>1</eventId>
+        <userId>6</userId>
+        <createdBy>Emily Chen</createdBy>
+        <createdDate>2023-04-24 11:22:59</createdDate>
+        <ticketCount>2</ticketCount>
+        <event>
+            <eventNo>EV000001</eventNo>
+            <eventName>Summer Concert</eventName>
+            <poster>642d963a3e83f_i.jpg</poster>
+            <venue>Stadium A</venue>
+            <eventStartDate>2023-08-01 00:00:00</eventStartDate>
+            <eventEndDate>2023-08-01 00:00:00</eventEndDate>
+            <posterPath>/TARUMT_Event_Ticketing/Web/Poster/642d963a3e83f_i.jpg</posterPath>
+        </event>
+    </booking>
+</bookings>

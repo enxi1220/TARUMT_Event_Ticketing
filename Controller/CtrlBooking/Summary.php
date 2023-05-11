@@ -5,41 +5,28 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Booking.
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/Read.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    try {
+    
+        try {
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlBooking/Handler.php?action=Summary";
+        
+        $client = curl_init($apiURL);
 
-        $booking = new Booking();
-        // todo: get session user, rm hardcode
-//        $booking->setUserId($_SESSION['userId']);
-//        $booking->setCreatedBy($_SESSION['username']);
-        if (isset($_SESSION['userId'])) {
-            // todo: get session user, rm hardcode
-            $booking->setUserId($_SESSION['userId']);
-            $booking->setCreatedBy($_SESSION['username']);
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($client);
+
+        $result = json_decode($response);
+        
+        if ($result->status === 200) {
+            echo json_encode($result->data);
+            exit;
         }
 
-        $result = Read::Read($booking);
-
-        $output = array_map(function ($booking) {
-           
-            return array(
-        'bookingId' => $booking->getBookingId(),
-        'bookingNo' => $booking->getBookingNo(),
-        'eventId' => $booking->getEventId(),
-        'userId' => $booking->getUserId(),
-        'createdBy' => $booking->getCreatedBy(),
-        'createdDate' => $booking->getCreatedDate(),
-        'ticketCount' => $booking->getTicketCount(),
-        'eventNo' => $booking->getEvent()->getEventNo(),
-        'eventName' => $booking->getEvent()->getName(),
-        'poster' => $booking->getEvent()->getPoster(),
-        'venue' => $booking->getEvent()->getVenue(),
-        'eventStartDate' => $booking->getEvent()->getEventStartDate(),
-        'eventEndDate' => $booking->getEvent()->getEventEndDate(),
-        'posterPath' => $booking->getEvent()->posterPath() . $booking->getEvent()->getPoster()
-            );
-        }, $result);
-
-        echo json_encode($output);
+        if($result->status == 404){
+            throw new Exception($result->message, 404);
+        }
+    
+       
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();

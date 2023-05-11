@@ -21,6 +21,15 @@ class Person implements IPerson {
     protected $updated_by;
     protected $profilePic;
 
+//    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status) {
+//        $this->name = $name;
+//        $this->username = $username;
+//        $this->phone = $phone;
+//        $this->mail = $mail;
+//        $this->created_date = new DateTime();
+//        $this->created_by = $created_by;
+//        $this->status = $status;
+//    }
     
     public function __construct() {
         
@@ -37,6 +46,13 @@ class Person implements IPerson {
     public function getName(){
         return $this->name;
     }
+    
+//    public function setUsername($username = null)
+//    {
+//        $this->username = $username == null ? UniqueNoHelper::generateUsername($name, $role()) : $username;
+//        return $this;
+//    }
+
     
     public function setRandomUsername($name, $role, $username = null)
     {

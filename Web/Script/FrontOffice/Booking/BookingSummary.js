@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     
-    checkLogin();
+    // checkLogin();
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Summary.php',
         {},

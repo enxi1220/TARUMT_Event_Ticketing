@@ -1,6 +1,9 @@
 <?php
 require_once 'Subject.php';
-
-interface IObserver {
+/**
+ *
+ * @author vinnie chin
+ */
+interface Observer {
     public function update(Subject $subject);
 }

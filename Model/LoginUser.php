@@ -4,6 +4,7 @@ require_once 'Subject.php';
 
 //session_start();
 class LoginUser extends Subject{
+    
     public function setLoginUser($username)
     {
         $_SESSION['username'] = $username;
@@ -23,6 +24,5 @@ class LoginUser extends Subject{
     {
         return isset($_SESSION['username']);
     }
-
 
 }

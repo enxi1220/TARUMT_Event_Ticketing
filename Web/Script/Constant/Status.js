@@ -16,5 +16,11 @@ var AdminRole = {
     Admin: "Admin"
 };
 
+var UserStatus = {
+    Active: "Active",
+    Inactive: "Inactive"
+}
+
+
 
 

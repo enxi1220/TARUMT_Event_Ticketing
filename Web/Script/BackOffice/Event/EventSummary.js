@@ -5,7 +5,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
         null,
         function (success) {
-            // console.log(success);
+            console.log(success);
             var events = JSON.parse(success);
             buildDataTable(events);
         }

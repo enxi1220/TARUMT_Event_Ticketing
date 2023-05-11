@@ -12,6 +12,24 @@
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
 
+interface ParticipantFactoryInterface {
+    public function createParticipant(): Participant;
+}
+
+class DefaultParticipantFactory implements ParticipantFactoryInterface {
+    public function createParticipant(): Participant {
+        return new Participant();
+    }
+}
+
+class VIPParticipantFactory implements ParticipantFactoryInterface {
+    public function createParticipant(): Participant {
+        $participant = new Participant();
+        // set VIP-specific properties here
+        return $participant;
+    }
+}
+
 class Participant {
     private $userId;
     private $username;

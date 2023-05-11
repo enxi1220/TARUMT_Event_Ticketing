@@ -5,12 +5,24 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
         null,
         function (success) {
-            // console.log(success);
+            //console.log(success);
             var category = JSON.parse(success);
             buildDataTable(category);
         }
     )
 });
+
+function exportCategoryInCSV(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlCategory/ExportCSV.php',
+    );
+}
+
+function exportCategoryInPDF(){
+    get(
+        '/TARUMT_Event_Ticketing/Controller/CtrlCategory/ExportPDF.php',
+    );
+}
 
 function preparePostData(categoryId) {
     var category = JSON.stringify({
