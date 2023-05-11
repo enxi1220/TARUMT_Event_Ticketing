@@ -8,13 +8,30 @@
 //require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllAdmin/AdminRead.php";
 //require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Admin.php";
 
+if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+}
+
+$admin_id = ""; 
+if(isset($_SESSION['adminInfo'])) {
+    $admin_id= $_SESSION['adminInfo']['admin_id'];
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser($adminName);
+    
+}else{
+    header('Location: ../Admin/AdminLogin.php');
+    exit;
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        if (!isset($_GET['admin_id'])) {
-            throw new Exception("Admin is not set.");
-        }
+//        if (!isset($_GET['admin_id'])) {
+//            throw new Exception("Admin is not set.");
+//        }
 
-        $admin_id = json_decode($_GET['admin_id']);
+//        $admin_id = json_decode($_GET[$admin_id]);
 
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlAdmin/Handler.php?action=Read&admin_id=$admin_id";
         

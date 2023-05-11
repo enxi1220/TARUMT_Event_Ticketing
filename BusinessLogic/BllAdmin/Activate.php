@@ -31,10 +31,10 @@ class Activate
                     updated_date = ?
                 WHERE admin_id = ?",
             function (PDOStatement $pstmt) use ($admin) {
-                $pstmt->bindValue(1, AdminConstant::ACTIVATE, PDO::PARAM_STR);
+                $pstmt->bindValue(1, AdminConstant::ACTIVE, PDO::PARAM_STR);
                 $pstmt->bindValue(2, $admin->getUpdatedBy(), PDO::PARAM_STR);
-//                $pstmt->bindValue(3, $admin->getUpdatedDate(), PDO::PARAM_STR);
-                $pstmt->bindValue(3, $admin->getUpdatedDate()->format('Y-m-d H:i:s'), PDO::PARAM_STR);
+                $pstmt->bindValue(3, $admin->getUpdatedDate(), PDO::PARAM_STR);
+//                $pstmt->bindValue(3, $admin->getUpdatedDate()->format('Y-m-d H:i:s'), PDO::PARAM_STR);
                 $pstmt->bindValue(4, $admin->getAdminId(), PDO::PARAM_INT);
             }
         );

@@ -41,9 +41,10 @@ class AdminRead
         $passwordMatches = false;
         $rowCount = 0;
         $dataAccess->Reader(
-            "SELECT 1 FROM admin WHERE mail = ?",
+            "SELECT 1 FROM admin WHERE mail = ? AND status = ?",
             function (PDOStatement $pstmt) use ($admin) {
                 $pstmt->bindValue(1, $admin->getMail(), PDO::PARAM_STR);
+                $pstmt->bindValue(2, $admin->getStatus(), PDO::PARAM_STR);
             }, 
             function ($row) use (&$isValid) {
                 $isValid = true;

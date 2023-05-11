@@ -1,6 +1,21 @@
 <section style="background-color: #eee;">
 <?php
-require '../../Layout.php';
+require '../../BackOfficeLayout.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if(isset($_SESSION['adminInfo'])) {
+    $adminName = $_SESSION['adminInfo']['name'];
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser($adminName);
+    
+}else{
+    header('Location: ../Admin/AdminLogin.php');
+    exit;
+}
+
 ?>
     <div class="container-xl px-4 mt-4">
 

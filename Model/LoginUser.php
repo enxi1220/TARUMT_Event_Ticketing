@@ -2,7 +2,7 @@
 
 require_once 'Subject.php';
 
-session_start();
+//session_start();
 class LoginUser extends Subject{
     public function setLoginUser($username)
     {

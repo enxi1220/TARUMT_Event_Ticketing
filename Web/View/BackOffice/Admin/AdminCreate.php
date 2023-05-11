@@ -1,9 +1,27 @@
 <?php
-require '../../Layout.php';
+require '../../BackOfficeLayout.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(isset($_SESSION['adminInfo'])) {
+    $adminName = $_SESSION['adminInfo']['name'];
+    $admin_id = $_SESSION['adminInfo']['admin_id'];
+    $role = $_SESSION['adminInfo']['role'];
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser($adminName);
+    
+}
+//else{
+//    header('Location: /TARUMT_Event_Ticketing/Web/View/BackOffice/Admin/AdminLogin.php');
+//    exit;
+//}
 ?>
 <!--
 author : ONG WI LIN
 -->
+
 
 <div class="p-5 rounded-2">
     <div class="row">

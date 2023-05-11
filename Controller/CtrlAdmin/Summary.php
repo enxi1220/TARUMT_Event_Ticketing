@@ -7,36 +7,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Admin.ph
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        $admin = new Admin();
-        $admin->setAdminId(null);
-        $result = AdminRead::Read($admin);
-        $output = array_map(
-            function ($admin) {
-                return array(
-                    'admin_id' => $admin->getAdminId(),
-                    'name' => $admin->getName(),
-                    'username' => $admin->getUsername(),
-                    'role' => $admin->getRole(),
-                    'phone' => $admin->getPhone(),
-                    'mail' => $admin->getMail(),
-                    'status' => $admin->getStatus(),
-                    'created_date' => $admin->getCreatedDate(),
-//                    'created_date' => date('Y-m-d H:i:s', strtotime($admin->getCreatedDate())),
-//                    'created_date' => $admin->getCreatedDate()->format('Y-m-d H:i:s'),
+        
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlAdmin/Handler.php?action=Summary";
+        
+        $client = curl_init($apiURL);
 
-                    
-                    'created_by' => $admin->getCreatedBy(),
-                    'updated_date' => $admin->getUpdatedDate(),
-//                    'updated_date' => date('Y-m-d H:i:s', strtotime($admin->getUpdatedDate())),
-//                    'updated_date' => $admin->getUpdatedDate()->format('Y-m-d H:i:s'),
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
 
-                    'updated_by' => $admin->getUpdatedBy()                
-                        );
-            },
-            $result
-        );
+        $response = curl_exec($client);
 
-        echo json_encode($output);
+        $result = json_decode($response);
+        
+        if ($result->status === 200) {
+            echo json_encode($result->data);
+            exit;
+        }
+
+        if($result->status == 404){
+            throw new Exception($result->message, 404);
+        }
+
+//        echo json_encode($output);
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();

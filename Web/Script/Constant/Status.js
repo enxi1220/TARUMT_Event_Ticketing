@@ -6,8 +6,9 @@ var EventStatus = {
 };
 
 var AdminStatus = {
-    Activate: "Activate",
-    Deactivate: "Deactivate"
+    Active: "Active",
+    Deactivate: "Deactivate",
+    Pending: "Pending"
 };
 
 var AdminRole = {

@@ -83,19 +83,8 @@ function buildDataTable(payments){
                 var html = `
                     <a class="btn btn-secondary btn-floating" title="View" href="PaymentRead.php?payment_id=${row.payment_id}" role="button">
                         <i class="fas fa-eye"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" title="Update" href="PaymentUpdate.php?payment_id=${row.payment_id}" role="button">
-                        <i class="fas fa-pen-to-square"></i>
                     </a>`;
-//                if (row.status == AdminStatus.Deactivate) {
-//                    html += `<button id="btn-activate" class="btn btn-secondary btn-floating" title="Activate" onclick="activateAdmin(${row.admin_id})">
-//                        <i class="fas fa-check"></i>
-//                    </button>`;
-//                } else if (row.status == AdminStatus.Activate) {
-//                    html += `<button id="btn-deactivate" class="btn btn-secondary btn-floating" title="Deactivate" onclick="deactivateAdmin(${row.admin_id})">
-//                        <i class="fas fa-times"></i>
-//                    </button>`;
-//                }
+
                 return html;
             },
 

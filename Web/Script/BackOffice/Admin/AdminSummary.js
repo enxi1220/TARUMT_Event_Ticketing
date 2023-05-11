@@ -101,7 +101,7 @@ function buildDataTable(admins){
                     html += `<button id="btn-activate" class="btn btn-secondary btn-floating" title="Activate" onclick="activateAdmin(${row.admin_id})">
                         <i class="fas fa-check"></i>
                     </button>`;
-                } else if (row.status == AdminStatus.Activate) {
+                } else if (row.status == AdminStatus.Active) {
                     html += `<button id="btn-deactivate" class="btn btn-secondary btn-floating" title="Deactivate" onclick="deactivateAdmin(${row.admin_id})">
                         <i class="fas fa-times"></i>
                     </button>`;

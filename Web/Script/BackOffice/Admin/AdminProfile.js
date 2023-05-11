@@ -4,8 +4,8 @@
 
 $(document).ready(function () {
     get(
-        '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminRead.php',
-        { admin_id: new URLSearchParams(window.location.search).get('admin_id') },
+        '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminProfile.php',
+        null,
         function (success) {
             console.log(success)
             var admin = JSON.parse(success);

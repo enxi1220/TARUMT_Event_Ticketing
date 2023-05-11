@@ -1,11 +1,12 @@
 <?php
+require '../../BackOfficeLayout.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-    require '../../BackOfficeLayout.php';
-
 if(isset($_SESSION['adminInfo'])) {
     $adminName = $_SESSION['adminInfo']['name'];
+    $admin_id = $_SESSION['adminInfo']['admin_id'];
 //    $loginUser = new LoginUser();
 //    $loginUser->attach(new Event());
 //    $loginUser->setLoginUser($adminName);
@@ -14,8 +15,6 @@ if(isset($_SESSION['adminInfo'])) {
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
-
-
 
 ?>
 <!--Author : Ong Wi Lin-->
@@ -117,14 +116,15 @@ if(isset($_SESSION['adminInfo'])) {
 require '../../Footer.php';
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script src="../../../Script/BackOffice/Admin/AdminRead.js" type="text/javascript"></script>
+<script src="../../../Script/BackOffice/Admin/AdminProfile.js" type="text/javascript"></script>
 
 <script>
 function getAdminId() {
   // get the URL parameters
   const searchParams = new URLSearchParams(window.location.search);
   // get the value of the 'admin_id' parameter
-  const adminId = searchParams.get('admin_id');
+//  const adminId = searchParams.get('admin_id');
+  const adminId = <?php echo $admin_id; ?>;
   // return the adminId value
   return adminId;
 }

@@ -191,9 +191,9 @@ function read()
 function summary()
 {   
     // todo: move to login process
-    $loginUser = new LoginUser();
-    $loginUser->attach(new Event());
-    $loginUser->setLoginUser("enxi");
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser("enxi");
     // ----------
 
     $event = new Event();
@@ -206,7 +206,7 @@ function summary()
                 'categoryId' => $event->getCategoryId(),
                 'eventNo' => $event->getEventNo(),
                 'name' => $event->getName(),
-                'poster' => $event->getPoster(),
+                'poster' => $event->posterPath() . $event->getPoster(),
                 'venue' => $event->getVenue(),
                 'registerStartDate' => $event->getRegisterStartDate(),
                 'registerEndDate' => $event->getRegisterEndDate(),

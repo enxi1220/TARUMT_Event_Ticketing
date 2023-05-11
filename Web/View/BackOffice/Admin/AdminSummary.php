@@ -1,6 +1,31 @@
 <?php
-require '../../Layout.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if(isset($_SESSION['adminInfo'])) {
+    $adminName = $_SESSION['adminInfo']['name'];
+    $role = $_SESSION['adminInfo']['role'];
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser($adminName);
+    
+}else{
+    header('Location: ../Admin/AdminLogin.php');
+    exit;
+}
+require '../../BackOfficeLayout.php';
+
 ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_links.php';
+
+?>
+
+
 <!-- author: Ong Wi Lin -->
 <div class="p-5 rounded-2">
   <div class="row">
@@ -8,9 +33,12 @@ require '../../Layout.php';
       <h2 class="float-start mb-5">Admin / Staff Summary</h2>
     </div>
     <div class="col">
+        <?php if ($role == "Admin"){ ?>
       <a class="btn btn-primary btn-lg btn-floating float-end" title="Add" href="AdminCreate.php" role="button">
         <i class="fas fa-plus"></i>
       </a>
+        <?php } ?>
+
       <button id="btn-activate" class="btn btn-secondary btn-lg btn-floating float-end me-4" title="Export CSV" onclick="exportAdminInCSV()">
       <i class="fas fa-file-csv fs-4"></i>
       <button id="btn-activate" class="btn btn-secondary btn-lg btn-floating float-end me-4" title="Export PDF" onclick="exportAdminInPDF()">

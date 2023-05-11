@@ -23,8 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Failed to instantiate Admin object.");
         }
         
+//get adminName from session
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+}
+        $adminName = ""; 
+        if(isset($_SESSION['adminInfo'])) {
+            $adminName = $_SESSION['adminInfo']['name'];
+        }else{
+//            header('Location: ../Admin/AdminLogin.php');
+            exit;
+        }
+        
         // todo: rm hard code
-//        $data->createdBy = "sth";
         if ($data->role == 1) {
             $role = "Staff";
         } else if ($data->role == 2) {
@@ -33,31 +44,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Invalid role value: " . $data->role);
         }
 
+        $data->created_by = $adminName;
 
-        $admin
-            ->setName($data->name)
-            ->setPhone($data->phone)
-            ->setMail($data->mail)
-//            ->setCreatedBy($data->createdBy)
-            ->setCreatedBy("sth")
-            ->setRole($role);
-        
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlAdmin/Handler.php?action=Create";
 
-        Create::Create($admin);
+        $client = curl_init();
 
-        if (sendEmail::sendEmail($data->mail, $data->name)) {
-            echo "Admin is added.";
-        } else {
-           header($_SERVER["SERVER_PROTOCOL"] . ' Failed to send email', true, 500);
+        curl_setopt($client, CURLOPT_URL, $apiURL);
+        curl_setopt($client, CURLOPT_POST, true);
+        curl_setopt($client, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($client, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
+        $response = curl_exec($client);
+
+        $result = json_decode($response);
+
+        if ($result->status === 200) {
+            echo $result->message;
+
+
+
+            if (sendEmail::sendEmail($data->mail, $data->name)) {
+//                echo "Admin :)+";
+            } else {
+               header($_SERVER["SERVER_PROTOCOL"] . ' Failed to send email', true, 500);
+            }
+            exit;
         }
-        
-        
-        
+
+        if ($result->status == 404) {
+            throw new Exception($result->message, 404);
+        }
+
+        if ($result->status == 500) {
+            throw new Exception($result->message, 404);
+        }        
     } catch (\Throwable $e) {
-        header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
+        header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
         // echo $e->getMessage();
-//        echo $e;
-        echo 'Error, Please try again.<br>';
+        echo $e->getCode() . " " . $e->getMessage();
     }
 }
