@@ -60,10 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $result = json_decode($response);
 
+        if (property_exists($result, 'status')) {
         if ($result->status === 200) {
             echo $result->message;
-
-
 
             if (sendEmail::sendEmail($data->mail, $data->name)) {
 //                echo "Admin :)+";
@@ -72,17 +71,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             exit;
         }
-
         if ($result->status == 404) {
-            throw new Exception($result->message, 404);
+            throw new Exception("Error! Please try again.", 404);
+//            throw new Exception($result->message, 404);
         }
 
         if ($result->status == 500) {
-            throw new Exception($result->message, 404);
-        }        
+            throw new Exception("Error! Please try again.", 500);
+//            throw new Exception($result->message, 500);
+        }
+        
+        }else{
+            throw new Exception("Error! Please try again.", 500);
+        }
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
-        // echo $e->getMessage();
-        echo $e->getCode() . " " . $e->getMessage();
+//        echo $e->getCode() . " " . $e->getMessage();
+        echo "Error! Please try again.";
     }
 }

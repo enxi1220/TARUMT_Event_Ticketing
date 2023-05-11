@@ -100,7 +100,8 @@ function create($data)
         Create::Create($admin);
         RESTfulAPI::response(200, "Admin is added.");
     } catch (\Throwable $e) {
-        RESTfulAPI::response($e->getCode(), $e->getMessage());
+//        RESTfulAPI::response($e->getCode(), $e->getMessage());
+        RESTfulAPI::response(500, "Error!");
     }
 }
 

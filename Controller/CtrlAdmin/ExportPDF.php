@@ -100,6 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } catch (\Throwable $e) {
 
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
-        echo $e;
+//        echo $e;
+        echo "Error! Please try again.";
+
     }
 }

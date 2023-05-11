@@ -14,7 +14,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/Summary.php',
         null,
         function (success) {
-            console.log(success);
+//            console.log(success);
             var admins = JSON.parse(success);
             buildDataTable(admins);
         }

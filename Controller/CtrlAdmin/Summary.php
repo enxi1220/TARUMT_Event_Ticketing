@@ -18,15 +18,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $result = json_decode($response);
         
+    if (property_exists($result, 'status')) {
+
+        
         if ($result->status === 200) {
             echo json_encode($result->data);
             exit;
         }
 
         if($result->status == 404){
-            throw new Exception($result->message, 404);
-        }
+//            throw new Exception($result->message, 404);
+            throw new Exception("Error! Please try again.", 404);
 
+        }
+    }else{
+            throw new Exception("Error! Please try again.", 500);
+        }
 //        echo json_encode($output);
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);

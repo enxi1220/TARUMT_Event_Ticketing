@@ -7,7 +7,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminRead.php',
         { admin_id: new URLSearchParams(window.location.search).get('admin_id') },
         function (success) {
-            console.log(success)
+//            console.log(success)
             var admin = JSON.parse(success);
             display(admin);
         }

@@ -6,7 +6,7 @@ $(document).ready(function () {
         admin.preventDefault();
         if ($(`#admin-set-password-form`)[0].checkValidity()) {
             var admin = preparePostData();
-            console.log(admin);
+//            console.log(admin);
             post(
                 '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminSetPassword.php',
                 [
