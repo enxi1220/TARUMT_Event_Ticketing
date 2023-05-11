@@ -1,3 +1,4 @@
+<section style="background-color: #eee;">
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -14,7 +15,6 @@ if(isset($_SESSION['adminInfo'])) {
 }
 require '../../BackOfficeLayout.php';
 ?>
-<section style="background-color: #eee;">
 
     <div class="container-xl px-4 mt-4">
 
