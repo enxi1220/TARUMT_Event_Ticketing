@@ -15,7 +15,6 @@ if(isset($_SESSION['adminInfo'])) {
     exit;
 }
 require '../../BackOfficeLayout.php';
-
 ?>
 <?php
 if (session_status() === PHP_SESSION_NONE) {

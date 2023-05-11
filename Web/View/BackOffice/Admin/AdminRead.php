@@ -2,8 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-    require '../../BackOfficeLayout.php';
-
 if(isset($_SESSION['adminInfo'])) {
     $adminName = $_SESSION['adminInfo']['name'];
 //    $loginUser = new LoginUser();
@@ -14,6 +12,8 @@ if(isset($_SESSION['adminInfo'])) {
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
+    require '../../BackOfficeLayout.php';
+
 
 
 

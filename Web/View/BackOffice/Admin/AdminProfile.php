@@ -1,6 +1,4 @@
 <?php
-require '../../BackOfficeLayout.php';
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -15,7 +13,7 @@ if(isset($_SESSION['adminInfo'])) {
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
-
+require '../../BackOfficeLayout.php';
 ?>
 <!--Author : Ong Wi Lin-->
 <head>

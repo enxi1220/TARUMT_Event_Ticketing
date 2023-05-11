@@ -1,6 +1,4 @@
 <?php
-require '../../Layout.php';
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -16,6 +14,8 @@ if(isset($_SESSION['adminInfo'])) {
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
+require '../../BackOfficeLayout.php';
+
 ?>
 <!-- author: Ong Wi Lin -->
 <div class="p-5 rounded-2">

@@ -1,10 +1,8 @@
 <section style="background-color: #eee;">
 <?php
-require '../../BackOfficeLayout.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 if(isset($_SESSION['adminInfo'])) {
     $adminName = $_SESSION['adminInfo']['name'];
 //    $loginUser = new LoginUser();
@@ -15,8 +13,9 @@ if(isset($_SESSION['adminInfo'])) {
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
-
+require '../../BackOfficeLayout.php';
 ?>
+
     <div class="container-xl px-4 mt-4">
 
     <div class="row">
@@ -42,14 +41,14 @@ if(isset($_SESSION['adminInfo'])) {
                             <!-- Form Group (name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="name">Full name</label>
-                                <input class="form-control" id="name" type="text" placeholder="Enter your full name" value="Valerie" required >
+                                <input class="form-control" id="name" type="text" placeholder="Enter your full name" value="" required >
                                 <div class="invalid-feedback">Required</div>
 
                             </div>
                             <!-- Form Group (username)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="username">Username</label>
-                                <input class="form-control" id="username" type="text" placeholder="Enter your username" value="Luna"  required >
+                                <input class="form-control" id="username" type="text" placeholder="Enter your username" value=""  required >
                                 <div class="invalid-feedback">Required</div>
                             </div>
                         </div>
@@ -57,14 +56,14 @@ if(isset($_SESSION['adminInfo'])) {
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="mail">Email address</label>
-                            <input class="form-control" id="mail" type="email" placeholder="Enter your email address" value="name@example.com"  required >
+                            <input class="form-control" id="mail" type="email" placeholder="Enter your email address" value=""  required >
                             <div class="invalid-feedback">Required</div>
 
                         </div>
                         <!-- Form Group (phone)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="phone">Phone</label>
-                            <input class="form-control" id="phone" type="tel" placeholder="Enter your phone" value="0123456789"  required >
+                            <input class="form-control" id="phone" type="tel" placeholder="Enter your phone" value=""  required >
                             <div class="invalid-feedback">Required</div>
                         </div>
                         <!-- Form Row-->
