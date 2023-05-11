@@ -14,7 +14,6 @@ if(isset($_SESSION['adminInfo'])) {
     exit;
 }
 require '../../BackOfficeLayout.php';
-
 ?>
 <!-- author: Ong Wi Lin -->
 <div class="p-5 rounded-2">
