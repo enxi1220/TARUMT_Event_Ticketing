@@ -191,9 +191,9 @@ function read()
 function summary()
 {   
     // todo: move to login process
-    $loginUser = new LoginUser();
-    $loginUser->attach(new Event());
-    $loginUser->setLoginUser("enxi");
+    // $loginUser = new LoginUser();
+    // $loginUser->attach(new Event());
+    // $loginUser->setLoginUser("enxi");
     // ----------
 
     $event = new Event();

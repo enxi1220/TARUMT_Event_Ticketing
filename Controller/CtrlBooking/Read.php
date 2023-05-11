@@ -2,7 +2,7 @@
 
 #  Author: Vinnie Chin Loh Xin
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Booking.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/BookingRead.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/Read.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     

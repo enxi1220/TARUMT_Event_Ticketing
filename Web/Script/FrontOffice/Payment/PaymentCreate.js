@@ -23,6 +23,27 @@ function display(event) {
 }
 
 
-function calcTotal(){
-    
+function submitPayment(paymentType) {
+    var payment = preparePostData(paymentType);
+    console.log(payment);
+    post(
+        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
+        [
+            submitData('payment', payment)
+        ],
+        null,
+        function () {
+            location.href = `../Event/EventSummary.php`;
+        }
+    );
+}
+
+function preparePostData(type) {
+    return JSON.stringify({
+        eventId: new URLSearchParams(window.location.search).get('eventId'),
+        vipTicketQty: new URLSearchParams(window.location.search).get('vipTicketQty'),
+        stdTicketQty: new URLSearchParams(window.location.search).get('stdTicketQty'),
+        bgtTicketQty: new URLSearchParams(window.location.search).get('bgtTicketQty'),
+        paymentType : type
+    });
 }

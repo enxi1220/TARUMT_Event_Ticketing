@@ -13,18 +13,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/TicketBu
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
 
-        if (!isset($_POST['ticket'])) {
-            throw new Exception("Please fill in quantity.");
+        if (!isset($_POST['payment'])) {
+            throw new Exception("Please select a payment type, event, and ticket.");
         }
 
-        $data = json_decode($_POST['ticket']);
+        $data = json_decode($_POST['payment']);
 
         // todo: rm hard code
         $data->userId = 1;
         $data->createdBy = "John Doe";
         
         //web service
-        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtlrBooking/Handler.php?action=Create";
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlBooking/Handler.php?action=Create";
 
         $client = curl_init();
 
