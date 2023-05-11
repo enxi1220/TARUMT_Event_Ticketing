@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $response = curl_exec($client);
 
         $result = json_decode($response);
+        // var_dump($response);
         
         if ($result->status === 200) {
             echo json_encode($result->data);

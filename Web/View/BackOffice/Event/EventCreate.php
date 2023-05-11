@@ -1,5 +1,15 @@
 <?php
-require '../../Layout.php';
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['adminInfo'])) {
+        $adminName = $_SESSION['adminInfo']['name'];
+        $admin_id = $_SESSION['adminInfo']['admin_id'];
+    } else {
+        header('Location: ../Admin/AdminLogin.php');
+        exit;
+    }
+    require '../../BackOfficeLayout.php';
 ?>
 <!-- author: Lim En Xi -->
 <div class="p-5 rounded-2">
@@ -8,7 +18,7 @@ require '../../Layout.php';
             <h2 class="float-start mb-5">Add Event</h2>
         </div>
     </div>
-    <form id="form-add-event" class="needs-validation" novalidate  method="POST">
+    <form id="form-add-event" class="needs-validation" novalidate method="POST">
         <!-- Event Information -->
         <div class="row mb-4">
             <div class="col-md-6">
