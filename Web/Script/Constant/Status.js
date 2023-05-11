@@ -5,5 +5,11 @@ var EventStatus = {
     Closed: "Closed"
 }
 
+var UserStatus = {
+    Active: "Active",
+    Inactive: "Inactive"
+}
+
+
 
 
