@@ -26,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = json_decode($_POST['event']);
         $data->poster = $poster;
 
+        // todo: rm hard code
+        $data->updatedBy = "Kuma";
+
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Create";
 
         $client = curl_init();
