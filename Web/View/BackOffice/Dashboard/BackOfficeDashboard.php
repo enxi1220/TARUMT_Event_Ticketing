@@ -3,22 +3,21 @@
 //if (session_status() === PHP_SESSION_NONE) {
 //    session_start();
 //}
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/LoginUser.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
-require '../../BackOfficeLayout.php';
-
 if(isset($_SESSION['adminInfo'])) {
     $adminName = $_SESSION['adminInfo']['name'];
     $admin_id = $_SESSION['adminInfo']['admin_id'];
     $role = $_SESSION['adminInfo']['role'];
     $loginUser = new LoginUser();
     $loginUser->attach(new Event());
-    $loginUser->setLoginUser($adminName);
-    
+    $loginUser->setLoginUser($adminName); 
 }else{
     header('Location: ../Admin/AdminLogin.php');
     exit;
 }
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/LoginUser.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Event.php";
+require '../../BackOfficeLayout.php';
+
 ?>
 
 
