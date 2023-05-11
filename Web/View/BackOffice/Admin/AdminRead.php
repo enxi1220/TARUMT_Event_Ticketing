@@ -28,7 +28,6 @@ if(isset($_SESSION['adminInfo'])) {
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
-         <div class="card-header" style="background-color: rgba(33, 40, 50, 0.03)">Profile Picture</div>
           <div class="card-body text-center">
             <!--<img src="https://ca-times.brightspotcdn.com/dims4/default/ee920fb/2147483647/strip/true/crop/2836x2000+0+0/resize/1200x846!/format/webp/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fdc%2F61%2Fc19d543f43a8b6634e43ae19d377%2Ffilm-superman-11403.jpg" alt="avatar"-->
             <img src="https://assets-prod.sumo.prod.webservices.mozgcp.net/static/default-FFA-avatar.2f8c2a0592bda1c5.png" alt="avatar"

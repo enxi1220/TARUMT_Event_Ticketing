@@ -7,15 +7,16 @@ INSERT INTO `user` (`username`, `password`, `name`, `phone`, `mail`, `status`, `
 ('user5', 'pass5', 'David Lee', '7778889999', 'user5@test.com', 'Active', 'admin', NOW()),
 ('user6', 'pass6', 'Emily Jones', '5554443333', 'user6@test.com', 'Active', 'admin', NOW());
 
+-- tarUMT123+_)
 INSERT INTO `tarumt_event_ticketing`.`admin` 
 (`username`, `password`, `role`, `name`, `phone`, `mail`, `status`, `created_by`, `created_date`) 
 VALUES 
-('admin01', 'password01', 'admin', 'John Doe', '555-1234', 'admin01@example.com', 'Active', 'system', NOW()),
-('admin02', 'password02', 'admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'Active', 'system', NOW()),
-('admin03', 'password03', 'admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'Active', 'system', NOW()),
-('admin04', 'password04', 'admin', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'Active', 'system', NOW()),
-('admin05', 'password05', 'admin', 'Mark Davis', '555-7890', 'admin05@example.com', 'Active', 'system', NOW()),
-('admin06', 'password06', 'admin', 'Sarah Lee', '555-1234', 'admin06@example.com', 'Deactivate', 'system', NOW());
+('admin01', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Admin', 'John Doe', '555-1234', 'admin01@example.com', 'Active', 'system', NOW()),
+('admin02', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Admin', 'Jane Smith', '555-5678', 'admin02@example.com', 'Active', 'system', NOW()),
+('admin03', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Admin', 'Bob Johnson', '555-9012', 'admin03@example.com', 'Active', 'system', NOW()),
+('admin04', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Staff', 'Lisa Nguyen', '555-3456', 'admin04@example.com', 'Active', 'system', NOW()),
+('admin05', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Staff', 'Mark Davis', '555-7890', 'admin05@example.com', 'Active', 'system', NOW()),
+('admin06', '$2y$10$.Q7NIBBMpSlbUdZQWMeZ7eByUQZHDwfabUSk3yLBY4g1Dko3uFgha', 'Staff', 'Sarah Lee', '555-1234', 'admin06@example.com', 'Deactivate', 'system', NOW());
 
 INSERT INTO category (name, description, created_by, created_date)
 VALUES

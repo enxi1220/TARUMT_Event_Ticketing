@@ -254,14 +254,14 @@ if(isset($_SESSION['adminInfo'])) {
           </li>-->
           <li class="nav-item">
             <a class="nav-link" href="../Payment/PaymentSummary.php">
-              <i class="icon-head menu-icon"></i>
+              <i class="fas fa-money-bill-alt menu-icon"></i>
               <span class="menu-title">Payment</span>
               <i class="menu-arrow"></i>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Admin/AdminProfile.php">
-              <i class="icon-ban menu-icon"></i>
+              <i class="icon-head menu-icon"></i>
               <span class="menu-title">Profile</span>
               <i class="menu-arrow"></i>
             </a>

@@ -3,9 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_links.php';
-
 ?>
-<!-- author: Vinnie Chin Loh Xin -->
 <!DOCTYPE html>
 <html>
 
@@ -38,6 +36,25 @@ require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_
                     <li class="nav-item">
                         <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Dashboard/BackOfficeDashboard.php">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Admin/AdminSummary.php">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Booking/BookingSummary.php">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Category/CategorySummary.php">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Event/EventSummary.php">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/BackOffice/Payment/PaymentSummary.php">Payment</a>
+                    </li>
+<!--                    <li class="nav-item">
+                        <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php">View as User</a>
+                    </li>-->
+                    
 <!--                    <li class="nav-item">
                         <a class="nav-link" href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/Booking/BookingSummary.php">Booking</a>
                     </li>-->
@@ -49,6 +66,11 @@ require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
+                <a style="margin-right: 10px;"
+          class="btn btn-dark px-3"  onclick="adminSignOut()"
+          role="button"
+          href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php"
+          >View as User</i></a>
                 <a
           class="btn btn-dark px-3"  onclick="adminSignOut()"
           role="button"

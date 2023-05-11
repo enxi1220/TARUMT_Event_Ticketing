@@ -12,7 +12,11 @@ if(isset($_SESSION['adminInfo'])) {
 //    $loginUser->attach(new Event());
 //    $loginUser->setLoginUser($adminName);
     
+}else{
+    header('Location: ../Admin/AdminLogin.php');
+    exit;
 }
+
 //else{
 //    header('Location: /TARUMT_Event_Ticketing/Web/View/BackOffice/Admin/AdminLogin.php');
 //    exit;

@@ -20,24 +20,21 @@ if(isset($_SESSION['adminInfo'])) {
     <div class="container-xl px-4 mt-4">
 
     <div class="row">
-        <div class="col-xl-4">
-            <!-- Profile picture card-->
+<!--        <div class="col-xl-4">
+             Profile picture card
             <div class="card mb-4 mb-xl-0">
                 <div class="card-header" style="background-color: rgba(33, 40, 50, 0.03)">Profile Picture</div>
                 <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
-                </div>
+                     Profile picture image
+                                <img src="https://assets-prod.sumo.prod.webservices.mozgcp.net/static/default-FFA-avatar.2f8c2a0592bda1c5.png" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+    </div>
             </div>
-        </div>
-        <div class="col-xl-8">
+        </div>-->
+        <div class="col-xl-12">
             <!-- Account details card-->
             <div class="card mb-4">
-                <div class="card-header" style="background-color: rgba(33, 40, 50, 0.03)">Account Details</div>
+                <div class="card-header" style="background-color: rgba(33, 40, 50, 0.03)">Update Account Details</div>
                 <div class="card-body">
                     <form id="form-edit-admin" class="needs-validation" novalidate method="POST">
                         <!-- Form Row-->
