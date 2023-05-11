@@ -190,12 +190,6 @@ function read()
 
 function summary()
 {   
-    // todo: move to login process
-    // $loginUser = new LoginUser();
-    // $loginUser->attach(new Event());
-    // $loginUser->setLoginUser("enxi");
-    // ----------
-
     $event = new Event();
     $result = EventRead::Read($event);
 
@@ -228,7 +222,8 @@ function summary()
                 'updatedDate' => $event->getUpdatedDate(),
                 'updatedBy' => $event->getUpdatedBy(),
                 'category' => $event->getCategory(),
-                'tickets' => $event->getTickets()
+                'tickets' => $event->getTickets(),
+                // 'role' => $_SESSION['adminInfo']['role']
             );
         },
         $result
