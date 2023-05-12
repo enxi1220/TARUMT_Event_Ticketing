@@ -34,7 +34,7 @@ function display(ticket) {
                                         <p class="card-text">
                                             ${item.eventName}
                                         </p>
-        
+<i class="fa-sharp fa-solid fa-arrow-left fs-2 position-absolute bottom-0 end-0 ms-2 me-2" onclick="back()"></i>
 
                                     </div>
                                 </div>
@@ -46,4 +46,8 @@ function display(ticket) {
         $('#future').append(template);
     });
 
+}
+
+function back() {
+  location.href = "/TARUMT_Event_Ticketing/Web/View/FrontOffice/Booking/BookingSummary.php";
 }
