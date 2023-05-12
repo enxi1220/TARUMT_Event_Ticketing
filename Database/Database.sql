@@ -6,7 +6,7 @@ USE `tarumt_event_ticketing`;
 CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`user`(
 	`user_id` int NOT NULL AUTO_INCREMENT, 
 	`username` varchar(20) NOT NULL,
-	`password` varchar(50) NOT NULL,
+	`password` varchar(256) NOT NULL,
 	`name` varchar(150) NOT NULL,
 	`phone` varchar(15) NOT NULL,
 	`mail` varchar(50) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`user`(
 CREATE TABLE IF NOT EXISTS `tarumt_event_ticketing`.`admin`(
 	`admin_id` int NOT NULL AUTO_INCREMENT, 
 	`username` varchar(20) NOT NULL,
-	`password` varchar(50) NOT NULL,
+	`password` varchar(256) NOT NULL,
 	`role` varchar(20) NOT NULL,
 	`name` varchar(150) NOT NULL,
 	`phone` varchar(15) NOT NULL,

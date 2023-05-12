@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
 
         $event = new Event();
-        $result = Read::Read($event);
+        $result = EventRead::Read($event);
 
         if (empty($result)) {
             exit;

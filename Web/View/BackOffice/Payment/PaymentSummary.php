@@ -1,5 +1,19 @@
 <?php
-require '../../Layout.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(isset($_SESSION['adminInfo'])) {
+    $adminName = $_SESSION['adminInfo']['name'];
+    $admin_id = $_SESSION['adminInfo']['admin_id'];
+    $role = $_SESSION['adminInfo']['role'];
+//    $loginUser = new LoginUser();
+//    $loginUser->attach(new Event());
+//    $loginUser->setLoginUser($adminName);
+}else{
+    header('Location: ../Admin/AdminLogin.php');
+    exit;
+}
+require '../../BackOfficeLayout.php';
 ?>
 <!-- author: Ong Wi Lin -->
 <div class="p-5 rounded-2">

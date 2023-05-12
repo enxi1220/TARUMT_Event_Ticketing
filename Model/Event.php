@@ -2,7 +2,7 @@
 
 /**
  * Description of Event
- * Design pattern: Creational -> Factory
+ * Design pattern: Creational -> Factory, Behavior -> Observer 
  * @author enxil
  */
 
@@ -48,7 +48,6 @@ class Event extends Subject implements Observer
 
     private Category $category;
     private $tickets = array();
-    private $posterPath;
     private $ticketQtySold;
 
     public function __construct()
@@ -188,11 +187,6 @@ class Event extends Subject implements Observer
     public function getTickets()
     {
         return $this->tickets;
-    }
-
-    public function getPosterPath()
-    {
-        return $this->posterPath;
     }
 
     public function getTicketQtySold()
@@ -414,7 +408,7 @@ class Event extends Subject implements Observer
     {
         $event = new Event();
         $event->setEventEndDate(DateHelper::GetMalaysiaDateTimeWithoutSecond());
-        $result = Read::Read($event);
+        $result = EventRead::Read($event);
 
         foreach ($result as $event) {
             $event->setUpdatedBy("System");

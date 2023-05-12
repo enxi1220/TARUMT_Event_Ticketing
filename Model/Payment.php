@@ -4,6 +4,8 @@
  * @author Ong Wi Lin
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPayment.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/PaymentDetail.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/IPaymentDetail.php";
 
 
 class Payment implements IPayment {
@@ -13,22 +15,59 @@ class Payment implements IPayment {
     private $paymentType;
     private $price;
     private $createdDate;
+//    private $paymentArray = [];
+    
 //    private $paymentDetails;
     
     private $paymentDetails = array();
+    private $paymentArray = array();
+    private User $user;
+//    private Payment $payment;
+    private Event $event;
 
     public function __construct() {
-    }
-//    public function __construct($paymentId, $paymentNo, $bookingId, $paymentType, $price, $createdDate, $paymentDetails) {
-//        $this->paymentId = $paymentId;
-//        $this->paymentNo = $paymentNo;
-//        $this->bookingId = $bookingId;
-//        $this->paymentType = $paymentType;
-//        $this->price = $price;
-//        $this->createdDate = $createdDate;
-//        $this->paymentDetails = $paymentDetails;
-//    }
 
+    }
+
+    public function addPaymentDetail(PaymentDetail $paymentDetail) {
+        $this->paymentDetails[] = $paymentDetail;
+    }
+    
+      public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function getPayment(): Payment
+    {
+        return $this->payment;
+    }
+    
+    public function getEvent(): Event 
+    {
+        return $this->event;
+    }
+    
+    
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function setPayment(Payment $payment): self
+    {
+        $this->payment = $payment;
+        return $this;
+    }
+    
+    public function setEvent(Event $event): self
+    {
+        $this->event = $event;
+        return $this;
+    }
+
+    
     public function getPaymentId() {
         return $this->paymentId;
     }
@@ -42,8 +81,8 @@ class Payment implements IPayment {
         return $this->paymentNo;
     }
 
-    public function setPaymentNo($paymentNo) {
-        $this->paymentNo = $paymentNo;
+    public function setPaymentNo($paymentNo = null): self {
+        $this->paymentNo = $paymentNo == null ? UniqueNoHelper::RandomCode($this->prefix()) : $paymentNo;
         return $this;
     }
 
@@ -78,8 +117,8 @@ class Payment implements IPayment {
         return $this->createdDate;
     }
 
-    public function setCreatedDate($createdDate) {
-        $this->createdDate = $createdDate;
+    public function setCreatedDate($createdDate = null): self {
+        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
         return $this;
     }
 
@@ -90,5 +129,10 @@ class Payment implements IPayment {
     public function setPaymentDetails($paymentDetails) {
         $this->paymentDetails = $paymentDetails;
         return $this;
+    }
+
+    public function prefix()
+    {
+        return PrefixConstant::PAYMENT;
     }
 }

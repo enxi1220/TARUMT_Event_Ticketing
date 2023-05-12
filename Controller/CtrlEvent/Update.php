@@ -2,8 +2,21 @@
 
 #  Author: Lim En Xi
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
+
+        $adminName = ""; 
+        if(isset($_SESSION['adminInfo'])) {
+            $adminName = $_SESSION['adminInfo']['name'];
+        }else{
+            header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
+            exit;
+        }
+
         if (!isset($_POST['event'])) {
             throw new Exception("Event information is not complete.");
         }
@@ -24,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data->poster = $poster;
 
         // todo: rm hard code
-        $data->updatedBy = "Kuma";
+        $data->updatedBy = $adminName;
 
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Update";
 

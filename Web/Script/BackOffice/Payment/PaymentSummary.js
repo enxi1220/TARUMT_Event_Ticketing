@@ -2,13 +2,6 @@
  * AUTHOR : ONG WI LIN
  */
 
-//<a class="btn btn-secondary btn-floating" title="View Ticket" href="../Ticket/TicketSummary.php?admin_id=${row.admin_id}" role="button">
-//                        <i class="fas fa-ticket"></i>
-//                    </a>
-//                    <a class="btn btn-secondary btn-floating" title="View Participant" href="../Participant/ParticipantSummary.php?admin_id=${row.admin_id}" role="button">
-//                        <i class="fas fa-users"></i>
-//                    </a>
-
 $(document).ready(function () {
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlPayment/Summary.php',
@@ -79,32 +72,19 @@ function buildDataTable(payments){
         data: payments,
         columns: 
         [
-//            { data: "eventNo" },
             { data: "payment_id" },
             { data: "payment_no" },
             { data: "booking_id" },
             { data: "payment_type" },
             { data: "price" },
             { data: "created_date" },
-
             {
                render: function (data, type, row, meta) {
                 var html = `
                     <a class="btn btn-secondary btn-floating" title="View" href="PaymentRead.php?payment_id=${row.payment_id}" role="button">
                         <i class="fas fa-eye"></i>
-                    </a>
-                    <a class="btn btn-secondary btn-floating" title="Update" href="PaymentUpdate.php?payment_id=${row.payment_id}" role="button">
-                        <i class="fas fa-pen-to-square"></i>
                     </a>`;
-//                if (row.status == AdminStatus.Deactivate) {
-//                    html += `<button id="btn-activate" class="btn btn-secondary btn-floating" title="Activate" onclick="activateAdmin(${row.admin_id})">
-//                        <i class="fas fa-check"></i>
-//                    </button>`;
-//                } else if (row.status == AdminStatus.Activate) {
-//                    html += `<button id="btn-deactivate" class="btn btn-secondary btn-floating" title="Deactivate" onclick="deactivateAdmin(${row.admin_id})">
-//                        <i class="fas fa-times"></i>
-//                    </button>`;
-//                }
+
                 return html;
             },
 

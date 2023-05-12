@@ -4,9 +4,21 @@
 
 // collect value from front end
 // validation without database
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
+
+        $adminName = ""; 
+        if(isset($_SESSION['adminInfo'])) {
+            $adminName = $_SESSION['adminInfo']['name'];
+        }else{
+            header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
+            exit;
+        }
+
         if (!isset($_POST['event'])) {
             throw new Exception("Event information is not complete.");
         }
@@ -26,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = json_decode($_POST['event']);
         $data->poster = $poster;
         // todo: rm hard code
-        $data->createdBy = "Kuma";
+        $data->createdBy = $adminName;
 
         // $fileContents = file_get_contents($_FILES['poster']['tmp_name']);
         // $data->poster = $fileContents;

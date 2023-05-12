@@ -1,10 +1,11 @@
-//author: Vinnie Chin Loh Xin
+//author: Lim En Xi
 
 $(document).ready(function () {
     get(
         '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
         { eventId: new URLSearchParams(window.location.search).get('eventId') },
         function (success) {
+            console.log(success);
             var event = JSON.parse(success);
             display(event);
         }

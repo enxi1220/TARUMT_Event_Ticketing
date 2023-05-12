@@ -33,8 +33,34 @@ switch ($action) {
         break;
 }
 
+// enxi complete this method for testing xia
 function create($data) {
-    
+    $booking = new Booking();
+    $booking->setEventId($data->eventId);
+    $booking->setCreatedBy($data->createdBy);
+    $booking->setUserId($data->userId);
+
+    $event = new Event();
+    $booking->setEvent($event->setEventId($data->eventId));
+
+    $vip = new TicketVIP;
+    $vip->setRequestedAmount($data->vipTicketQty);
+
+    $std = new TicketStandard;
+    $std->setRequestedAmount($data->stdTicketQty);
+
+    $bgt = new TicketBudget;
+    $bgt->setRequestedAmount($data->bgtTicketQty);
+
+    $payment = new Payment();
+    $payment->setPaymentType($data->paymentType);
+
+    try {
+        $bookingNo = BookingCreate::Create($booking, $payment, $vip, $std, $bgt);
+        RESTfulAPI::response(200, "Booking $bookingNo is added.");
+    } catch (\Throwable $e) {
+        RESTfulAPI::response($e->getCode(), $e->getMessage());
+    }
 }
 
 function read() {

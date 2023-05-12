@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $participant = new Participant();
         $participant->setEventId($eventId);
 
-        $result = Read::Read($participant);
+        $result = ParticipantRead::Read($participant);
 
         $output = array_map(function ($participant) {
             return array(

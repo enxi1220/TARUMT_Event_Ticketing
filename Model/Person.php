@@ -20,19 +20,6 @@ class Person implements IPerson {
     protected $updated_date;
     protected $updated_by;
     protected $profilePic;
-//
-//    public function __construct(string $username, string $password, string $name, string $phone, string $mail, string $status, DateTime $created_date, string $created_by, DateTime $updated_date, string $updated_by) {
-//        $this->username = $username;
-//        $this->password = $password;
-//        $this->name = $name;
-//        $this->phone = $phone;
-//        $this->mail = $mail;
-//        $this->status = $status;
-//        $this->created_date = $created_date;
-//        $this->created_by = $created_by;
-//        $this->updated_date = $updated_date;
-//        $this->updated_by = $updated_by;
-//    }
 
 //    public function __construct(string $name, string $username, string $phone, string $mail, string $created_by, string $status) {
 //        $this->name = $name;
@@ -69,7 +56,8 @@ class Person implements IPerson {
     
     public function setRandomUsername($name, $role, $username = null)
     {
-        $this->username = $username == null ? UniqueNoHelper::generateUsername($name, $role) : $username;
+        $uniqueNoHelper = new UniqueNoHelper();
+        $this->username = $username == null ? $uniqueNoHelper->generateUsername($name, $role) : $username;
         return $this;
     }
     
@@ -103,53 +91,34 @@ class Person implements IPerson {
         return $this;
     }
         
-//    public function setStatus($status)
     public function setStatus($status)
     {
         $this->status = $status;
         return $this;
     }
 
-    public function setCreatedDate($createdDate = null)
+    public function setCreatedDate($created_date = null)
     {
-        $this->created_date = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
-        return $this;
-    }
-    
-    public function setCreatedBy($createdBy)
-    {
-        $this->created_by = $createdBy;
-        return $this;
-    }
+        $this->created_date = $created_date == null ? DateHelper::GetMalaysiaDateTime(): $created_date;
 
-//    public function setUpdatedDate($updatedDate = null)
-//    {
-//        $args = func_get_args();
-//
-//        switch (count($args)) {
-//            case 0:
-//                $this->updatedDate = DateHelper::GetMalaysiaDateTime();
-//                break;
-//            case 1:
-//                $this->updatedDate = $updatedDate;
-//                break;
-//            default:
-//                // Invalid number of arguments
-//                break;
-//        }
-//        return $this;
-//    }
-
-    
-    public function setUpdatedDate($updatedDate = null)
-    {
-        $this->updated_date = $updatedDate == null ? DateHelper::GetMalaysiaDateTime() : $updatedDate;
         return $this;
     }
     
-    public function setUpdatedBy($updatedBy)
+    public function setCreatedBy($created_by)
     {
-        $this->updated_by = $updatedBy;
+        $this->created_by = $created_by;
+        return $this;
+    }
+    
+    public function setUpdatedDate($update_date = null)
+    {
+        $this->updated_date = $update_date == null ? DateHelper::GetMalaysiaDateTime() : $update_date;
+        return $this;
+    }
+    
+    public function setUpdatedBy($updated_by)
+    {
+        $this->updated_by = $updated_by;
         return $this;
     }
     

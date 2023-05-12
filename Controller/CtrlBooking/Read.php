@@ -26,11 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo json_encode($result->data);
             exit;
         }
-
-        if($result->status == 404){
-            throw new Exception($result->message, 404);
-        }
-    
     } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);
         // echo $e->getMessage();
@@ -39,3 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 
+
+        if($result->status == 404){
+            throw new Exception($result->message, 404);
+        }
+    

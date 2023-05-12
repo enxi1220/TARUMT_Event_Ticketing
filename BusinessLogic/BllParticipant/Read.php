@@ -10,13 +10,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/Prefi
  *
  * @author Tan Lin Yi
  */
-class Read {
+class ParticipantRead {
     public static function Read(Participant $participant)
     {
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($participant) {
-                return Read::ReadParticipant($dataAccess, $participant);
+                return ParticipantRead::ReadParticipant($dataAccess, $participant);
             }
         );
 

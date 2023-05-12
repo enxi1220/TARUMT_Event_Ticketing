@@ -45,16 +45,16 @@ $(document).ready(function () {
         var ticket = preparePostData();
         console.log(ticket);
         post(
-                // '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
-                '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
-                [
-                    submitData('ticket', ticket)
-                ],
-                null,
-                function () {
-                    var data = JSON.parse(ticket);
-                    location.href = `../Payment/PaymentCreate.php?eventId=${data.eventId}&vipTicketQty=${data.vipTicketQty}&stdTicketQty=${data.stdTicketQty}&bgtTicketQty=${data.bgtTicketQty}`;
-                }
+            '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
+            // '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
+            [
+                submitData('ticket', ticket)
+            ],
+            null,
+            function () {
+                var data = JSON.parse(ticket);
+                location.href = `../Payment/PaymentCreate.php?eventId=${data.eventId}&vipTicketQty=${data.vipTicketQty}&stdTicketQty=${data.stdTicketQty}&bgtTicketQty=${data.bgtTicketQty}`;
+            }
         );
     });
 });

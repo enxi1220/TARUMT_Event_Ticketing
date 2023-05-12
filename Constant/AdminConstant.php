@@ -8,7 +8,8 @@ class AdminConstant{
     const STAFF = "Staff";
     const ADMIN = "Admin";
     
-    const ACTIVATE = "Activate";
+    const PENDING = "Pending";
+    const ACTIVE = "Active";
     const DEACTIVATE = "Deactivate";
     
 
