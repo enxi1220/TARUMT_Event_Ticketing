@@ -1,31 +1,60 @@
 //author: Lim En Xi
 
 $(document).ready(function () {
-    get(
-        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
-        { eventId: new URLSearchParams(window.location.search).get('eventId') },
-        function (success) {
-            console.log(success);
-            var event = JSON.parse(success);
-            display(event);
-        }
-    )
+    needLogin()
+                .then(function (result) {
+                    console.log('Login succeeded:', result);
+                    $('.container').removeClass('d-none');
+
+                    get(
+                            '/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
+                            null,
+                            function (success) {
+                                displayUser(JSON.parse(success));
+                            }
+                    );
+                })
+                .catch(function (error) {
+                    console.error('Login failed:', error);
+                    $('.container').addClass('d-none');
+                });
+
+//    $('body').addClass('d-none');
+//    if (needLogin()) {
+//        
+//        $('body').removeClass('d-none');
+//        get(
+//                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
+//                {eventId: new URLSearchParams(window.location.search).get('eventId')},
+//                function (success) {
+//                    console.log(success);
+//                    var event = JSON.parse(success);
+//                    display(event);
+//                }
+//        )
+//
+//
+//       
+//
+//    }
+
+
 
     $(`#form-add-booking`).submit(function (event) {
         event.preventDefault();
         var ticket = preparePostData();
         console.log(ticket);
         post(
-            // '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
-            '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
-            [
-                submitData('ticket', ticket)
-            ],
-            null,
-            function () {
-                var data = JSON.parse(ticket);
-                location.href = `../Payment/PaymentCreate.php?eventId=${data.eventId}&vipTicketQty=${data.vipTicketQty}&stdTicketQty=${data.stdTicketQty}&bgtTicketQty=${data.bgtTicketQty}`;
-            }
+                // '/TARUMT_Event_Ticketing/Controller/CtrlTicket/CheckQuantity.php',
+                '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
+                [
+                    submitData('ticket', ticket)
+                ],
+                null,
+                function () {
+                    var data = JSON.parse(ticket);
+                    location.href = `../Payment/PaymentCreate.php?eventId=${data.eventId}&vipTicketQty=${data.vipTicketQty}&stdTicketQty=${data.stdTicketQty}&bgtTicketQty=${data.bgtTicketQty}`;
+                }
         );
     });
 });

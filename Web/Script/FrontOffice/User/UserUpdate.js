@@ -111,6 +111,7 @@ $(document).ready(function () {
         var otpNum = $('#otpNum').val();
         var action = "checkOTP";
 
+//todo
         if (!otpNum) {
             errorPrompt(append("the OTP received."));
 

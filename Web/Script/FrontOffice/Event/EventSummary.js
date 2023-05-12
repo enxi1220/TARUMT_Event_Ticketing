@@ -1,27 +1,58 @@
 //author: Vinnie Chin Loh Xin
 
 $(document).ready(function () {
+    
 
     var categories;
 
+    get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php', null, function (success) {
+        categories = JSON.parse(success);
+        displayCategories(categories);
 
-    $.when(get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
-            null,
-            function (success) {
-                categories = JSON.parse(success);
-                displayCategories(categories)
-            }
-    )).done(function () {
-        get(
-                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
-                null,
-                function (success) {
-                   
-                    var events = JSON.parse(success);
-                    displayEventsByCategory(events, categories);
-                }
-        )
+        get('/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php', null, function (success) {
+            var events = JSON.parse(success);
+            displayEventsByCategory(events, categories);
+        });
     });
+
+
+//    var categories="";
+//    get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
+//            null,
+//            function (success) {
+//                categories = JSON.parse(success);
+//                displayCategories(categories)
+//            });
+//
+//    if (categories) {
+//        get(
+//                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
+//                null,
+//                function (success) {
+//
+//                    var events = JSON.parse(success);
+//                    displayEventsByCategory(events, categories);
+//                }
+//        );
+//    }
+
+//    $.when(get('/TARUMT_Event_Ticketing/Controller/CtrlCategory/Summary.php',
+//            null,
+//            function (success) {
+//                categories = JSON.parse(success);
+//                displayCategories(categories)
+//            }
+//    )).done(function () {
+//        get(
+//                '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php',
+//                null,
+//                function (success) {
+//                   
+//                    var events = JSON.parse(success);
+//                    displayEventsByCategory(events, categories);
+//                }
+//        )
+//    });
 
 
 });
@@ -63,7 +94,6 @@ function displayEventsByCategory(events, categories) {
 function displayCategories(categories) {
     // Get all the unique event categories
     categories.forEach(function (category, index) {
-
 
         var pillNav = $(`
   <li class="nav-item" role="presentation">

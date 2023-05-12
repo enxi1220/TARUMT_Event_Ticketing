@@ -3,8 +3,9 @@ require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
 <!-- Description: backend check quantity only go payment -->
+<body>
 <form id="form-add-booking" method="POST">
-    <div class="container py-5">
+    <div class="container py-5 d-none">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col">
                 <div class="card my-4 shadow-3">
@@ -114,3 +115,4 @@ require '../../Layout.php';
 require '../../Footer.php';
 ?>
 <script src="../../../Script/FrontOffice/Booking/BookingCreate.js" type="text/javascript"></script>
+</body>

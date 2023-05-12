@@ -206,7 +206,7 @@ function summary()
                 'categoryId' => $event->getCategoryId(),
                 'eventNo' => $event->getEventNo(),
                 'name' => $event->getName(),
-                'poster' => $event->getPoster(),
+                'poster' => $event->posterPath() . $event->getPoster(),
                 'venue' => $event->getVenue(),
                 'registerStartDate' => $event->getRegisterStartDate(),
                 'registerEndDate' => $event->getRegisterEndDate(),

@@ -14,7 +14,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/BookingD
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllTicket/ReadNewQuantity.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllEvent/Read.php";
 
-class Create
+class BookingCreate
 {
     public static function Create(Booking $booking, TicketVIP $ticketVIP, TicketStandard $ticketStandard, TicketBudget $ticketBudget)
     {
@@ -22,7 +22,7 @@ class Create
         $booking->setCreatedDate();
 
         ReadNewQuantity::Read($booking->getEvent(), $ticketVIP, $ticketStandard, $ticketBudget);
-        $event = Read::Read($booking->getEvent()->setStatus(EventStatusConstant::CLOSED));
+        $event = EventRead::Read($booking->getEvent()->setStatus(EventStatusConstant::CLOSED));
         
         if (!empty($event)) {
             throw new Exception("The event has been closed.");
@@ -32,12 +32,12 @@ class Create
         $dataAccess->BeginDatabase(function ($dataAccess) use ($booking, $ticketVIP, $ticketStandard, $ticketBudget) {
             // insert booking & update tickets & insert booking detail & 
             // insert payment & insert payment detail
-            $bookingId = Create::CreateBooking($dataAccess, $booking);
+            $bookingId = self::CreateBooking($dataAccess, $booking);
 
-            $tickets = Create::UpdateTickets($dataAccess, $booking, $ticketVIP, $ticketStandard, $ticketBudget);
+            $tickets = self::UpdateTickets($dataAccess, $booking, $ticketVIP, $ticketStandard, $ticketBudget);
 
             $booking->setBookingId($bookingId);
-            Create::CreateBookingDetail($dataAccess, $booking, $tickets);
+            self::CreateBookingDetail($dataAccess, $booking, $tickets);
 
             // todo: yc continue payment
 

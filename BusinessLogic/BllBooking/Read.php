@@ -139,8 +139,6 @@ class BookingRead {
                                     ->setMail($row['mail'])
                                     ->setPhone($row['phone']);
 //
-                           
-
 //                            foreach ($ticketNos as $ticketNo) {
 //                                $ticketNo = trim($ticketNo);
 //                                if (substr($ticketNo, 0, 3) == PrefixConstant::TICKETVIP) {
@@ -159,19 +157,19 @@ class BookingRead {
 //                                $bookingDetails[] = $bookingDetail;
 //                              
 //                            }
-                            
+
                             $ticketNos = explode(',', $row['ticket_nos']);
-$ticketPrices = explode(',', $row['ticket_prices']);
+                            $ticketPrices = explode(',', $row['ticket_prices']);
 
-foreach ($ticketNos as $key => $ticketNo) {
-    $ticketPrice = $ticketPrices[$key];
+                            foreach ($ticketNos as $key => $ticketNo) {
+                                $ticketPrice = $ticketPrices[$key];
 
-    $paymentDetail = new PaymentDetail();
-    $paymentDetail->setTicketNo($ticketNo)
-                  ->setTicketPrice($ticketPrice);
+                                $paymentDetail = new PaymentDetail();
+                                $paymentDetail->setTicketNo($ticketNo)
+                                        ->setTicketPrice($ticketPrice);
 
-    $paymentDetails[] = $paymentDetail;
-}
+                                $paymentDetails[] = $paymentDetail;
+                            }
 
 
                             $payment = new Payment();

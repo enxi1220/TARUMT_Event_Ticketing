@@ -19,25 +19,50 @@ $(document).ready(function () {
     );
 });
 
-
 function needLogin() {
+    return new Promise(function (resolve, reject) {
+        var data = JSON.stringify({
+            action: "needLogin"
+        });
 
-// for page that need login
-    var data = JSON.stringify({
-        action: "needLogin"
+        get('/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php', [
+            submitData('data', data)
+        ],
+                function () {
+                    resolve(true);
+                },
+                null,
+                function () {
+                    location.href = `/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/SignIn.php`;
+                    reject(false);
+                }
+        );
+
     });
-
-    get('/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
-            [
-                submitData('data', data)
-            ],
-            {},
-            null,
-            function () {
-                location.href = `/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/SignIn.php`;
-            }
-    );
 }
+
+
+//
+//function needLogin() {
+//
+//// for page that need login
+//    var data = JSON.stringify({
+//        action: "needLogin"
+//    });
+//
+//    get('/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
+//            [
+//                submitData('data', data)
+//            ],
+//            function(){
+//               resolve(true);
+//            },
+//            null,
+//            function () {
+//                location.href = `/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/SignIn.php`;
+//            }
+//    );
+//}
 
 function signOut() {
 
@@ -49,9 +74,10 @@ function signOut() {
             [
                 submitData('data', data)
             ],
-            null,
+            null, null, null,
             function () {
-                location.href = `/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php`;
+                location.href = '/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php';
             }
     );
+    
 }

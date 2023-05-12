@@ -13,24 +13,56 @@ $(document).ready(function () {
                 ],
                 null,
                 function () {
-                    
-                    location.href = `../Event/EventSummary.php`;
+
+                    location.href = `/TARUMT_Event_Ticketing/Web/View/FrontOffice/Event/EventSummary.php`;
                 }
+
         );
     });
-    
-    if(window.location.href.includes("/UserRead.php")){
-        needLogin();
-        
-        get(
-            '/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
-            null,
-            function (success) {
-                 displayUser(JSON.parse(success));
-            }
-    );
-        
+
+
+    if (window.location.href.includes("/UserRead.php")) {
+
+        needLogin()
+                .then(function (result) {
+                    console.log('Login succeeded:', result);
+                    $('.container').removeClass('d-none');
+
+                    get(
+                            '/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
+                            null,
+                            function (success) {
+                                displayUser(JSON.parse(success));
+                            }
+                    );
+                })
+                .catch(function (error) {
+                    console.error('Login failed:', error);
+                    $('.container').addClass('d-none');
+                });
+
+
+//       $('.container').addClass('d-none');
+//
+//
+//
+//        if (needLogin()) {
+//
+//            $('.container').removeClass('d-none');
+//            
+//         get(
+//                '/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
+//                null,
+//                function (success) {
+//                     displayUser(JSON.parse(success));
+//                }
+//        );
+//        }
+
     }
+
+//    
+
 
 });
 
@@ -88,7 +120,7 @@ function stringifySignInData() {
 
         mail: $('#signInMail').val(),
         password: $('#signInPwd').val(),
-        action:"signIn"
+        action: "signIn"
     });
 }
 

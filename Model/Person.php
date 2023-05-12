@@ -112,13 +112,13 @@ class Person implements IPerson {
 
     public function setCreatedDate($createdDate = null)
     {
-        $this->createdDate = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
+        $this->created_date = $createdDate == null ? DateHelper::GetMalaysiaDateTime() : $createdDate;
         return $this;
     }
     
     public function setCreatedBy($createdBy)
     {
-        $this->createdBy = $createdBy;
+        $this->created_by = $createdBy;
         return $this;
     }
 

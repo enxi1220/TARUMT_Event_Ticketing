@@ -12,7 +12,7 @@ require '../../Layout.php';
         <?php
         // put your code here
         ?>
-        <div class="container p-5">
+        <div class="container p-5 d-none">
             <div class="row d-flex justify-content-center h-100 mt-5">
                 <div class="col-3 card h-100 ">
                     <!-- Tab side navs -->

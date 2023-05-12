@@ -5,7 +5,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/UserStatusConstant.php";
 
-class Update {
+class UserUpdate {
 
     public static function Update(User $user) {
         // set default values

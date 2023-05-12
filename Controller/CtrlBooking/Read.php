@@ -2,7 +2,7 @@
 
 #  Author: Vinnie Chin Loh Xin
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/Booking.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/BookingRead.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/BusinessLogic/BllBooking/Read.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         $bookingId = json_decode($_GET['bookingId']);
 
-        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Read&bookingId=$bookingId";
+        $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlBooking/Handler.php?action=Read&bookingId=$bookingId";
         
         $client = curl_init($apiURL);
 

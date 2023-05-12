@@ -5,7 +5,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/DataAccess/DataAccess.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Constant/UserStatusConstant.php";
 
-class Create {
+class UserCreate {
 
     public static function Create(User $user) {
         // set default values
@@ -46,9 +46,9 @@ class Create {
                 },
                 function (\Throwable $ex) {
                     if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'mail_UNIQUE')) {
-                        echo "This email has been signed up. Please try again.";
+                        throw new Exception("Email or username has been taken. Please try again.");
                     }
-                    echo $ex;
+//                    echo $ex;
                 }
         );
     }

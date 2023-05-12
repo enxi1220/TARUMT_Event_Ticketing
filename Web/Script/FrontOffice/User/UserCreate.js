@@ -14,7 +14,7 @@ $(document).ready(function () {
             null,
             function () {
                
-                location.href = `../Event/EventSummary.php`;
+                location.href = `SignIn.php`;
             }
         );
     });
