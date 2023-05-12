@@ -1,15 +1,30 @@
 //author: Ong Yi Chween
 
 $(document).ready(function () {
-    get(
-        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
-        { eventId: new URLSearchParams(window.location.search).get('eventId') },
-        function (success) {
-            console.log(success);
-            var event = JSON.parse(success);
-            display(event);
-        }
-    )
+
+
+    needLogin()
+            .then(function (result) {
+                console.log('Login succeeded:', result);
+                $('.container').removeClass('d-none');
+
+                get(
+                        '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
+                        {eventId: new URLSearchParams(window.location.search).get('eventId'), office: "front"},
+                        function (success) {
+                            console.log(success);
+                            var event = JSON.parse(success);
+                            display(event);
+                        }
+                )
+
+            })
+            .catch(function (error) {
+                console.error('Login failed:', error);
+                $('.container').addClass('d-none');
+            });
+
+
 });
 
 function display(event) {
@@ -27,14 +42,14 @@ function submitPayment(paymentType) {
     var payment = preparePostData(paymentType);
     console.log(payment);
     post(
-        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
-        [
-            submitData('payment', payment)
-        ],
-        null,
-        function () {
-            location.href = `../Event/EventSummary.php`;
-        }
+            '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Create.php',
+            [
+                submitData('payment', payment)
+            ],
+            null,
+            function () {
+                location.href = `../Event/EventSummary.php`;
+            }
     );
 }
 
@@ -44,6 +59,6 @@ function preparePostData(type) {
         vipTicketQty: new URLSearchParams(window.location.search).get('vipTicketQty'),
         stdTicketQty: new URLSearchParams(window.location.search).get('stdTicketQty'),
         bgtTicketQty: new URLSearchParams(window.location.search).get('bgtTicketQty'),
-        paymentType : type
+        paymentType: type
     });
 }
