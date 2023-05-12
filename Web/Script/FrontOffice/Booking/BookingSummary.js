@@ -1,17 +1,29 @@
 //author: Lim En Xi
 
 $(document).ready(function () {
-    
-    // checkLogin();
-    get(
-        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Summary.php',
-        {},
-        function (success) {
-            console.log(success);
-            var booking = JSON.parse(success);
-            display(booking);
-        }
-    )
+
+    needLogin()
+            .then(function (result) {
+                console.log('Login succeeded:', result);
+                $('.container').removeClass('d-none');
+                get(
+                        '/TARUMT_Event_Ticketing/Controller/CtrlBooking/Summary.php',
+                        {},
+                        function (success) {
+                            console.log(success);
+                            var booking = JSON.parse(success);
+                            display(booking);
+                        }
+                )
+
+            })
+            .catch(function (error) {
+                console.error('Login failed:', error);
+                $('.container').addClass('d-none');
+            });
+
+
+
 });
 
 function display(booking) {

@@ -19,9 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $data = json_decode($_POST['payment']);
 
-        // todo: rm hard code
-        $data->userId = 1;
-        $data->createdBy = "John Doe";
+        $data->userId = $_SESSION['userId'];
+        $data->createdBy = $_SESSION['username'];
         
         //web service
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlBooking/Handler.php?action=Create";

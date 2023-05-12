@@ -2,7 +2,7 @@
 require '../../Layout.php';
 ?>
 <!-- author: Lim En Xi -->
-<div class="p-5 rounded-2">
+<div class="container p-5 rounded-2">
     <div class="row">
         <div class="col">
             <h2 class="float-start mb-5">Booking History</h2>

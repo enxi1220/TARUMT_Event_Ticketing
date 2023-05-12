@@ -10,15 +10,12 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
-
-    
     
     <xsl:template match="/">
         <html>
             <head>
                 <title>Bookings</title>
                 <style>
-                 
                     .booking-table {
                     width: 100%;
                     border-collapse: collapse;
@@ -58,40 +55,6 @@
             </body>
         </html>
     </xsl:template>
-
-    <!--    <xsl:template match="booking">
-        <tr>
-            <td class="booking-table-cell">
-                <xsl:value-of select="bookingNo" />
-            </td>
-            <td class="booking-table-cell">
-                <xsl:value-of select="ticketCount" />
-            </td>
-            <td class="booking-table-cell">
-                <xsl:for-each select="bookingDetails/bookingDetail">
-                    <xsl:value-of select="concat(ticketNo, ', ')" />
-                </xsl:for-each>
-            </td>
-            <td class="booking-table-cell">
-                <xsl:for-each select="bookingDetails/bookingDetail">
-                    <xsl:value-of select="concat(ticketPrice, ', ')" />
-                </xsl:for-each>
-            </td>
-            <td class="booking-table-cell">
-                <xsl:value-of select="createdBy" />
-            </td>
-            <td class="booking-table-cell">
-                <xsl:value-of select="customerPhone" />
-            </td>
-            <td class="booking-table-cell">
-                <xsl:value-of select="createdDate" />
-            </td>
-            <td class="booking-table-cell">
-                <xsl:value-of select="eventName" />
-            </td>
-        </tr>
-    </xsl:template>-->
-    
     <xsl:template match="booking">
         <tr>
             <td class="booking-table-cell">
