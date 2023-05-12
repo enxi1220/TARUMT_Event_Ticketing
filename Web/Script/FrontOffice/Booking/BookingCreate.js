@@ -74,9 +74,9 @@ $(document).ready(function () {
             let vipPrice = 0;
             let stdPrice = 0;
             let bgtPrice = 0;
-            var vipUnitPrice = parseInt($(`#txt-vip-ticket-price`).val());
-            var stdUnitPrice = parseInt($(`#txt-std-ticket-price`).val());
-            var bgtUnitPrice = parseInt($(`#txt-bgt-ticket-price`).val());
+            var vipUnitPrice = parseFloat($(`#txt-vip-ticket-price`).val());
+            var stdUnitPrice = parseFloat($(`#txt-std-ticket-price`).val());
+            var bgtUnitPrice = parseFloat($(`#txt-bgt-ticket-price`).val());
 
             if (!isNaN(vipQty)) {
                 vipPrice = vipQty * vipUnitPrice;
