@@ -8,15 +8,17 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-
-        $adminName = ""; 
-        $adminRole = "";
-        if(isset($_SESSION['adminInfo'])) {
-            $adminName = $_SESSION['adminInfo']['name'];
-            $adminRole = $_SESSION['adminInfo']['role'];
-        }else{
-            header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
-            exit;
+            $adminName = ""; 
+            $adminRole = "";
+        if (!isset($_GET['office'])) {
+          
+            if(isset($_SESSION['adminInfo'])) {
+                $adminName = $_SESSION['adminInfo']['name'];
+                $adminRole = $_SESSION['adminInfo']['role'];
+            }else{
+                header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
+                exit;
+            }
         }
 
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Summary";

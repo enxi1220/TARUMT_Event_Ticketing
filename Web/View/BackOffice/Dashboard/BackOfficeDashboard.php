@@ -289,15 +289,15 @@ require '../../BackOfficeLayout.php';
                     <img src="https://images.unsplash.com/photo-1594003715326-f6030861574e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NlbmVyeSUyMHdhbGxwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="scenery" style="margin-top: -30px;">
 
                   <div class="weather-info">
-                    <div class="d-flex">
-                      <div>
-                        <div id="dynamicDate" style="font-size: 40px; font-weight: bold; letter-spacing: 6px; margin-top: 15px; line-height: 2.5em; color:white; margin-right:60px">  </div>
-                        <div id="dynamicTime" style="font-size: 25px; font-weight: bold; letter-spacing: 6px; margin-top: 5px; line-height: 2.5em; color:white; "></div>
+                    <!--<div class="d-flex">-->
+                      <!--<div>-->
+                        <div id="dynamicDate" style="font-size: 40px; font-weight: bold; letter-spacing: 6px; line-height: 2.5em; color:white;">  </div>
+                        <div id="dynamicTime" class="ms-3" style="font-size: 25px; font-weight: bold; letter-spacing: 6px; margin-top: 5px; line-height: 2.5em; color:white; "></div>
                         <!--<div class="mb-0 font-weight-normal" id="date" style="font-size: 20px; font-weight: bold;"></div>-->
                         <!--<h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>-->
-                      </div>
+                      <!--</div>-->
 
-                    </div>
+                    <!--</div>-->
                   </div>
                 </div>
               </div>
@@ -723,11 +723,11 @@ require '../../BackOfficeLayout.php';
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
                       <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
                       <span class="sr-only">Next</span>
                     </a>
                   </div>

@@ -3,7 +3,9 @@
 $(document).ready(function () {
     get(
             '/TARUMT_Event_Ticketing/Controller/CtrlEvent/Read.php',
-            {eventId: new URLSearchParams(window.location.search).get('eventId')},
+    
+            {eventId: new URLSearchParams(window.location.search).get('eventId'),
+            office: "front"},
             function (success) {
                 console.log(success)
                 var event = JSON.parse(success);

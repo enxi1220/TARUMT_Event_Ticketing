@@ -1,7 +1,6 @@
 <?php
 require '../../Layout.php';
 
-phpinfo();
 ?>
 <!-- author: Vinnie Chin Loh Xin -->
 <!DOCTYPE html>

@@ -43,7 +43,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/TARUMT_Event_Ticketing/Web/StyleSheet/CSS_
             <div class="d-flex align-items-center">
                 <!-- Icon -->
                 <a
-          class="btn btn-dark px-3 sign-in-link"
+          class="btn btn-dark px-3 sign-in-link invisible"
           href="/TARUMT_Event_Ticketing/Web/View/FrontOffice/User/SignIn.php"
           role="button"
           >Sign In</i

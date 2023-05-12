@@ -9,7 +9,8 @@ $(document).ready(function () {
         categories = JSON.parse(success);
         displayCategories(categories);
 
-        get('/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php', null, function (success) {
+        get('/TARUMT_Event_Ticketing/Controller/CtrlEvent/Summary.php', 
+        {office: "front"}, function (success) {
             var events = JSON.parse(success);
             displayEventsByCategory(events, categories);
         });

@@ -179,7 +179,7 @@ try {
         postMethod($data);
     } else {
 
-        if (!isset($_GET['data'])) {
+        if (!isset($_GET['action'])) {
             
             //get user read
             $userId = $_SESSION['userId'];
@@ -207,7 +207,7 @@ try {
         }
         
  
-        loginManage(json_decode($_GET['data']));
+        loginManage($_GET['action']);
     }
 
 
@@ -219,7 +219,7 @@ try {
 }
 
 function loginManage($data) {
-    switch ($data->action) {
+    switch ($data) {
         case "checkLogin":
             if (isset($_SESSION['userId'])) {
                 echo true;

@@ -6,13 +6,6 @@ $(document).ready(function () {
                     console.log('Login succeeded:', result);
                     $('.container').removeClass('d-none');
 
-                    get(
-                            '/TARUMT_Event_Ticketing/Controller/CtrlUser/Read.php',
-                            null,
-                            function (success) {
-                                displayUser(JSON.parse(success));
-                            }
-                    );
                 })
                 .catch(function (error) {
                     console.error('Login failed:', error);
