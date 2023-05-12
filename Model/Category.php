@@ -7,7 +7,8 @@
 
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHelper.php";
-class Category {
+require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Model/ICategory.php";
+class Category implements ICategory{
     private $categoryId;
     private $name;
     private $description;
@@ -96,5 +97,9 @@ class Category {
         return $this;
     }
 
+    public static function createCategory(): Category
+    {
+        return new self();
+    }
 
 }

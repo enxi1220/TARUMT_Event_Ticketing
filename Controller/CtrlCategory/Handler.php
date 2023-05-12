@@ -76,7 +76,7 @@ function read()
     $categoryId = $_GET['categoryId'] ?? 0;
     $category = new Category();
     $category->setCategoryId($categoryId);
-    $result = Read::Read($category);
+    $result = CategoryRead::Read($category);
     if (empty($result)) {
         RESTfulAPI::response(404, "Data Not Found", null);
         return;
