@@ -165,7 +165,6 @@ function addToWishlist() {
 
 function display(event) {
   const html = `
-    const html = `
            <div class="container my-5">
             <div class="row">
                 <div class="col-lg-7 mb-4 mb-lg-0">
