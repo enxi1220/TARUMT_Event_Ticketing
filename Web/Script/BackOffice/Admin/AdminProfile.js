@@ -7,7 +7,7 @@ $(document).ready(function () {
         '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminProfile.php',
         null,
         function (success) {
-            console.log(success)
+//            console.log(success)
             var admin = JSON.parse(success);
             display(admin);
         }

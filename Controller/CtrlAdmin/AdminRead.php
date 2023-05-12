@@ -27,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //        $result = json_encode($response);
         $result = json_decode($response);
         
+   if (property_exists($result, 'status')) {
+
+        
         if ($result->status === 200) {
             echo json_encode($result->data);
             exit;
@@ -35,7 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if($result->status == 404){
             throw new Exception($result->message, 404);
         }
-        
+    }else{
+            throw new Exception("Error! Please try again.", 500);
+        }
         } catch (\Throwable $e) {
         header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
         echo $e->getCode(). " " . $e->getMessage();

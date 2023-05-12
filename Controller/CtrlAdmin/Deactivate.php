@@ -47,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $result = json_decode($response);
 
+    if (property_exists($result, 'status')) {
+
         if ($result->status === 200) {
             // msg is string, no need encode
             echo $result->message;
@@ -54,9 +56,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($result->status == 404) {
-            throw new Exception($result->message, 404);
+//            throw new Exception($result->message, 404);
+            throw new Exception("Error! Please try again.", 404);
+
         }
-        
+    }else{
+            throw new Exception("Error! Please try again.", 500);
+        }    
         
 //        $admin = new Admin();
 //        $admin

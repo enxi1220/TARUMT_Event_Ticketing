@@ -32,14 +32,11 @@ $adminName = "";
             header('Location: ../Admin/AdminLogin.php');
             exit;
         }
-        
-//        $data->updated_by = $adminName;
-        
+                
         $admin
             ->setStatus(AdminConstant::ACTIVE)
             ->setMail($data->mail)
             ->setPassword(password_hash($data->password, PASSWORD_DEFAULT));
-//            ->setUpdatedBy($data->updated_by);
 
         $isMailFound= AdminUpdate::SetPassword($admin);
         

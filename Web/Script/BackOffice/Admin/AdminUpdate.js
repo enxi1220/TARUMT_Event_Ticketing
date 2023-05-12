@@ -6,7 +6,7 @@ $(document).ready(function () {
         admin.preventDefault();
         if ($(`#form-edit-admin`)[0].checkValidity()) {
             var admin = preparePostData();
-            console.log(admin);
+//            console.log(admin);
             post(
                 '/TARUMT_Event_Ticketing/Controller/CtrlAdmin/AdminUpdate.php',
                 [

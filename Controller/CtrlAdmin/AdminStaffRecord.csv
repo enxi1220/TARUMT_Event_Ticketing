@@ -1,14 +1,15 @@
 Name,Username,Role,Phone,Mail,Status,"Created Date","Created By","Updated Date","Updated By"
-"kc undercover",Admin590_kcundercove,Admin,0184759354,kcong0120@gmail.com,Pending,"2023-05-11 20:11:47","hooi im","2023-05-11 20:12:56",
+sth,Admin584_sth,Admin,0101789028,asd@gmail.com,Pending,"2023-05-11 23:28:24","kc undercover","2023-05-11 23:40:48",
+"kc undercover",Admin590_kcundercove,Admin,0184759354,kcong0120@gmail.com,Active,"2023-05-11 20:11:47","hooi im","2023-05-11 20:13:48",
 staff1,Staff711_staff1,Staff,0184759354,stuffy@gmail.com,Pending,"2023-05-11 18:54:55","hooi yim","2023-05-11 20:12:14","hooi im"
 "hooi im",Staff402_hy,Admin,0164512413,hooiyimteh@gmail.com,Active,"2023-05-10 23:08:39","kc 2465","2023-05-11 18:56:27","hooi yim"
-poi,Staff808_poi,Staff,0184759354,poi152@gmail.com,Pending,"2023-05-10 21:11:03",Koyan,"2023-05-11 20:12:56",
+poi,Staff808_poi,Staff,0184759354,poi152@gmail.com,Pending,"2023-05-10 21:11:03",Koyan,"2023-05-11 23:40:48",
 5,Admin447_wl,Admin,0145145214,willinong0430@gmail.com,Active,"2023-05-08 21:35:53",sth,"2023-05-09 16:05:52",wl
 Koyan,Admin725_Koyan,Admin,0123764673,koyan0430@gmail.com,Active,"2023-04-23 21:10:33",sth,"2023-05-10 23:07:25",Koyan
-Oli,Staff616_Olivia,Staff,0124573562,oliv1234@gmail.com,Deactivate,"2023-04-23 21:01:13",sth,"2023-05-11 20:12:24","hooi im"
-vanesrt,admin06_Vanessa,Admin,0164524521,vanessa06@example.com,Deactivate,"2023-04-23 00:40:00",system,"2023-05-11 18:56:12","hooi yim"
+Oli,Staff616_Olivia,Staff,0124573562,oliv1234@gmail.com,Deactivate,"2023-04-23 21:01:13",sth,"2023-05-11 23:40:01","kc undercover"
+vanessa,admin06_Vanessa,Admin,0164524521,vanessa06@example.com,Deactivate,"2023-04-23 00:40:00",system,"2023-05-11 21:24:19","kc undercover"
 "Davi Lucca",admin05_Davi,Admin,555-7890,admin05@example.com,Deactivate,"2023-04-23 00:40:00",system,"2023-05-08 23:43:21",
 "Lisa Kudroz",admin04,Admin,555-3456,admin04@example.com,Active,"2023-04-23 00:40:00",system,"2023-05-11 20:12:29","hooi im"
-"Bob Johnson",admin03,admin,555-9012,admin03@example.com,Active,"2023-04-23 00:40:00",system,"2023-05-11 20:12:56",
+"Bob Johnson",admin03,admin,555-9012,admin03@example.com,Active,"2023-04-23 00:40:00",system,"2023-05-11 23:40:48",
 Jane,admin02,Admin,555-5678,admin02@example.com,Deactivate,"2023-04-23 00:40:00",system,"2023-05-10 23:10:12",hy
 "Jane Doe",admin01,Admin,555-1234,admin01@example.com,Active,"2023-04-23 00:40:00",system,"2023-05-10 18:00:48",Koyan
