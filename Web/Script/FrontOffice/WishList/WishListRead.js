@@ -25,12 +25,12 @@ function display(wishlist) {
                                     </div>
 
                                     <div class="col-md-7 ">
-                                        <i class="fa-regular fa-trash"></i>
-                                        <i class="fa-regular fa-heart fs-3" onclick="deleteWishlist(${item.wishlistId})"></i>
+                                       
 
         
                                         <p class="card-text">
                                             ${item.eventNo} 
+                                        <i class="fa-solid fa-trash-can fs-2 position-absolute top-1 end-0 ms-2 me-2" onclick="deleteWishlist(${item.wishlistId})"></i>
                                         </p>
                                         <p class="card-text">
                                             ${item.eventName}
@@ -67,7 +67,7 @@ function deleteWishlist(wishlistId) {
                 ],
                 null,
                 function () {
-                    location.href = "EventSummary.php";
+                     location.reload();  
                 }
             );
    

@@ -2,8 +2,21 @@
 
 #  Author: Lim En Xi
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
+
+        $adminName = ""; 
+        if(isset($_SESSION['adminInfo'])) {
+            $adminName = $_SESSION['adminInfo']['name'];
+        }else{
+            header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
+            exit;
+        }
+
         if (!isset($_GET['eventId'])) {
             throw new Exception("Event is not set.");
         }

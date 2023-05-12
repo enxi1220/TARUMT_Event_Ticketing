@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = curl_exec($client);
 
         $result = json_decode($response);
-             var_dump($response);
+//             var_dump($response);
 
         if ($result->status === 200) {
             // msg is string, no need encode
