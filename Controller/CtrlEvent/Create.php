@@ -4,9 +4,21 @@
 
 // collect value from front end
 // validation without database
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
+
+        $adminName = ""; 
+        if(isset($_SESSION['adminInfo'])) {
+            $adminName = $_SESSION['adminInfo']['name'];
+        }else{
+            header('Location: ../Web/View/BackOffice/Admin/AdminLogin.php');
+            exit;
+        }
+
         if (!isset($_POST['event'])) {
             throw new Exception("Event information is not complete.");
         }
@@ -25,9 +37,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $data = json_decode($_POST['event']);
         $data->poster = $poster;
-
         // todo: rm hard code
-        $data->updatedBy = "Kuma";
+        $data->createdBy = $adminName;
+
+        // $fileContents = file_get_contents($_FILES['poster']['tmp_name']);
+        // $data->poster = $fileContents;
+
+        // todo: date from date to validation
+        // if($data->registerStartDate > $data->registerEndDate){
+        //     throw new Exception("Register start date should be earlier than register end date.");
+        // }
+        // if($data->registerStartDate > $data->eventStartDate){
+        //     throw new Exception("Register start date should be earlier than event start date.");
+        // }
+        // if($data->eventStartDate > $data->eventEndDate){
+        //     throw new Exception("Event start date should be earlier than event end date.");
+        // }
+        // if($data->registerStartDate < DateHelper::GetMalaysiaDateTime()){
+        //     throw new Exception("Back date for is not allowed to select on register start date.");
+        // }
+        // if($data->eventStartDate < DateHelper::GetMalaysiaDateTime()){
+        //     throw new Exception("Back date is not allowed to select on event start date.");
+        // }
 
         $apiURL = "http://localhost/TARUMT_Event_Ticketing/Controller/CtrlEvent/Handler.php?action=Create";
 

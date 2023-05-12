@@ -223,7 +223,7 @@ function summary()
                 'updatedBy' => $event->getUpdatedBy(),
                 'category' => $event->getCategory(),
                 'tickets' => $event->getTickets(),
-                // 'role' => $_SESSION['adminInfo']['role']
+                'role' => ""
             );
         },
         $result
