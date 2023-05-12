@@ -107,7 +107,7 @@ class EventRead
         $dataAccess = DataAccess::getInstance();
         $result = $dataAccess->BeginDatabase(
             function (DataAccess $dataAccess) use ($event) {
-                return Read::EventReport($dataAccess, $event);
+                return self::EventReport($dataAccess, $event);
             }
         );
 
