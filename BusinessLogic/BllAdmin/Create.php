@@ -51,8 +51,9 @@ class Create{
                 $pstmt->bindValue(8, $admin->getRole(), PDO::PARAM_STR);
             },
             function (Throwable $ex) {
-                if (str_contains($ex, 'Duplicate entry') && str_contains($ex, 'admin_no_UNIQUE')) {
-                    echo "Duplicate admin no is generated. Please try again.";
+                if (str_contains($ex, 'Duplicate entry')) {
+                    echo "The email has been taken.";
+//                    echo "Duplicate admin no is generated. Please try again.";
                 }
 //                echo $ex;
                 header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error', true, 500);

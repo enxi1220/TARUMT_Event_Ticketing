@@ -14,12 +14,12 @@
             $result = $pdo->query($sqlMostPopEvent);
             if($result->rowCount() > 0){
 
-                $names = array();
+                $eventnames = array();
                 $bookingCount = array();
                 $totalBookingCount = 0;
 
                 while($row = $result->fetch()){
-                    $names[] = $row['name'];
+                    $eventnames[] = $row['name'];
                     $bookingCount[] = $row['booking_count'];
                     $totalBookingCount += $row['booking_count'];
                 }
@@ -38,11 +38,9 @@
 
       ?>
 <script>
-        console.log(<?php echo json_encode($names); ?>)
+        console.log(<?php echo json_encode($eventnames); ?>)
 
-    const names = <?php echo json_encode($names); ?>;
-    const bookingCount = <?php echo json_encode($bookingCount); ?>;
-    const totalBookingCount = <?php echo json_encode($totalBookingCount); ?>;
+
 
 </script>
 
@@ -51,7 +49,7 @@
                               <div class="col-md-6 border-right"  style="width: 60%;">
                                 <div class="table-responsive mb-3 mb-md-0 mt-3">
                                     <table class="table table-borderless report-table">
-                                       <?php foreach($names as $key => $value) { ?>
+                                       <?php foreach($eventnames as $key => $value) { ?>
                                     <tr>
                                       <td class="text-muted"><?php echo $value; ?></td>
                                       <td class="w-100 px-0">
@@ -69,7 +67,7 @@
                               <div class="col-md-6 mt-3">
                                 <!--<canvas id="north-america-chart"></canvas>-->
                                   <canvas id="mostPopEventChart" height="200"></canvas>
-                                  <button onclick="downloadPDF()">PDF Version</button>
+<!--                                  <button onclick="downloadPDF()">PDF Version</button>-->
                                 <div id="north-america-legend"></div>
                               </div>
                             </div>
@@ -80,12 +78,15 @@
   <script>
     // setup 
 
+    const eventnames = <?php echo json_encode($eventnames); ?>;
+    const bookingCounts = <?php echo json_encode($bookingCount); ?>;
+    const totalBookingCounts = <?php echo json_encode($totalBookingCount); ?>;
     
     const mostPopEventData = {
-      labels: names,
+      labels: eventnames,
       datasets: [{
         label: 'Event',
-        data: bookingCount,
+        data: bookingCounts,
         backgroundColor: [
           '#4B49AC',
           '#FFC100',
@@ -125,10 +126,10 @@
     const mostPopEventConfig = {
       type: 'bar',
       data: {
-        labels: names,
+        labels: eventnames,
         datasets: [{
           label: 'Event',
-          data: bookingCount,
+          data: bookingCounts,
           backgroundColor: [
             '#4B49AC',
             '#FFC100',

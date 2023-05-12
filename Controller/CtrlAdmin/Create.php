@@ -11,6 +11,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/TARUMT_Event_Ticketing/Helper/DateHel
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    
+    
     try {
         if (!isset($_POST['admin'])) {
             throw new Exception("Admin information is not complete.");
@@ -60,6 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $result = json_decode($response);
 
+//        if (property_exists($response, 'The email has been taken.')) {
+//            throw new Exception("The email has been taken.", 500);
+//        }
+
+//        else{
+        
         if (property_exists($result, 'status')) {
         if ($result->status === 200) {
             echo $result->message;
@@ -82,11 +91,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         }else{
+
+            if (strpos($response, 'The email has been taken.') !== false) {
+//            throw new Exception("The email has been taken.", 500);
+        }else{
             throw new Exception("Error! Please try again.", 500);
         }
+        }
     } catch (\Throwable $e) {
-        header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
-//        echo $e->getCode() . " " . $e->getMessage();
-        echo "Error! Please try again.";
+        
+        try {
+            if (strpos($response, 'The email has been taken.') !== false) {
+                throw new Exception("The email has been taken.", 500);
+            }else{
+                header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
+    //        echo $e->getCode() . " " . $e->getMessage();
+            echo "Error! Please try again.";
+            }
+        } catch (Exception $e) {
+            header($_SERVER["SERVER_PROTOCOL"] . $e->getMessage(), true, $e->getCode());
+            echo "The email has been taken.";
+        }
+
     }
 }

@@ -59,7 +59,7 @@
                               <div class="col-md-6 mt-3">
 
             <canvas id="myChart" width="350" height="350"></canvas>
-          <button onclick="downloadPDF()">PDF Version</button>
+          <!--<button onclick="downloadPDF()">PDF Version</button>-->
 
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
